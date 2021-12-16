@@ -1,3 +1,3 @@
 <To be added>
   
-  Create React App template + Storybook 6.4 + Typescript
+  Create React App 5.0.0 template + Storybook 6.4.9 + Typescript
