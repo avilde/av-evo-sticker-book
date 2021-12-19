@@ -1,6 +1,6 @@
-import { Story } from '@storybook/react';
+import { Story } from '@storybook/react'
 
 export const TestStory: Story = () => {
-  return <div>{test}</div>;
+	return <div>{test}</div>
 }
-TestStory.storyName = 'Test';
+TestStory.storyName = 'Test'
