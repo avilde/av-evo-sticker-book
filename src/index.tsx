@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { StickerBook } from './components/StickerBook'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <div>Hello</div>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+	<React.StrictMode>
+		<StickerBook />
+	</React.StrictMode>,
+	document.getElementById('root')
+)
