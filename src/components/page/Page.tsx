@@ -1,28 +1,22 @@
-import styles from './Page.pcss'
-import cn from 'classnames'
+import { imagePathMapping } from '../../assets/images'
+import { GameType } from '../../consts'
 
 export interface PageProps {
 	pageNumber: number
 	isEvenPage: boolean
-	imagePath: string
+	gameType: GameType
 }
 
 export const Page: React.FC<PageProps> = ({
 	isEvenPage,
 	pageNumber,
-	imagePath,
+	gameType,
 }) => {
 	return (
-		<div className={styles.pageContainer}>
-			<img
-				className={cn(styles.image, {
-					[styles.isEvenPage]: isEvenPage,
-				})}
-				src={imagePath}
-				alt={imagePath}
-			/>
+		<div className="mx-auto">
+			<img className="" src={imagePathMapping[gameType]} alt={gameType} />
 
-			<div className={styles.pageNumber}>{pageNumber}</div>
+			<div className="">{pageNumber}</div>
 		</div>
 	)
 }
