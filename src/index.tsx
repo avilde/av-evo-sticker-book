@@ -4,7 +4,7 @@ import { Page } from './components/page/Page'
 
 import { GameType } from './consts'
 
-import './styles/tailwind.css'
+import './index.css'
 
 ReactDOM.render(
 	<React.StrictMode>
