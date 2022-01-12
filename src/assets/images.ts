@@ -3,7 +3,6 @@ import blackJackImagePath from './blackJack.webp'
 import cashOrCrashImagePath from './cashOrCrash.webp'
 import crapsImagePath from './craps.webp'
 import crazyTimeImagePath from './crazyTime.webp'
-import dealOrNoDealImagePath from './dealOrNoDeal.webp'
 import gonzoImagePath from './gonzo.webp'
 import holdemImagePath from './holdem.webp'
 import lighteningDiceImagePath from './lighteningDice.webp'
@@ -17,7 +16,6 @@ export const imagePathMapping: Record<GameType, string> = {
 	[GameType.CashOrCrash]: cashOrCrashImagePath,
 	[GameType.Craps]: crapsImagePath,
 	[GameType.CrazyTime]: crazyTimeImagePath,
-	[GameType.DealOrNoDeal]: dealOrNoDealImagePath,
 	[GameType.Gonzo]: gonzoImagePath,
 	[GameType.Holdem]: holdemImagePath,
 	[GameType.LighteningDice]: lighteningDiceImagePath,

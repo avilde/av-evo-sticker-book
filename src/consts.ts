@@ -3,7 +3,6 @@ export enum GameType {
 	CashOrCrash = 'cashOrCrash',
 	Craps = 'craps',
 	CrazyTime = 'crazyTime',
-	DealOrNoDeal = 'dealOrNoDeal',
 	Gonzo = 'gonzo',
 	Holdem = 'holdem',
 	LighteningDice = 'lighteningDice',
