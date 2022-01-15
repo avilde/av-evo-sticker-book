@@ -10,5 +10,8 @@ export const CoverPageStory: Story<CoverPageProps> = (props) => {
 }
 CoverPageStory.args = {
 	isFrontCover: true,
+	setIsTurned: () => {},
+	isTurned: false,
+	index: 0,
 }
 CoverPageStory.storyName = 'Cover page'

@@ -10,8 +10,9 @@ export const PageStory: Story<PageProps> = (props) => {
 	)
 }
 PageStory.args = {
-	pageNumber: 1,
-	isEvenPage: false,
+	index: 1,
+	setIsTurned: () => {},
+	isTurned: false,
 	gameType: GameType.DreamCatcher,
 }
 PageStory.argTypes = {

@@ -1,24 +1,28 @@
+import React from 'react'
 import { imagePathMapping } from '../../assets/images'
 import { GameType } from '../../consts'
 
-import './Page.css'
+import '../stickerBook/StickerBook.css'
 
 export interface PageProps {
-	pageNumber: number
 	gameType: GameType
-	isEvenPage: boolean
+	isTurned: boolean
+	setIsTurned: (index: number) => void
+	index: number
 }
 
 export const Page: React.FC<PageProps> = ({
-	isEvenPage,
-	pageNumber,
+	isTurned,
+	setIsTurned,
+	index,
 	gameType,
 }) => {
 	return (
-		<div className="page">
+		<div
+			className={`page${isTurned ? ' flipped' : ''}`}
+			onClick={() => setIsTurned(index)}
+		>
 			<img className="" src={imagePathMapping[gameType]} alt={gameType} />
-
-			<div className="">{pageNumber}</div>
 		</div>
 	)
 }
