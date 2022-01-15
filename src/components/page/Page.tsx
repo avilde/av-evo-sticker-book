@@ -1,10 +1,12 @@
 import { imagePathMapping } from '../../assets/images'
 import { GameType } from '../../consts'
 
+import './Page.css'
+
 export interface PageProps {
 	pageNumber: number
-	isEvenPage: boolean
 	gameType: GameType
+	isEvenPage: boolean
 }
 
 export const Page: React.FC<PageProps> = ({
@@ -13,7 +15,7 @@ export const Page: React.FC<PageProps> = ({
 	gameType,
 }) => {
 	return (
-		<div className="mx-auto">
+		<div className="page">
 			<img className="" src={imagePathMapping[gameType]} alt={gameType} />
 
 			<div className="">{pageNumber}</div>

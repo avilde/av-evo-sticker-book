@@ -12,7 +12,7 @@ export const PageStory: Story<PageProps> = (props) => {
 PageStory.args = {
 	pageNumber: 1,
 	isEvenPage: false,
-	gameType: GameType.BlackJack,
+	gameType: GameType.DreamCatcher,
 }
 PageStory.argTypes = {
 	gameType: {

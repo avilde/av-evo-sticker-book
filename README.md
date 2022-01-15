@@ -47,3 +47,11 @@ For Storybook, we need to include the TailwindCSS directives in `.storybook/prev
 ```js
 import '../src/index.css'
 ```
+
+### Setting up static directory for assets
+
+Storybook documentation recommends serving static files via Storybook to ensure that your components always have the assets they need to load.
+
+Open `./storybook/main.js` file and add property `staticDirs`. For example, `staticDirs: ["../src/assets"]`.
+
+[[about static assets](https://storybook.js.org/docs/react/configure/images-and-assets#serving-static-files-via-storybook)]
