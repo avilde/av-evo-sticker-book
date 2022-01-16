@@ -1,6 +1,5 @@
 import React from 'react'
-import { GameType } from '../../consts'
-import { CoverPage } from '../page/CoverPage'
+import { PageType } from '../../consts'
 import { Page } from '../page/Page'
 
 import './StickerBook.css'
@@ -26,26 +25,27 @@ export const StickerBook: React.FC = () => {
 
 	return (
 		<div className="book">
-			<div className="pages">
-				<CoverPage
-					isFrontCover={true}
+			<div className="pageContainer">
+				<Page
+					pageType={PageType.Cover}
 					index={0}
 					isTurned={pages[0]}
 					setIsTurned={setIsTurned}
 				/>
 				<Page
-					gameType={GameType.DreamCatcher}
+					pageType={PageType.DreamCatcher}
 					index={1}
 					isTurned={pages[1]}
 					setIsTurned={setIsTurned}
 				/>
 				<Page
-					gameType={GameType.DreamCatcher}
+					pageType={PageType.DreamCatcher}
 					index={2}
 					isTurned={pages[2]}
 					setIsTurned={setIsTurned}
 				/>
-				<CoverPage
+				<Page
+					pageType={PageType.Cover}
 					index={3}
 					isTurned={pages[3]}
 					setIsTurned={setIsTurned}

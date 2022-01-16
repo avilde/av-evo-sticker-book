@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Page } from './components/page/Page'
 
-import { GameType } from './consts'
+import { PageType } from './consts'
 
 import './index.css'
 
@@ -10,9 +10,10 @@ ReactDOM.render(
 	<React.StrictMode>
 		{/* test */}
 		<Page
-			pageNumber={1}
-			isEvenPage={false}
-			gameType={GameType.DreamCatcher}
+			index={0}
+			setIsTurned={() => {}}
+			isTurned={false}
+			pageType={PageType.DreamCatcher}
 		/>
 	</React.StrictMode>,
 	document.getElementById('root')

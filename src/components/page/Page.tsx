@@ -1,11 +1,12 @@
+import cn from 'classnames'
 import React from 'react'
 import { imagePathMapping } from '../../assets/images'
-import { GameType } from '../../consts'
+import { PageType } from '../../consts'
 
-import '../stickerBook/StickerBook.css'
+import './Page.css'
 
 export interface PageProps {
-	gameType: GameType
+	pageType: PageType
 	isTurned: boolean
 	setIsTurned: (index: number) => void
 	index: number
@@ -15,14 +16,24 @@ export const Page: React.FC<PageProps> = ({
 	isTurned,
 	setIsTurned,
 	index,
-	gameType,
+	pageType,
 }) => {
+	const pageClasses = cn('page', {
+		isTurned: isTurned,
+		isOdd: index % 2 > 0,
+		isEven: index % 2 === 0,
+	})
+
+	const pageStyle = {
+		backgroundImage: `url(${imagePathMapping[pageType]})`,
+		zIndex: `${index}`,
+	} as React.CSSProperties
+
 	return (
 		<div
-			className={`page${isTurned ? ' flipped' : ''}`}
+			className={pageClasses}
 			onClick={() => setIsTurned(index)}
-		>
-			<img className="" src={imagePathMapping[gameType]} alt={gameType} />
-		</div>
+			style={pageStyle}
+		></div>
 	)
 }

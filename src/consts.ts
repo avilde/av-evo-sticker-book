@@ -1,4 +1,5 @@
-export enum GameType {
+export enum PageType {
+	Cover = 'cover',
 	BlackJack = 'blackJack',
 	CashOrCrash = 'cashOrCrash',
 	Craps = 'craps',
