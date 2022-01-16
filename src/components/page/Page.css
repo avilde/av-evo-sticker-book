@@ -1,68 +1,23 @@
 .page {
-	float: left;
-	width: 35vw;
-	height: 40vw;
-	margin-bottom: 0.1em;
 	position: absolute;
-	top: 0;
-	float: none;
-	clear: none;
-	margin: 0;
+	width: var(--page-width);
+	height: var(--page-height);
 	transform-style: preserve-3d;
 	transform-origin: 0 0;
-	transition: transform 1.4s;
+	transition: transform 1.5s;
 	backface-visibility: hidden;
-	cursor: pointer;
-	user-select: none;
 	background-size: 200% 100%;
 }
 
-.page:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0);
-	transition: background 0.7s;
-	z-index: 2;
-}
-
 .page.isOdd {
+	right: 0;
 	pointer-events: all;
 	transform: rotateY(0deg);
-	background-position: right top;
-	right: 0;
-	border-radius: 0 4px 4px 0;
 	background-position: -100% 0;
 }
 
 .page.isOdd:hover {
-	transform: rotateY(-15deg);
-}
-
-.page.isOdd:hover:before {
-	background: rgba(255, 0, 0, 0.03);
-}
-
-.page.isOdd:before {
-	background: rgba(0, 0, 0, 0);
-}
-
-.page.isEven {
-	clear: both;
-	pointer-events: none;
-	transform: rotateY(180deg);
-	transform-origin: 100% 0;
-	left: 0;
-	border-radius: 4px 0 0 4px;
-	border-color: black;
-	background-position: 200% 0;
-}
-
-.page.isEven:before {
-	background: rgba(0, 0, 255, 0.2);
+	transform: rotateY(-20deg);
 }
 
 .page.isTurned.isOdd {
@@ -70,8 +25,11 @@
 	transform: rotateY(-180deg);
 }
 
-.page.isTurned.isOdd:before {
-	background: rgba(0, 0, 255, 0.2);
+.page.isEven {
+	pointer-events: none;
+	transform: rotateY(180deg);
+	transform-origin: 100% 0;
+	background-position: 200% 0;
 }
 
 .page.isTurned.isEven {
@@ -80,13 +38,5 @@
 }
 
 .page.isTurned.isEven:hover {
-	transform: rotateY(15deg);
-}
-
-.page.isTurned.isEven:hover:before {
-	background: rgba(0, 255, 0, 0.03);
-}
-
-.page.isTurned.isEven:before {
-	background: rgba(0, 255, 0, 0);
+	transform: rotateY(20deg);
 }

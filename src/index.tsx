@@ -1,3 +1,4 @@
+import { noop } from 'lodash-es'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Page } from './components/page/Page'
@@ -11,8 +12,11 @@ ReactDOM.render(
 		{/* test */}
 		<Page
 			index={0}
-			setIsTurned={() => {}}
+			setCurrentPage={noop}
 			isTurned={false}
+			isOdd={true}
+			isEven={false}
+			zIndex={1}
 			pageType={PageType.DreamCatcher}
 		/>
 	</React.StrictMode>,

@@ -6,50 +6,45 @@ import './StickerBook.css'
 
 export interface StickerBookProps {}
 
+const pages = [
+	{
+		pageType: PageType.Cover,
+	},
+	{
+		pageType: PageType.DreamCatcher,
+	},
+	{
+		pageType: PageType.DreamCatcher,
+	},
+	{
+		pageType: PageType.Megaball,
+	},
+	{
+		pageType: PageType.Megaball,
+	},
+	{
+		pageType: PageType.Cover,
+	},
+]
+
 export const StickerBook: React.FC = () => {
-	const [pages, setPages] = React.useState({
-		0: false,
-		1: false,
-		2: false,
-		3: false,
-	})
-
-	function setIsTurned(index: number) {
-		const newPages = JSON.parse(JSON.stringify(pages))
-
-		newPages[index] = true
-		newPages[index + 1] = true
-
-		setPages(newPages)
-	}
+	const [currentPage, setCurrentPage] = React.useState<number>(-1)
 
 	return (
 		<div className="book">
 			<div className="pageContainer">
-				<Page
-					pageType={PageType.Cover}
-					index={0}
-					isTurned={pages[0]}
-					setIsTurned={setIsTurned}
-				/>
-				<Page
-					pageType={PageType.DreamCatcher}
-					index={1}
-					isTurned={pages[1]}
-					setIsTurned={setIsTurned}
-				/>
-				<Page
-					pageType={PageType.DreamCatcher}
-					index={2}
-					isTurned={pages[2]}
-					setIsTurned={setIsTurned}
-				/>
-				<Page
-					pageType={PageType.Cover}
-					index={3}
-					isTurned={pages[3]}
-					setIsTurned={setIsTurned}
-				/>
+				{pages.map((page, index) => (
+					<Page
+						key={index}
+						index={index}
+						isEven={index % 2 > 0}
+						isOdd={index % 2 === 0}
+						isTurned={currentPage >= index}
+						pageType={page.pageType}
+						zIndex={pages.length - index}
+						setCurrentPage={setCurrentPage}
+					/>
+				))}
 			</div>
 		</div>
 	)

@@ -8,32 +8,38 @@ import './Page.css'
 export interface PageProps {
 	pageType: PageType
 	isTurned: boolean
-	setIsTurned: (index: number) => void
+	isOdd: boolean
+	isEven: boolean
+	zIndex: number
 	index: number
+	setCurrentPage: (index: number) => void
 }
 
 export const Page: React.FC<PageProps> = ({
 	isTurned,
-	setIsTurned,
+	isOdd,
+	isEven,
+	zIndex,
 	index,
 	pageType,
+	setCurrentPage,
 }) => {
 	const pageClasses = cn('page', {
 		isTurned: isTurned,
-		isOdd: index % 2 > 0,
-		isEven: index % 2 === 0,
+		isOdd: isOdd,
+		isEven: isEven,
 	})
 
 	const pageStyle = {
 		backgroundImage: `url(${imagePathMapping[pageType]})`,
-		zIndex: `${index}`,
+		zIndex: isOdd ? zIndex : null,
 	} as React.CSSProperties
 
 	return (
 		<div
 			className={pageClasses}
-			onClick={() => setIsTurned(index)}
 			style={pageStyle}
+			onClick={() => setCurrentPage(isOdd ? index + 1 : index - 2)}
 		></div>
 	)
 }

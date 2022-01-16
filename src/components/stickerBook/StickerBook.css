@@ -1,12 +1,13 @@
 .book {
 	transition: opacity 0.35s 0.15s;
-	perspective: 240vw;
+	perspective: 250vw;
+	margin: 3em 0;
 }
 
 .pageContainer {
 	position: relative;
-	width: 70vw;
-	height: 40vw;
+	width: calc(var(--page-width) * 2);
+	height: var(--page-height);
 	transform-style: preserve-3d;
 	backface-visibility: hidden;
 }
