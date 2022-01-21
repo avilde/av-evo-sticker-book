@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Page } from './components/page/Page'
 
-import { PageType } from './consts'
+import { GameType } from './consts'
 
 import './index.css'
 
@@ -17,7 +17,7 @@ ReactDOM.render(
 			isOdd={true}
 			isEven={false}
 			zIndex={1}
-			pageType={PageType.DreamCatcher}
+			pageType={GameType.DreamCatcher}
 		/>
 	</React.StrictMode>,
 	document.getElementById('root')

@@ -1,5 +1,8 @@
-export enum PageType {
+export enum Other {
 	Cover = 'cover',
+}
+
+export enum GameType {
 	BlackJack = 'blackJack',
 	CashOrCrash = 'cashOrCrash',
 	Craps = 'craps',
@@ -13,3 +16,5 @@ export enum PageType {
 	Roulette = 'roulette',
 	SicBo = 'sicBo',
 }
+
+export type PageType = GameType | Other

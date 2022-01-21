@@ -1,5 +1,5 @@
 import React from 'react'
-import { PageType } from '../../consts'
+import { GameType, Other } from '../../consts'
 import { Page } from '../page/Page'
 
 import './StickerBook.css'
@@ -8,22 +8,22 @@ export interface StickerBookProps {}
 
 const pages = [
 	{
-		pageType: PageType.Cover,
+		pageType: Other.Cover,
 	},
 	{
-		pageType: PageType.DreamCatcher,
+		pageType: GameType.DreamCatcher,
 	},
 	{
-		pageType: PageType.DreamCatcher,
+		pageType: GameType.DreamCatcher,
 	},
 	{
-		pageType: PageType.Megaball,
+		pageType: GameType.Megaball,
 	},
 	{
-		pageType: PageType.Megaball,
+		pageType: GameType.Megaball,
 	},
 	{
-		pageType: PageType.Cover,
+		pageType: Other.Cover,
 	},
 ]
 

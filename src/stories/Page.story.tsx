@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react'
 import { Page, PageProps } from '../components/page/Page'
-import { PageType } from '../consts'
+import { GameType, Other, PageType } from '../consts'
 import { noop } from 'lodash-es'
 
 interface PageStoryProps {
@@ -8,7 +8,10 @@ interface PageStoryProps {
 	pageType: PageType
 }
 
-export const PageStory: Story<PageStoryProps> = ({ isOddPage, pageType }) => {
+export const PageStory: Story<PageStoryProps> = ({
+	isOddPage,
+	pageType = GameType.DreamCatcher,
+}) => {
 	const props: PageProps = {
 		isTurned: !isOddPage,
 		isEven: !isOddPage,
@@ -37,8 +40,7 @@ PageStory.args = {
 PageStory.argTypes = {
 	pageType: {
 		control: { type: 'select' },
-		options: Object.values(PageType),
-		defaultValue: PageType.DreamCatcher,
+		options: Object.values({ ...Other, ...GameType }),
 	},
 }
 PageStory.storyName = 'Page'
