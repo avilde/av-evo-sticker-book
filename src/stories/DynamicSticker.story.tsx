@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { DynamicSticker } from '../components/sticker/DynamicSticker'
+import { DynamicSticker } from '../components/sticker/dynamic/DynamicSticker'
 import { PageType } from '../consts'
 
 interface StickerStoryProps {

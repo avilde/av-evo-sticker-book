@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
-import { imagePathMapping } from '../../assets/images'
-import { PageType } from '../../consts'
+import { imagePathMapping } from '../../../assets/images'
+import { PageType } from '../../../consts'
 
 import './DynamicSticker.css'
 

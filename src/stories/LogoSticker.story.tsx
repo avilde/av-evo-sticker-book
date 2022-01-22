@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { LogoSticker } from '../components/sticker/LogoSticker'
+import { LogoSticker } from '../components/sticker/logo/LogoSticker'
 import { GameType } from '../consts'
 
 interface StickerStoryProps {

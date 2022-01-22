@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
-import { logoPathMapping } from '../../assets/images'
-import { GameType } from '../../consts'
+import { logoPathMapping } from '../../../assets/images'
+import { GameType } from '../../../consts'
 
 import './LogoSticker.css'
 
