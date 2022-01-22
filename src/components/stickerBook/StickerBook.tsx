@@ -1,6 +1,6 @@
 import React from 'react'
 import { imagePathMapping } from '../../assets/images'
-import { GameType, Other } from '../../consts'
+import { PageType } from '../../consts'
 import { Page } from '../page/Page'
 
 import './StickerBook.css'
@@ -9,23 +9,23 @@ export interface StickerBookProps {}
 
 const pages = [
 	{
-		background: Other.FrontCover,
+		background: PageType.FrontCover,
 		isCover: true,
 	},
 	{
-		background: GameType.DreamCatcher,
+		background: PageType.DreamCatcherLeft,
 	},
 	{
-		background: GameType.DreamCatcher,
+		background: PageType.DreamCatcherRight,
 	},
 	{
-		background: GameType.Megaball,
+		background: PageType.MegaballLeft,
 	},
 	{
-		background: GameType.Megaball,
+		background: PageType.MegaballRight,
 	},
 	{
-		background: Other.BackCover,
+		background: PageType.BackCover,
 		isCover: true,
 	},
 ]

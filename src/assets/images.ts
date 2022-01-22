@@ -1,6 +1,8 @@
-import { GameType, Other } from '../consts'
-import dreamCatcherBackgroundPath from './backgrounds/dreamCatcherBackground.png'
-import megaballBackgroundPath from './backgrounds/megaballBackground.png'
+import { GameType, PageType } from '../consts'
+import dreamCatcherLeftPath from './backgrounds/dreamCatcherLeft.png'
+import dreamCatcherRightPath from './backgrounds/dreamCatcherRight.png'
+import megaballLeftPath from './backgrounds/megaballLeft.png'
+import megaballRightPath from './backgrounds/megaballRight.png'
 import frontCoverPath from './backgrounds/frontCover.png'
 import backCoverPath from './backgrounds/backCover.png'
 
@@ -17,11 +19,13 @@ import monopolyLogoPath from './logos/monopolyLogo.png'
 import rouletteLogoPath from './logos/rouletteLogo.png'
 import sicBoLogoPath from './logos/sicBoLogo.png'
 
-export const imagePathMapping: Record<string, string> = {
-	[Other.FrontCover]: frontCoverPath,
-	[Other.BackCover]: backCoverPath,
-	[GameType.DreamCatcher]: dreamCatcherBackgroundPath,
-	[GameType.Megaball]: megaballBackgroundPath,
+export const imagePathMapping: Record<PageType, string> = {
+	[PageType.FrontCover]: frontCoverPath,
+	[PageType.BackCover]: backCoverPath,
+	[PageType.DreamCatcherLeft]: dreamCatcherLeftPath,
+	[PageType.DreamCatcherRight]: dreamCatcherRightPath,
+	[PageType.MegaballLeft]: megaballLeftPath,
+	[PageType.MegaballRight]: megaballRightPath,
 }
 
 export const logoPathMapping: Record<GameType, string> = {

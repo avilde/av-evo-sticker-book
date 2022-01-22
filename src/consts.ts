@@ -1,6 +1,10 @@
-export enum Other {
+export enum PageType {
 	FrontCover = 'frontCover',
 	BackCover = 'backCover',
+	DreamCatcherLeft = 'dreamCatcherLeft',
+	DreamCatcherRight = 'dreamCatcherRight',
+	MegaballLeft = 'megaballLeft',
+	MegaballRight = 'megaballRight',
 }
 
 export enum GameType {
@@ -17,5 +21,3 @@ export enum GameType {
 	Roulette = 'roulette',
 	SicBo = 'sicBo',
 }
-
-export type PageType = GameType | Other

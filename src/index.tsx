@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Page } from './components/page/Page'
 
-import { GameType } from './consts'
+import { PageType } from './consts'
 
 import './index.css'
 
@@ -17,7 +17,7 @@ ReactDOM.render(
 			isOdd={true}
 			isEven={false}
 			zIndex={1}
-			backgroundImage={GameType.DreamCatcher}
+			backgroundImage={PageType.DreamCatcherLeft}
 		/>
 	</React.StrictMode>,
 	document.getElementById('root')
