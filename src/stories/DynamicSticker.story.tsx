@@ -3,7 +3,7 @@ import { DynamicSticker } from '../components/sticker/dynamic/DynamicSticker'
 import { PageType } from '../consts'
 
 interface StickerStoryProps {
-	gameType: PageType
+	pageType: PageType
 	backgroundPositionX: number
 	backgroundPositionY: number
 }
@@ -16,16 +16,16 @@ export const DynamicStickerStory: Story<StickerStoryProps> = (props) => (
 			height: 'var(--page-height)',
 		}}
 	>
-		<DynamicSticker {...props} isOdd />
+		<DynamicSticker {...props} />
 	</div>
 )
 DynamicStickerStory.args = {
-	backgroundPositionX: 100,
-	backgroundPositionY: 100,
-	gameType: PageType.MegaballRight,
+	backgroundPositionX: 0,
+	backgroundPositionY: 0,
+	pageType: PageType.MegaballRight,
 }
 DynamicStickerStory.argTypes = {
-	gameType: {
+	pageType: {
 		control: { type: 'select' },
 		options: Object.values(PageType),
 	},

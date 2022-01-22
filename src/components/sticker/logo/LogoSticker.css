@@ -4,7 +4,7 @@
 	height: 20em;
 	background-size: 100% 100%;
 	border-style: solid;
-	border-width: 0.5em;
+	border-width: 8px;
 	border-image: linear-gradient(
 			to left,
 			rgb(194, 255, 182),
@@ -19,11 +19,11 @@
 .logo-sticker:before {
 	content: '';
 	position: absolute;
-	top: -0.55em;
-	bottom: -0.55em;
-	left: -0.55em;
-	right: -0.55em;
-	border: 0.1em solid darkgray;
+	top: -9px;
+	bottom: -9px;
+	left: -9px;
+	right: -9px;
+	border: 1px solid darkgray;
 	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
 }
 
@@ -35,7 +35,7 @@
 	left: 0.1em;
 	right: 0.1em;
 	border-style: solid;
-	border-width: 0.05em;
+	border-width: 1px;
 	border-image: linear-gradient(
 			to left,
 			rgb(194, 255, 182),

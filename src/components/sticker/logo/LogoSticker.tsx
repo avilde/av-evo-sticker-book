@@ -5,11 +5,11 @@ import { GameType } from '../../../consts'
 
 import './LogoSticker.css'
 
-export interface StickerProps {
+export interface LogoStickerProps {
 	gameType: GameType
 }
 
-export const LogoSticker: React.FC<StickerProps> = ({ gameType }) => {
+export const LogoSticker: React.FC<LogoStickerProps> = ({ gameType }) => {
 	const stickerClasses = cn('logo-sticker', {})
 
 	const stickerStyle = {

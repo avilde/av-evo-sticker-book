@@ -14,6 +14,13 @@ const pages = [
 	},
 	{
 		background: PageType.DreamCatcherLeft,
+		stickers: [
+			{
+				pageType: PageType.DreamCatcherLeft,
+				backgroundPositionX: 40,
+				backgroundPositionY: 50,
+			},
+		],
 	},
 	{
 		background: PageType.DreamCatcherRight,
@@ -34,7 +41,7 @@ export const StickerBook: React.FC = () => {
 	const [currentPage, setCurrentPage] = React.useState<number>(-1)
 
 	return (
-		<div className="book">
+		<div className="stickerBook">
 			<div className="pageContainer">
 				{pages.map((page, index) => (
 					<Page
@@ -47,6 +54,7 @@ export const StickerBook: React.FC = () => {
 						backgroundImage={imagePathMapping[page.background]}
 						zIndex={pages.length - index}
 						setCurrentPage={setCurrentPage}
+						stickers={page.stickers}
 					/>
 				))}
 			</div>

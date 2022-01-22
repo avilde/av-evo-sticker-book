@@ -5,27 +5,27 @@ import { PageType } from '../../../consts'
 
 import './DynamicSticker.css'
 
-export interface StickerProps {
-	gameType: PageType
-	isOdd: boolean
+export interface DynamicStickerProps {
+	pageType: PageType
 	backgroundPositionX: number
 	backgroundPositionY: number
+	className?: string
 }
 
-export const DynamicSticker: React.FC<StickerProps> = ({
-	gameType,
-	isOdd,
+export const DynamicSticker: React.FC<DynamicStickerProps> = ({
+	pageType,
 	backgroundPositionX,
 	backgroundPositionY,
+	className,
 }) => {
-	const stickerClasses = cn('dynamic-sticker', {
-		isOdd: isOdd,
-		isEven: !isOdd,
-	})
+	const stickerClasses = cn('dynamic-sticker', className)
 
 	const stickerStyle = {
-		backgroundImage: `url(${imagePathMapping[gameType]})`,
+		backgroundImage: `url(${imagePathMapping[pageType]})`,
 		backgroundPosition: `${backgroundPositionX}% ${backgroundPositionY}%`,
+		transform: `translate(${backgroundPositionX}%, ${
+			backgroundPositionY * 3
+		}%)`,
 	} as React.CSSProperties
 
 	return <div className={stickerClasses} style={stickerStyle}></div>
