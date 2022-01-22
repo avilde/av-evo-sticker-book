@@ -1,18 +1,17 @@
 import cn from 'classnames'
 import React from 'react'
-import { imagePathMapping } from '../../assets/images'
-import { PageType } from '../../consts'
 
 import './Page.css'
 
 export interface PageProps {
-	pageType: PageType
+	backgroundImage: string
 	isTurned: boolean
 	isOdd: boolean
 	isEven: boolean
 	zIndex: number
 	index: number
 	setCurrentPage: (index: number) => void
+	isCover?: boolean
 }
 
 export const Page: React.FC<PageProps> = ({
@@ -21,17 +20,19 @@ export const Page: React.FC<PageProps> = ({
 	isEven,
 	zIndex,
 	index,
-	pageType,
+	backgroundImage,
 	setCurrentPage,
+	isCover,
 }) => {
 	const pageClasses = cn('page', {
 		isTurned: isTurned,
 		isOdd: isOdd,
 		isEven: isEven,
+		isCover: isCover,
 	})
 
 	const pageStyle = {
-		backgroundImage: `url(${imagePathMapping[pageType]})`,
+		backgroundImage: `url(${backgroundImage})`,
 		zIndex: isOdd ? zIndex : null,
 	} as React.CSSProperties
 

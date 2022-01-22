@@ -1,4 +1,5 @@
 import React from 'react'
+import { imagePathMapping } from '../../assets/images'
 import { GameType, Other } from '../../consts'
 import { Page } from '../page/Page'
 
@@ -8,22 +9,24 @@ export interface StickerBookProps {}
 
 const pages = [
 	{
-		pageType: Other.Cover,
+		background: Other.FrontCover,
+		isCover: true,
 	},
 	{
-		pageType: GameType.DreamCatcher,
+		background: GameType.DreamCatcher,
 	},
 	{
-		pageType: GameType.DreamCatcher,
+		background: GameType.DreamCatcher,
 	},
 	{
-		pageType: GameType.Megaball,
+		background: GameType.Megaball,
 	},
 	{
-		pageType: GameType.Megaball,
+		background: GameType.Megaball,
 	},
 	{
-		pageType: Other.Cover,
+		background: Other.BackCover,
+		isCover: true,
 	},
 ]
 
@@ -40,7 +43,8 @@ export const StickerBook: React.FC = () => {
 						isEven={index % 2 > 0}
 						isOdd={index % 2 === 0}
 						isTurned={currentPage >= index}
-						pageType={page.pageType}
+						isCover={page.isCover}
+						backgroundImage={imagePathMapping[page.background]}
 						zIndex={pages.length - index}
 						setCurrentPage={setCurrentPage}
 					/>

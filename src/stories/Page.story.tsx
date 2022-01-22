@@ -2,24 +2,27 @@ import { Story } from '@storybook/react'
 import { Page, PageProps } from '../components/page/Page'
 import { GameType, Other, PageType } from '../consts'
 import { noop } from 'lodash-es'
+import { imagePathMapping } from '../assets/images'
 
 interface PageStoryProps {
 	isOddPage: boolean
-	pageType: PageType
+	background: PageType
 }
 
 export const PageStory: Story<PageStoryProps> = ({
 	isOddPage,
-	pageType = GameType.DreamCatcher,
+	background = GameType.DreamCatcher,
 }) => {
 	const props: PageProps = {
 		isTurned: !isOddPage,
 		isEven: !isOddPage,
 		isOdd: isOddPage,
+		isCover:
+			background === Other.FrontCover || background === Other.BackCover,
 		setCurrentPage: noop,
 		index: 1,
 		zIndex: 1,
-		pageType: pageType,
+		backgroundImage: imagePathMapping[background],
 	}
 
 	return (
@@ -38,7 +41,7 @@ PageStory.args = {
 	isOddPage: true,
 }
 PageStory.argTypes = {
-	pageType: {
+	background: {
 		control: { type: 'select' },
 		options: Object.values({ ...Other, ...GameType }),
 	},

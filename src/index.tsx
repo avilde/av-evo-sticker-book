@@ -17,7 +17,7 @@ ReactDOM.render(
 			isOdd={true}
 			isEven={false}
 			zIndex={1}
-			pageType={GameType.DreamCatcher}
+			backgroundImage={GameType.DreamCatcher}
 		/>
 	</React.StrictMode>,
 	document.getElementById('root')

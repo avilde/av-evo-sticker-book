@@ -1,7 +1,8 @@
 import { GameType, Other } from '../consts'
 import dreamCatcherBackgroundPath from './backgrounds/dreamCatcherBackground.png'
 import megaballBackgroundPath from './backgrounds/megaballBackground.png'
-import coverPath from './backgrounds/cover.png'
+import frontCoverPath from './backgrounds/frontCover.png'
+import backCoverPath from './backgrounds/backCover.png'
 
 import blackJackLogoPath from './logos/blackJackLogo.png'
 import cashOrCrashLogoPath from './logos/cashOrCrashLogo.png'
@@ -17,7 +18,8 @@ import rouletteLogoPath from './logos/rouletteLogo.png'
 import sicBoLogoPath from './logos/sicBoLogo.png'
 
 export const imagePathMapping: Record<string, string> = {
-	[Other.Cover]: coverPath,
+	[Other.FrontCover]: frontCoverPath,
+	[Other.BackCover]: backCoverPath,
 	[GameType.DreamCatcher]: dreamCatcherBackgroundPath,
 	[GameType.Megaball]: megaballBackgroundPath,
 }

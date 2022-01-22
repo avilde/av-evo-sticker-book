@@ -1,5 +1,6 @@
 export enum Other {
-	Cover = 'cover',
+	FrontCover = 'frontCover',
+	BackCover = 'backCover',
 }
 
 export enum GameType {
