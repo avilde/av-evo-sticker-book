@@ -1,6 +1,8 @@
 import React from 'react'
 import { imagePathMapping } from '../../assets/images'
 import { GameType, PageType } from '../../consts'
+import { BackCover } from '../page/BackCover/BackCover'
+import { FrontCover } from '../page/FrontCover/FrontCover'
 import { Page } from '../page/Page'
 
 import './StickerBook.css'
@@ -8,10 +10,6 @@ import './StickerBook.css'
 export interface StickerBookProps {}
 
 const pages = [
-	{
-		background: PageType.FrontCover,
-		isCover: true,
-	},
 	{
 		background: PageType.DreamCatcherLeft,
 		stickers: [
@@ -38,10 +36,6 @@ const pages = [
 	{
 		background: PageType.MegaballRight,
 	},
-	{
-		background: PageType.BackCover,
-		isCover: true,
-	},
 ]
 
 export const StickerBook: React.FC = () => {
@@ -50,21 +44,36 @@ export const StickerBook: React.FC = () => {
 	return (
 		<div className="stickerBook">
 			<div className="pageContainer">
-				{pages.map((page, index) => (
-					<Page
-						key={index}
-						index={index}
-						isEven={index % 2 > 0}
-						isOdd={index % 2 === 0}
-						isTurned={currentPage >= index}
-						isCover={page.isCover}
-						backgroundImage={imagePathMapping[page.background]}
-						zIndex={pages.length - index}
-						setCurrentPage={setCurrentPage}
-						stickers={page.stickers}
-						logoSticker={page.logoSticker}
-					/>
-				))}
+				<FrontCover
+					zIndex={pages.length + 1}
+					onClick={() => setCurrentPage(1)}
+					isTurned={currentPage >= 0}
+					key="front-cover"
+				/>
+
+				{pages.map((page, index) => {
+					const idx = index + 1
+					return (
+						<Page
+							key={idx}
+							index={idx}
+							isEven={idx % 2 > 0}
+							isOdd={idx % 2 === 0}
+							isTurned={currentPage >= idx}
+							backgroundImage={imagePathMapping[page.background]}
+							zIndex={pages.length - idx}
+							setCurrentPage={setCurrentPage}
+							stickers={page.stickers}
+							logoSticker={page.logoSticker}
+						/>
+					)
+				})}
+
+				<BackCover
+					onClick={() => setCurrentPage(currentPage - 2)}
+					isTurned={currentPage >= pages.length}
+					key="back-cover"
+				/>
 			</div>
 		</div>
 	)

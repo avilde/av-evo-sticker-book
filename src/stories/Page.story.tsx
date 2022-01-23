@@ -13,8 +13,6 @@ export const PageStory: Story<PageStoryProps> = ({ pageType }) => {
 		isTurned: false,
 		isEven: false,
 		isOdd: true,
-		isCover:
-			pageType === PageType.FrontCover || pageType === PageType.BackCover,
 		setCurrentPage: noop,
 		index: 1,
 		zIndex: 1,

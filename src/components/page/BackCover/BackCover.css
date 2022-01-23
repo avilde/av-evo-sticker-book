@@ -1,0 +1,28 @@
+.backCover {
+	position: absolute;
+	width: var(--page-width);
+	height: var(--page-height);
+	transform-style: preserve-3d;
+	transform-origin: 0 0;
+	transition: transform 1.5s;
+	backface-visibility: hidden;
+	background-size: 100% 100%;
+	pointer-events: none;
+	transform: rotateY(180deg);
+	transform-origin: 100% 0;
+}
+
+.backCover {
+	pointer-events: none;
+	transform: rotateY(180deg);
+	transform-origin: 100% 0;
+}
+
+.backCover.isTurned {
+	pointer-events: all;
+	transform: rotateY(0deg);
+}
+
+.backCover.isTurned:hover {
+	transform: rotateY(20deg);
+}

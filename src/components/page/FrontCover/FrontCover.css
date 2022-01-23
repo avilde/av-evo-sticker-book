@@ -1,0 +1,22 @@
+.frontCover {
+	position: absolute;
+	width: var(--page-width);
+	height: var(--page-height);
+	transform-style: preserve-3d;
+	transform-origin: 0 0;
+	transition: transform 1.5s;
+	backface-visibility: hidden;
+	background-size: 100% 100%;
+	right: 0;
+	pointer-events: all;
+	transform: rotateY(0deg);
+}
+
+.frontCover:hover {
+	transform: rotateY(-20deg);
+}
+
+.frontCover.isTurned {
+	pointer-events: none;
+	transform: rotateY(-180deg);
+}

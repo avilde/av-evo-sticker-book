@@ -29,7 +29,6 @@ export const Page: React.FC<PageProps> = ({
 	index,
 	backgroundImage,
 	setCurrentPage,
-	isCover,
 	stickers,
 	logoSticker,
 }) => {
@@ -37,7 +36,6 @@ export const Page: React.FC<PageProps> = ({
 		isTurned: isTurned,
 		isOdd: isOdd,
 		isEven: isEven,
-		isCover: isCover,
 	})
 
 	const pageStyle = {

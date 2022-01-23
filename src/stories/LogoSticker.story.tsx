@@ -13,7 +13,11 @@ export const LogoStickerStory: Story<StickerStoryProps> = (props) => (
 			position: 'relative',
 		}}
 	>
-		<LogoSticker {...props} />
+		<LogoSticker
+			{...props}
+			backgroundPositionX={0}
+			backgroundPositionY={0}
+		/>
 	</div>
 )
 LogoStickerStory.args = {
