@@ -12,10 +12,8 @@ ReactDOM.render(
 		{/* test */}
 		<Page
 			index={0}
+			currentPage={0}
 			setCurrentPage={noop}
-			isTurned={false}
-			isOdd={true}
-			isEven={false}
 			zIndex={1}
 			backgroundImage={PageType.DreamCatcherLeft}
 		/>

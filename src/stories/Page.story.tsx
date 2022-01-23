@@ -10,11 +10,9 @@ interface PageStoryProps {
 
 export const PageStory: Story<PageStoryProps> = ({ pageType }) => {
 	const props: PageProps = {
-		isTurned: false,
-		isEven: false,
-		isOdd: true,
+		currentPage: 0,
 		setCurrentPage: noop,
-		index: 1,
+		index: 2,
 		zIndex: 1,
 		backgroundImage: imagePathMapping[pageType],
 	}

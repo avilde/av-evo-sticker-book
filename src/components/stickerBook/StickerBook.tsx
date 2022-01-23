@@ -57,11 +57,9 @@ export const StickerBook: React.FC = () => {
 						<Page
 							key={idx}
 							index={idx}
-							isEven={idx % 2 > 0}
-							isOdd={idx % 2 === 0}
-							isTurned={currentPage >= idx}
 							backgroundImage={imagePathMapping[page.background]}
 							zIndex={pages.length - idx}
+							currentPage={currentPage}
 							setCurrentPage={setCurrentPage}
 							stickers={page.stickers}
 							logoSticker={page.logoSticker}

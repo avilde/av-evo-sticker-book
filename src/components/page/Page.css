@@ -16,7 +16,7 @@
 	transform: rotateY(0deg);
 }
 
-.page.isOdd:hover {
+.page.isOdd.isHover {
 	transform: rotateY(-20deg);
 }
 
@@ -36,7 +36,7 @@
 	transform: rotateY(0deg);
 }
 
-.page.isTurned.isEven:hover {
+.page.isTurned.isEven.isHover {
 	transform: rotateY(20deg);
 }
 
