@@ -29,13 +29,28 @@ export const DynamicSticker: React.FC<DynamicStickerProps> = ({
 		}%)`,
 	} as React.CSSProperties
 
-	const frontSideClassName = cn('front', 'side', {
-		isTurned: isTurned,
-	})
+	const frontSideClassName = cn(
+		'front',
+		'side',
+		'border',
+		'border-8',
+		'border-white',
+		'before:shadow-xl',
+		'before:border',
+		'before:border-slate-300',
+		'after:border',
+		'after:border-white',
+		{ isTurned: isTurned }
+	)
 
-	const backSideClassNames = cn('back', 'side', {
-		isTurned: isTurned,
-	})
+	const backSideClassNames = cn(
+		'back',
+		'side',
+		'shadow-xl',
+		'border',
+		'border-slate-300',
+		{ isTurned: isTurned }
+	)
 
 	const stickerFrontStyle = {
 		backgroundImage: `url(${imagePathMapping[pageType]})`,

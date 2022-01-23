@@ -29,13 +29,27 @@ export const LogoSticker: React.FC<LogoStickerProps> = ({
 		}%)`,
 	} as React.CSSProperties
 
-	const frontSideClassName = cn('front', 'side', {
-		isTurned: isTurned,
-	})
+	const frontSideClassName = cn(
+		'front',
+		'side',
+		'border',
+		'border-8',
+		'before:shadow-xl',
+		'before:hover:shadow-indigo-500/20',
+		'before:border-slate-300',
+		'after:border',
+		{ isTurned: isTurned }
+	)
 
-	const backSideClassNames = cn('back', 'side', {
-		isTurned: isTurned,
-	})
+	const backSideClassNames = cn(
+		'back',
+		'side',
+		'shadow-xl',
+		'shadow-slate-300',
+		'border',
+		'border-slate-300',
+		{ isTurned: isTurned }
+	)
 
 	const frontSideStyle = {
 		backgroundImage: `url(${logoPathMapping[gameType]})`,

@@ -30,6 +30,8 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 			className={frontCoverClasses}
 			style={frontCoverStyle}
 			onClick={onClick}
-		></div>
+		>
+			<div></div>
+		</div>
 	)
 }

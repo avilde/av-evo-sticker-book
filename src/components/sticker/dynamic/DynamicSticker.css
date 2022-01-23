@@ -15,16 +15,10 @@
 
 .dynamicSticker > .side.back {
 	transform: rotateY(-180deg);
-	border: 1px solid darkgray;
-	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
 }
 
 .dynamicSticker > .side.front {
 	background-size: 200% 400%;
-	border-style: solid;
-	border-width: 8px;
-	border-color: white;
-	box-shadow: inset 0 -0.1em 2.5em 0.1em rgba(0, 0, 0, 0.4);
 }
 
 .dynamicSticker > .side.front::before {
@@ -34,8 +28,6 @@
 	bottom: -9px;
 	left: -9px;
 	right: -9px;
-	border: 1px solid darkgray;
-	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
 }
 
 .dynamicSticker > .side.front::after {
@@ -45,16 +37,6 @@
 	bottom: 0.1em;
 	left: 0.1em;
 	right: 0.1em;
-	border-style: solid;
-	border-width: 1px;
-	border-image: linear-gradient(
-			to left,
-			rgb(194, 255, 182),
-			rgb(255, 163, 182),
-			rgb(221, 169, 255),
-			rgb(162, 209, 255)
-		)
-		1;
 }
 
 .dynamicSticker > .side.front.isTurned {
