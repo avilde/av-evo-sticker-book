@@ -9,12 +9,26 @@ import './LogoSticker.css'
 export interface LogoStickerProps {
 	gameType: GameType
 	isTurned: boolean
+	backgroundPositionX: number
+	backgroundPositionY: number
+	className?: string
 }
 
 export const LogoSticker: React.FC<LogoStickerProps> = ({
 	gameType,
 	isTurned,
+	className,
+	backgroundPositionX,
+	backgroundPositionY,
 }) => {
+	const stickerClasses = cn('logoSticker', className)
+
+	const stickerStyle = {
+		transform: `translate(${backgroundPositionX}%, ${
+			backgroundPositionY * 3
+		}%)`,
+	} as React.CSSProperties
+
 	const frontSideClassName = cn('front', 'side', {
 		isTurned: isTurned,
 	})
@@ -23,21 +37,18 @@ export const LogoSticker: React.FC<LogoStickerProps> = ({
 		isTurned: isTurned,
 	})
 
-	const stickerStyle = {
+	const frontSideStyle = {
 		backgroundImage: `url(${logoPathMapping[gameType]})`,
 	} as React.CSSProperties
 
-	const stickerBacksideStyle = {
+	const backSideStyle = {
 		backgroundImage: `url(${stickerBacksidePath})`,
 	} as React.CSSProperties
 
 	return (
-		<div className="logoSticker">
-			<div className={frontSideClassName} style={stickerStyle}></div>
-			<div
-				className={backSideClassNames}
-				style={stickerBacksideStyle}
-			></div>
+		<div className={stickerClasses} style={stickerStyle}>
+			<div className={frontSideClassName} style={frontSideStyle}></div>
+			<div className={backSideClassNames} style={backSideStyle}></div>
 		</div>
 	)
 }

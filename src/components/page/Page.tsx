@@ -4,6 +4,7 @@ import {
 	DynamicSticker,
 	DynamicStickerProps,
 } from '../sticker/dynamic/DynamicSticker'
+import { LogoSticker, LogoStickerProps } from '../sticker/logo/LogoSticker'
 
 import './Page.css'
 
@@ -17,6 +18,7 @@ export interface PageProps {
 	setCurrentPage: (index: number) => void
 	isCover?: boolean
 	stickers?: DynamicStickerProps[]
+	logoSticker?: LogoStickerProps
 }
 
 export const Page: React.FC<PageProps> = ({
@@ -29,6 +31,7 @@ export const Page: React.FC<PageProps> = ({
 	setCurrentPage,
 	isCover,
 	stickers,
+	logoSticker,
 }) => {
 	const pageClasses = cn('page', {
 		isTurned: isTurned,
@@ -51,13 +54,11 @@ export const Page: React.FC<PageProps> = ({
 			onClick={() => setCurrentPage(isOdd ? index + 1 : index - 2)}
 		>
 			{sticker ? (
-				<DynamicSticker
-					pageType={sticker.pageType}
-					backgroundPositionX={sticker.backgroundPositionX}
-					backgroundPositionY={sticker.backgroundPositionY}
-					isTurned={sticker.isTurned}
-					className="sticker"
-				/>
+				<DynamicSticker {...sticker} className="sticker" />
+			) : null}
+
+			{logoSticker ? (
+				<LogoSticker {...logoSticker} className="sticker" />
 			) : null}
 		</div>
 	)

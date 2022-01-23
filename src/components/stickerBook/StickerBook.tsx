@@ -1,6 +1,6 @@
 import React from 'react'
 import { imagePathMapping } from '../../assets/images'
-import { PageType } from '../../consts'
+import { GameType, PageType } from '../../consts'
 import { Page } from '../page/Page'
 
 import './StickerBook.css'
@@ -25,6 +25,12 @@ const pages = [
 	},
 	{
 		background: PageType.DreamCatcherRight,
+		logoSticker: {
+			gameType: GameType.DreamCatcher,
+			backgroundPositionX: 80,
+			backgroundPositionY: 20,
+			isTurned: false,
+		},
 	},
 	{
 		background: PageType.MegaballLeft,
@@ -56,6 +62,7 @@ export const StickerBook: React.FC = () => {
 						zIndex={pages.length - index}
 						setCurrentPage={setCurrentPage}
 						stickers={page.stickers}
+						logoSticker={page.logoSticker}
 					/>
 				))}
 			</div>
