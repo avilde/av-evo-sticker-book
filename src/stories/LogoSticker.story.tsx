@@ -4,6 +4,7 @@ import { GameType } from '../consts'
 
 interface StickerStoryProps {
 	gameType: GameType
+	isTurned: boolean
 }
 
 export const LogoStickerStory: Story<StickerStoryProps> = (props) => (
@@ -16,6 +17,7 @@ export const LogoStickerStory: Story<StickerStoryProps> = (props) => (
 	</div>
 )
 LogoStickerStory.args = {
+	isTurned: false,
 	gameType: GameType.Megaball,
 }
 LogoStickerStory.argTypes = {
