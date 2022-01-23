@@ -19,6 +19,7 @@ const pages = [
 				pageType: PageType.DreamCatcherLeft,
 				backgroundPositionX: 40,
 				backgroundPositionY: 50,
+				isTurned: false,
 			},
 		],
 	},

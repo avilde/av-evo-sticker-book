@@ -32,7 +32,7 @@ export const LogoSticker: React.FC<LogoStickerProps> = ({
 	} as React.CSSProperties
 
 	return (
-		<div className="logo-sticker">
+		<div className="logoSticker">
 			<div className={frontSideClassName} style={stickerStyle}></div>
 			<div
 				className={backSideClassNames}

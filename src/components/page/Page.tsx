@@ -55,6 +55,7 @@ export const Page: React.FC<PageProps> = ({
 					pageType={sticker.pageType}
 					backgroundPositionX={sticker.backgroundPositionX}
 					backgroundPositionY={sticker.backgroundPositionY}
+					isTurned={sticker.isTurned}
 					className="sticker"
 				/>
 			) : null}

@@ -1,25 +1,25 @@
-.logo-sticker {
+.logoSticker {
 	position: relative;
 	perspective: 150rem;
 	width: 31.25em;
 	height: 20em;
 }
 
-.logo-sticker > .side {
+.logoSticker > .side {
 	transition: transform 0.8s ease;
 	backface-visibility: hidden;
 	position: absolute;
-	width: 31.25em;
-	height: 20em;
+	width: inherit;
+	height: inherit;
 }
 
-.logo-sticker > .side.back {
+.logoSticker > .side.back {
 	transform: rotateY(-180deg);
 	border: 1px solid darkgray;
 	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
 }
 
-.logo-sticker > .side.front {
+.logoSticker > .side.front {
 	background-size: 100% 100%;
 	border-style: solid;
 	border-width: 8px;
@@ -34,7 +34,7 @@
 	box-shadow: inset 0 -0.1em 2.5em 0.1em rgba(0, 0, 0, 0.4);
 }
 
-.logo-sticker > .side.front::before {
+.logoSticker > .side.front::before {
 	content: '';
 	position: absolute;
 	top: -9px;
@@ -45,7 +45,7 @@
 	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
 }
 
-.logo-sticker > .side.front::after {
+.logoSticker > .side.front::after {
 	content: '';
 	position: absolute;
 	top: 0.1em;
@@ -64,10 +64,10 @@
 		1;
 }
 
-.logo-sticker > .side.front.isTurned {
+.logoSticker > .side.front.isTurned {
 	transform: rotateY(180deg);
 }
 
-.logo-sticker > .side.back.isTurned {
+.logoSticker > .side.back.isTurned {
 	transform: rotateY(0deg);
 }

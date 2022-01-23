@@ -6,20 +6,27 @@ interface StickerStoryProps {
 	pageType: PageType
 	backgroundPositionX: number
 	backgroundPositionY: number
+	isTurned: boolean
 }
 
 export const DynamicStickerStory: Story<StickerStoryProps> = (props) => (
-	<div
-		style={{
-			position: 'relative',
-			width: 'calc(var(--page-width) * 2)',
-			height: 'var(--page-height)',
-		}}
-	>
-		<DynamicSticker {...props} />
-	</div>
+	<>
+		<style>{`.storybookSticker {
+			transform: none !important;
+		}`}</style>
+
+		<div
+			style={{
+				width: 'calc(var(--page-width) * 2)',
+				height: 'var(--page-height)',
+			}}
+		>
+			<DynamicSticker {...props} className="storybookSticker" />
+		</div>
+	</>
 )
 DynamicStickerStory.args = {
+	isTurned: false,
 	backgroundPositionX: 0,
 	backgroundPositionY: 0,
 	pageType: PageType.MegaballRight,

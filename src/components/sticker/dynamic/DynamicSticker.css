@@ -1,28 +1,66 @@
-.dynamic-sticker {
+.dynamicSticker {
 	position: relative;
+	perspective: 150rem;
 	width: 31.25em;
 	height: 20em;
-	background-size: 200% 400%;
 }
 
-.dynamic-sticker:before {
-	content: '';
+.dynamicSticker > .side {
+	transition: transform 0.8s ease;
+	backface-visibility: hidden;
 	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	border-style: solid;
-	border-width: 0.5vw;
-	border-color: white;
+	width: inherit;
+	height: inherit;
 }
 
-.dynamic-sticker:after {
-	content: '';
-	position: absolute;
-	top: -1px;
-	bottom: -1px;
-	left: -1px;
-	right: -1px;
+.dynamicSticker > .side.back {
+	transform: rotateY(-180deg);
 	border: 1px solid darkgray;
+	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
+}
+
+.dynamicSticker > .side.front {
+	background-size: 200% 400%;
+	border-style: solid;
+	border-width: 8px;
+	border-color: white;
+	box-shadow: inset 0 -0.1em 2.5em 0.1em rgba(0, 0, 0, 0.4);
+}
+
+.dynamicSticker > .side.front::before {
+	content: '';
+	position: absolute;
+	top: -9px;
+	bottom: -9px;
+	left: -9px;
+	right: -9px;
+	border: 1px solid darkgray;
+	box-shadow: 0.375em 0.625em 0.75em -0.125em rgba(0, 0, 0, 0.83);
+}
+
+.dynamicSticker > .side.front::after {
+	content: '';
+	position: absolute;
+	top: 0.1em;
+	bottom: 0.1em;
+	left: 0.1em;
+	right: 0.1em;
+	border-style: solid;
+	border-width: 1px;
+	border-image: linear-gradient(
+			to left,
+			rgb(194, 255, 182),
+			rgb(255, 163, 182),
+			rgb(221, 169, 255),
+			rgb(162, 209, 255)
+		)
+		1;
+}
+
+.dynamicSticker > .side.front.isTurned {
+	transform: rotateY(180deg);
+}
+
+.dynamicSticker > .side.back.isTurned {
+	transform: rotateY(0deg);
 }
