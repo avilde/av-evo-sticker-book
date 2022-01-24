@@ -14,10 +14,20 @@ const pages = [
 		background: PageType.DreamCatcherLeft,
 		stickers: [
 			{
-				pageType: PageType.DreamCatcherLeft,
-				backgroundPositionX: 40,
-				backgroundPositionY: 50,
-				isTurned: false,
+				top: 60,
+				left: 2,
+			},
+			{
+				top: 40,
+				left: 40,
+			},
+			{
+				top: 10,
+				left: 60,
+			},
+			{
+				top: 2,
+				left: 2,
 			},
 		],
 	},

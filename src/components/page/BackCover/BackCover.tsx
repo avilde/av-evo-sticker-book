@@ -11,9 +11,15 @@ export interface BackCoverProps {
 }
 
 export const BackCover: React.FC<BackCoverProps> = ({ isTurned, onClick }) => {
-	const backCoverClasses = cn('backCover', {
-		isTurned: isTurned,
-	})
+	const backCoverClasses = cn(
+		'backCover',
+		'border-2',
+		'border-black',
+		'cursor-pointer',
+		{
+			isTurned: isTurned,
+		}
+	)
 
 	const backCoverStyle = {
 		backgroundImage: `url(${imagePathMapping[PageType.BackCover]})`,

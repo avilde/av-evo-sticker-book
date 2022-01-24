@@ -1,5 +1,5 @@
 .dynamicSticker {
-	position: relative;
+	position: absolute;
 	perspective: 150rem;
 	width: 31.25em;
 	height: 20em;
@@ -20,25 +20,6 @@
 .dynamicSticker > .side.front {
 	background-size: 200% 400%;
 }
-
-.dynamicSticker > .side.front::before {
-	content: '';
-	position: absolute;
-	top: -9px;
-	bottom: -9px;
-	left: -9px;
-	right: -9px;
-}
-
-.dynamicSticker > .side.front::after {
-	content: '';
-	position: absolute;
-	top: 0.1em;
-	bottom: 0.1em;
-	left: 0.1em;
-	right: 0.1em;
-}
-
 .dynamicSticker > .side.front.isTurned {
 	transform: rotateY(180deg);
 }

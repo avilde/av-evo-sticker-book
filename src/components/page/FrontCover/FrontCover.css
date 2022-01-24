@@ -14,9 +14,21 @@
 
 .frontCover:hover {
 	transform: rotateY(-20deg);
+	filter: saturate(1.1);
 }
 
 .frontCover.isTurned {
 	pointer-events: none;
 	transform: rotateY(-180deg);
+}
+
+.textContainer {
+	position: absolute;
+	top: 39%;
+	opacity: 0.8;
+}
+
+.coverText {
+	position: absolute;
+	top: 39%;
 }

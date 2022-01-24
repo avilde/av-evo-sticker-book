@@ -29,33 +29,6 @@
 		1;
 }
 
-.logoSticker > .side.front::before {
-	content: '';
-	position: absolute;
-	top: -9px;
-	bottom: -9px;
-	left: -9px;
-	right: -9px;
-	border: 1px solid darkgray;
-}
-
-.logoSticker > .side.front::after {
-	content: '';
-	position: absolute;
-	top: 0.1em;
-	bottom: 0.1em;
-	left: 0.1em;
-	right: 0.1em;
-	border-image: linear-gradient(
-			to left,
-			rgb(194, 255, 182),
-			rgb(255, 163, 182),
-			rgb(221, 169, 255),
-			rgb(162, 209, 255)
-		)
-		1;
-}
-
 .logoSticker > .side.front.isTurned {
 	transform: rotateY(180deg);
 }

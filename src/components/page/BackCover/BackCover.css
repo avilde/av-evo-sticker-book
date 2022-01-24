@@ -25,4 +25,5 @@
 
 .backCover.isTurned:hover {
 	transform: rotateY(20deg);
+	filter: saturate(1.1);
 }

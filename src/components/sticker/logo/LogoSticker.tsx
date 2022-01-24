@@ -34,11 +34,10 @@ export const LogoSticker: React.FC<LogoStickerProps> = ({
 		'side',
 		'border',
 		'border-8',
-		'before:shadow-xl',
-		'before:hover:shadow-indigo-500/20',
-		'before:border-slate-300',
-		'after:border',
-		{ isTurned: isTurned }
+		'shadow-xl',
+		{
+			isTurned: isTurned,
+		}
 	)
 
 	const backSideClassNames = cn(

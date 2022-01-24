@@ -12,7 +12,8 @@ interface StickerStoryProps {
 export const DynamicStickerStory: Story<StickerStoryProps> = (props) => (
 	<>
 		<style>{`.storybookSticker {
-			transform: none !important;
+			top: 0 !important;
+			left: 0 !important;
 		}`}</style>
 
 		<div

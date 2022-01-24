@@ -16,9 +16,15 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 	zIndex,
 	onClick,
 }) => {
-	const frontCoverClasses = cn('frontCover', {
-		isTurned: isTurned,
-	})
+	const frontCoverClasses = cn(
+		'frontCover',
+		'border-2',
+		'border-black',
+		'cursor-pointer',
+		{
+			isTurned: isTurned,
+		}
+	)
 
 	const frontCoverStyle = {
 		backgroundImage: `url(${imagePathMapping[PageType.FrontCover]})`,
@@ -31,7 +37,27 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 			style={frontCoverStyle}
 			onClick={onClick}
 		>
-			<div></div>
+			<span
+				className={cn(
+					'textContainer',
+					'w-full h-16 shadow-xl shadow-sky-200',
+					'flex items-center justify-center',
+					'bg-gradient-to-r from-slate-100 to-sky-700'
+				)}
+			></span>
+			<span
+				className={cn(
+					'coverText',
+					'w-full h-16 border-t-2 border-b-2 border-black',
+					'flex items-center justify-center',
+					'text-black text-4xl px-2 text-center font-semibold'
+				)}
+			>
+				Evolution sticker book
+				<span className="font-bold text-slate-200 pl-5 text-4xl">
+					2022
+				</span>
+			</span>
 		</div>
 	)
 }

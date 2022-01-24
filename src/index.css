@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 :root {
-	--page-width: 35vw;
-	--page-height: 40vw;
+	--page-width: 40vw;
+	--page-height: 45vw;
 }

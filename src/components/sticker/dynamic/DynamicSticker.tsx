@@ -24,31 +24,25 @@ export const DynamicSticker: React.FC<DynamicStickerProps> = ({
 	const stickerClasses = cn('dynamicSticker', className)
 
 	const stickerStyle = {
-		transform: `translate(${backgroundPositionX}%, ${
-			backgroundPositionY * 3
-		}%)`,
+		left: `${backgroundPositionX}%`,
+		top: `${backgroundPositionY}%`,
 	} as React.CSSProperties
 
 	const frontSideClassName = cn(
 		'front',
 		'side',
-		'border',
 		'border-8',
 		'border-white',
-		'before:shadow-xl',
-		'before:border',
-		'before:border-slate-300',
-		'after:border',
-		'after:border-white',
+		'shadow-xl',
 		{ isTurned: isTurned }
 	)
 
 	const backSideClassNames = cn(
 		'back',
 		'side',
-		'shadow-xl',
 		'border',
 		'border-slate-300',
+		'shadow-xl',
 		{ isTurned: isTurned }
 	)
 
