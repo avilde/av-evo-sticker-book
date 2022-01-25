@@ -6,63 +6,62 @@ import stickerBacksidePath from '../../../assets/stickerBackside.png'
 
 import './DynamicSticker.css'
 
-export interface DynamicStickerProps {
+export interface DynamicStickerComponentProps {
 	pageType: PageType
-	backgroundPositionX: number
-	backgroundPositionY: number
+	top: number
+	left: number
 	isTurned: boolean
 	className?: string
 }
 
-export const DynamicSticker: React.FC<DynamicStickerProps> = ({
-	pageType,
-	backgroundPositionX,
-	backgroundPositionY,
-	isTurned,
-	className,
-}) => {
-	const stickerClasses = cn('dynamicSticker', className)
+export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
+	({ pageType, top, left, isTurned, className }) => {
+		const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-8'
+		const stickerClasses = cn('dynamicSticker', className)
 
-	const stickerStyle = {
-		left: `${backgroundPositionX}%`,
-		top: `${backgroundPositionY}%`,
-	} as React.CSSProperties
+		const stickerStyle = {
+			top: `${top}%`,
+			left: `${left}%`,
+		} as React.CSSProperties
 
-	const frontSideClassName = cn(
-		'front',
-		'side',
-		'border-8',
-		'border-white',
-		'shadow-xl',
-		{ isTurned: isTurned }
-	)
+		const frontSideClassName = cn(
+			'front',
+			'side',
+			'border-white',
+			'shadow-xl',
+			borderSizes,
+			{ isTurned: isTurned }
+		)
 
-	const backSideClassNames = cn(
-		'back',
-		'side',
-		'border',
-		'border-slate-300',
-		'shadow-xl',
-		{ isTurned: isTurned }
-	)
+		const backSideClassNames = cn(
+			'back',
+			'side',
+			'border',
+			'border-slate-300',
+			'shadow-xl',
+			{ isTurned: isTurned }
+		)
 
-	const stickerFrontStyle = {
-		backgroundImage: `url(${imagePathMapping[pageType]})`,
-		backgroundPosition: `${backgroundPositionX}% ${backgroundPositionY}%`,
-		transform: `rotateY(${isTurned ? '180deg' : '0deg'})`,
-	} as React.CSSProperties
+		const stickerFrontStyle = {
+			backgroundImage: `url(${imagePathMapping[pageType]})`,
+			backgroundPosition: `${top}% ${left}%`,
+			transform: `rotateY(${isTurned ? '180deg' : '0deg'})`,
+		} as React.CSSProperties
 
-	const stickerBacksideStyle = {
-		backgroundImage: `url(${stickerBacksidePath})`,
-	} as React.CSSProperties
+		const stickerBacksideStyle = {
+			backgroundImage: `url(${stickerBacksidePath})`,
+		} as React.CSSProperties
 
-	return (
-		<div className={stickerClasses} style={stickerStyle}>
-			<div className={frontSideClassName} style={stickerFrontStyle}></div>
-			<div
-				className={backSideClassNames}
-				style={stickerBacksideStyle}
-			></div>
-		</div>
-	)
-}
+		return (
+			<div className={stickerClasses} style={stickerStyle}>
+				<div
+					className={frontSideClassName}
+					style={stickerFrontStyle}
+				></div>
+				<div
+					className={backSideClassNames}
+					style={stickerBacksideStyle}
+				></div>
+			</div>
+		)
+	}

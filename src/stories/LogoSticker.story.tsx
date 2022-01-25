@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { LogoSticker } from '../components/sticker/logo/LogoSticker'
+import { LogoStickerComponent } from '../components/sticker/logo/LogoSticker'
 import { GameType } from '../consts'
 
 interface StickerStoryProps {
@@ -13,11 +13,7 @@ export const LogoStickerStory: Story<StickerStoryProps> = (props) => (
 			position: 'relative',
 		}}
 	>
-		<LogoSticker
-			{...props}
-			backgroundPositionX={0}
-			backgroundPositionY={0}
-		/>
+		<LogoStickerComponent {...props} top={0} left={0} />
 	</div>
 )
 LogoStickerStory.args = {

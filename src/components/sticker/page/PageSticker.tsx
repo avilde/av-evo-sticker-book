@@ -14,9 +14,10 @@ export const PageSticker: React.FC<PageStickerProps> = ({
 	left,
 	className,
 }) => {
+	const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-8'
 	const stickerClasses = cn(
 		'pageSticker',
-		'border-4',
+		borderSizes,
 		'border-white',
 		className
 	)

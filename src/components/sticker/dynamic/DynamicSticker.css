@@ -1,8 +1,8 @@
 .dynamicSticker {
 	position: absolute;
 	perspective: 150rem;
-	width: 31.25em;
-	height: 20em;
+	width: 267px;
+	height: 176px;
 }
 
 .dynamicSticker > .side {

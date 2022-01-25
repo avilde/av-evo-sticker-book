@@ -21,3 +21,8 @@ export enum GameType {
 	Roulette = 'roulette',
 	SicBo = 'sicBo',
 }
+
+export enum StickerType {
+	Dynamic = 'Dynamic',
+	Logo = 'Logo',
+}

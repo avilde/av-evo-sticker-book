@@ -31,6 +31,9 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 		zIndex: zIndex,
 	} as React.CSSProperties
 
+	const textSizeClasses =
+		'sm: text-sm md:text-lg lg:text-2xl xl:text-4xl 2xl:text-4xl'
+
 	return (
 		<div
 			className={frontCoverClasses}
@@ -50,11 +53,17 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 					'coverText',
 					'w-full h-16 border-t-2 border-b-2 border-black',
 					'flex items-center justify-center',
-					'text-black text-4xl px-2 text-center font-semibold'
+					'text-black  px-2 text-center font-semibold',
+					textSizeClasses
 				)}
 			>
 				Evolution sticker book
-				<span className="font-bold text-slate-200 pl-5 text-4xl">
+				<span
+					className={cn(
+						'font-bold text-slate-200 pl-5',
+						textSizeClasses
+					)}
+				>
 					2022
 				</span>
 			</span>

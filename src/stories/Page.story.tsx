@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { Page, PageProps } from '../components/page/Page'
+import { PageComponent, PageComponentProps } from '../components/page/page/Page'
 import { PageType } from '../consts'
 import { noop } from 'lodash-es'
 import { imagePathMapping } from '../assets/images'
@@ -9,7 +9,7 @@ interface PageStoryProps {
 }
 
 export const PageStory: Story<PageStoryProps> = ({ pageType }) => {
-	const props: PageProps = {
+	const props: PageComponentProps = {
 		currentPage: 0,
 		setCurrentPage: noop,
 		index: 2,
@@ -25,7 +25,7 @@ export const PageStory: Story<PageStoryProps> = ({ pageType }) => {
 				height: 'var(--page-height)',
 			}}
 		>
-			<Page {...props} />
+			<PageComponent {...props} />
 		</div>
 	)
 }

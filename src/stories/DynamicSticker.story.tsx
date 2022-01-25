@@ -1,11 +1,11 @@
 import { Story } from '@storybook/react'
-import { DynamicSticker } from '../components/sticker/dynamic/DynamicSticker'
+import { DynamicStickerComponent } from '../components/sticker/dynamic/DynamicSticker'
 import { PageType } from '../consts'
 
 interface StickerStoryProps {
 	pageType: PageType
-	backgroundPositionX: number
-	backgroundPositionY: number
+	top: number
+	left: number
 	isTurned: boolean
 }
 
@@ -22,14 +22,14 @@ export const DynamicStickerStory: Story<StickerStoryProps> = (props) => (
 				height: 'var(--page-height)',
 			}}
 		>
-			<DynamicSticker {...props} className="storybookSticker" />
+			<DynamicStickerComponent {...props} className="storybookSticker" />
 		</div>
 	</>
 )
 DynamicStickerStory.args = {
 	isTurned: false,
-	backgroundPositionX: 0,
-	backgroundPositionY: 0,
+	top: 0,
+	left: 0,
 	pageType: PageType.MegaballRight,
 }
 DynamicStickerStory.argTypes = {
@@ -37,10 +37,10 @@ DynamicStickerStory.argTypes = {
 		control: { type: 'select' },
 		options: Object.values(PageType),
 	},
-	backgroundPositionX: {
+	top: {
 		control: { type: 'range', min: 0, max: 100, step: 1 },
 	},
-	backgroundPositionY: {
+	left: {
 		control: { type: 'range', min: 0, max: 100, step: 1 },
 	},
 }

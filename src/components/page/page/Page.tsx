@@ -1,21 +1,25 @@
 import cn from 'classnames'
 import React from 'react'
-import { LogoSticker, LogoStickerProps } from '../sticker/logo/LogoSticker'
-import { PageSticker, PageStickerProps } from '../sticker/page/PageSticker'
+import { Stickers } from '../../../state/types'
+import {
+	LogoStickerComponent,
+	LogoStickerComponentProps,
+} from '../../sticker/logo/LogoSticker'
+import { PageSticker } from '../../sticker/page/PageSticker'
 
 import './Page.css'
 
-export interface PageProps {
+export interface PageComponentProps {
 	backgroundImage: string
 	index: number
 	currentPage: number
 	setCurrentPage: (index: number) => void
 	zIndex: number
-	stickers?: PageStickerProps[]
-	logoSticker?: LogoStickerProps
+	stickers?: Stickers
+	logoSticker?: LogoStickerComponentProps
 }
 
-export const Page: React.FC<PageProps> = ({
+export const PageComponent: React.FC<PageComponentProps> = ({
 	index,
 	zIndex,
 	backgroundImage,
@@ -62,7 +66,10 @@ export const Page: React.FC<PageProps> = ({
 				))}
 
 				{logoSticker ? (
-					<LogoSticker {...logoSticker} className="sticker" />
+					<LogoStickerComponent
+						{...logoSticker}
+						className="sticker"
+					/>
 				) : null}
 			</div>
 

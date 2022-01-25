@@ -1,7 +1,7 @@
 import { noop } from 'lodash-es'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Page } from './components/page/Page'
+import { PageComponent } from './components/page/page/Page'
 
 import { PageType } from './consts'
 
@@ -10,7 +10,7 @@ import './index.css'
 ReactDOM.render(
 	<React.StrictMode>
 		{/* test */}
-		<Page
+		<PageComponent
 			index={0}
 			currentPage={0}
 			setCurrentPage={noop}
