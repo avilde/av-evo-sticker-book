@@ -16,7 +16,7 @@ export interface DynamicStickerComponentProps {
 
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 	({ pageType, top, left, isTurned, className }) => {
-		const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-8'
+		const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
 		const stickerStyle = {
@@ -36,8 +36,8 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 		const backSideClassNames = cn(
 			'back',
 			'side',
-			'border',
-			'border-slate-300',
+			borderSizes,
+			'border-white',
 			'shadow-xl',
 			{ isTurned: isTurned }
 		)

@@ -1,8 +1,8 @@
 .dynamicSticker {
 	position: absolute;
 	perspective: 150rem;
-	width: 267px;
-	height: 176px;
+	width: 16.69em;
+	height: 11em;
 }
 
 .dynamicSticker > .side {
@@ -14,11 +14,15 @@
 }
 
 .dynamicSticker > .side.back {
+	background-size: cover;
 	transform: rotateY(-180deg);
 }
 
 .dynamicSticker > .side.front {
-	background-size: 200% 400%;
+	/* assets/backgrounds image ratio */
+	/* ().dynamicSticker.width / image.width) * 100 */
+	/* ().dynamicSticker.height / image.height) * 100 */
+	background-size: 638% 1086%;
 }
 .dynamicSticker > .side.front.isTurned {
 	transform: rotateY(180deg);

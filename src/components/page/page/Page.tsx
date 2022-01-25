@@ -49,9 +49,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	const pageTurnerClasses = cn(
 		isOdd ? 'right-0' : 'left-0',
 		'bottom-0 top-0 border-4 border-indigo-500 w-12 h-full absolute cursor-pointer',
-		{
-			isTurned: isTurned,
-		}
+		{ isTurned: isTurned }
 	)
 
 	return (

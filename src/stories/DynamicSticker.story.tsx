@@ -16,12 +16,7 @@ export const DynamicStickerStory: Story<StickerStoryProps> = (props) => (
 			left: 0 !important;
 		}`}</style>
 
-		<div
-			style={{
-				width: 'calc(var(--page-width) * 2)',
-				height: 'var(--page-height)',
-			}}
-		>
+		<div style={{ position: 'relative' }}>
 			<DynamicStickerComponent {...props} className="storybookSticker" />
 		</div>
 	</>

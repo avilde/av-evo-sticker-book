@@ -1,8 +1,8 @@
 .logoSticker {
-	position: relative;
+	position: absolute;
 	perspective: 150rem;
-	width: 31.25em;
-	height: 20em;
+	width: 16.69em;
+	height: 11em;
 }
 
 .logoSticker > .side {
@@ -15,6 +15,7 @@
 
 .logoSticker > .side.back {
 	transform: rotateY(-180deg);
+	background-size: cover;
 }
 
 .logoSticker > .side.front {
