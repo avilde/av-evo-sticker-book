@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import { imagePathMapping } from '../../../assets/images'
-import { PageType } from '../../../consts'
+import backCoverPath from '../../../assets/backgrounds/backCover.png'
 
 import './BackCover.css'
 
@@ -13,7 +12,7 @@ export interface BackCoverProps {
 export const BackCover: React.FC<BackCoverProps> = ({ isTurned, onClick }) => {
 	const backCoverClasses = cn(
 		'backCover',
-		'border-2',
+		'border',
 		'border-black',
 		'cursor-pointer',
 		{
@@ -22,7 +21,7 @@ export const BackCover: React.FC<BackCoverProps> = ({ isTurned, onClick }) => {
 	)
 
 	const backCoverStyle = {
-		backgroundImage: `url(${imagePathMapping[PageType.BackCover]})`,
+		backgroundImage: `url(${backCoverPath})`,
 	} as React.CSSProperties
 
 	return (

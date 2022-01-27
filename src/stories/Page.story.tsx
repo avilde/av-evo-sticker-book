@@ -1,20 +1,22 @@
 import { Story } from '@storybook/react'
 import { PageComponent, PageComponentProps } from '../components/page/page/Page'
-import { PageType } from '../consts'
+import { GameType, PageType } from '../consts'
 import { noop } from 'lodash-es'
-import { imagePathMapping } from '../assets/images'
 
 interface PageStoryProps {
 	pageType: PageType
+	gameType: GameType
 }
 
-export const PageStory: Story<PageStoryProps> = ({ pageType }) => {
+export const PageStory: Story<PageStoryProps> = ({ pageType, gameType }) => {
 	const props: PageComponentProps = {
 		currentPage: 0,
 		setCurrentPage: noop,
 		index: 2,
 		zIndex: 1,
-		backgroundImage: imagePathMapping[pageType],
+		stickers: [],
+		gameType,
+		pageType,
 	}
 
 	return (
@@ -30,7 +32,8 @@ export const PageStory: Story<PageStoryProps> = ({ pageType }) => {
 	)
 }
 PageStory.args = {
-	pageType: PageType.MegaballLeft,
+	pageType: PageType.Left,
+	gameType: GameType.Megaball,
 }
 PageStory.argTypes = {
 	pageType: {

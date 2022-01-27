@@ -20,6 +20,7 @@ export const PageSticker: React.FC<PageStickerProps> = ({
 	const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
 	const stickerClasses = cn(
 		'pageSticker',
+		isUsed ? 'shadow-sm shadow-black' : null,
 		borderSizes,
 		'border-white',
 		className

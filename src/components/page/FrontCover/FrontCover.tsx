@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import { imagePathMapping } from '../../../assets/images'
-import { PageType } from '../../../consts'
+import frontCoverPath from '../../../assets/backgrounds/frontCover.png'
 
 import './FrontCover.css'
 
@@ -18,7 +17,7 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 }) => {
 	const frontCoverClasses = cn(
 		'frontCover',
-		'border-2',
+		'border',
 		'border-black',
 		'cursor-pointer',
 		{
@@ -27,7 +26,7 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 	)
 
 	const frontCoverStyle = {
-		backgroundImage: `url(${imagePathMapping[PageType.FrontCover]})`,
+		backgroundImage: `url(${frontCoverPath})`,
 		zIndex: zIndex,
 	} as React.CSSProperties
 
@@ -51,7 +50,7 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 			<span
 				className={cn(
 					'coverText',
-					'w-full h-16 border-t-2 border-b-2 border-black',
+					'w-full h-16 border-t border-b border-black',
 					'flex items-center justify-center',
 					'text-black  px-2 text-center font-semibold',
 					textSizeClasses

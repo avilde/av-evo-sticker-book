@@ -1,33 +1,31 @@
 import cn from 'classnames'
 import React from 'react'
-import { Stickers } from '../../../state/types'
-import {
-	LogoStickerComponent,
-	LogoStickerComponentProps,
-} from '../../sticker/logo/LogoSticker'
+import { imagePathMapping } from '../../../assets/images'
+import { gameThemeMapping } from '../../../consts'
+import { Page } from '../../../state/types'
+import { LogoStickerComponent } from '../../sticker/logo/LogoSticker'
 import { PageSticker } from '../../sticker/page/PageSticker'
 
 import './Page.css'
 
-export interface PageComponentProps {
-	backgroundImage: string
+export interface PageComponentProps extends Page {
 	index: number
 	currentPage: number
 	setCurrentPage: (index: number) => void
 	zIndex: number
-	stickers?: Stickers
-	logoSticker?: LogoStickerComponentProps
 }
 
 export const PageComponent: React.FC<PageComponentProps> = ({
+	gameType,
+	pageType,
 	index,
 	zIndex,
-	backgroundImage,
 	currentPage,
 	setCurrentPage,
 	stickers,
 	logoSticker,
 }) => {
+	const theme = gameThemeMapping[gameType]
 	const isOdd = index % 2 === 0
 
 	const [showPreview, setShowPreview] = React.useState<boolean>(false)
@@ -37,12 +35,21 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 		(!isOdd && currentPage === index)
 	const isTurned = currentPage >= index
 
-	const pageClasses = cn('page', 'pointer-events-none', {
-		isTurned: isTurned,
-		isOdd: isOdd,
-		isEven: !isOdd,
-		isPreviewEnabled: showPreview,
-	})
+	const pageClasses = cn(
+		'page',
+		'pointer-events-none',
+		'border-y',
+		theme.borderColor,
+		isOdd ? 'border-r' : 'border-l',
+		{
+			isTurned: isTurned,
+			isOdd: isOdd,
+			isEven: !isOdd,
+			isPreviewEnabled: showPreview,
+		}
+	)
+
+	const backgroundImage = imagePathMapping[`${gameType}${pageType}`]
 
 	const pageStyle = {
 		backgroundImage: `url(${backgroundImage})`,
@@ -91,7 +98,8 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 			<div
 				className={cn(
 					'absolute bottom-0 w-8 h-8 pb-2 select-none pointer-events-none',
-					'text-white  text-lg text-bold underline decoration-sky-500',
+					`text-white text-lg text-bold underline`,
+					theme.textDecorationColor,
 					isOdd ? 'right-0 pl-2 text-left' : 'left-0 pr-2 text-right'
 				)}
 			>

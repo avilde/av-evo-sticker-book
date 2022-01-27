@@ -3,8 +3,6 @@ import dreamCatcherLeftPath from './backgrounds/dreamCatcherLeft.png'
 import dreamCatcherRightPath from './backgrounds/dreamCatcherRight.png'
 import megaballLeftPath from './backgrounds/megaballLeft.png'
 import megaballRightPath from './backgrounds/megaballRight.png'
-import frontCoverPath from './backgrounds/frontCover.png'
-import backCoverPath from './backgrounds/backCover.png'
 
 import blackJackLogoPath from './logos/blackJackLogo.png'
 import cashOrCrashLogoPath from './logos/cashOrCrashLogo.png'
@@ -18,15 +16,15 @@ import megaBallLogoPath from './logos/megaBallLogo.png'
 import monopolyLogoPath from './logos/monopolyLogo.png'
 import rouletteLogoPath from './logos/rouletteLogo.png'
 import sicBoLogoPath from './logos/sicBoLogo.png'
+import { PartialRecord } from '../types'
 
-export const imagePathMapping: Record<PageType, string> = {
-	[PageType.FrontCover]: frontCoverPath,
-	[PageType.BackCover]: backCoverPath,
-	[PageType.DreamCatcherLeft]: dreamCatcherLeftPath,
-	[PageType.DreamCatcherRight]: dreamCatcherRightPath,
-	[PageType.MegaballLeft]: megaballLeftPath,
-	[PageType.MegaballRight]: megaballRightPath,
-}
+export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
+	{
+		[`${GameType.DreamCatcher}${PageType.Left}`]: dreamCatcherLeftPath,
+		[`${GameType.DreamCatcher}${PageType.Right}`]: dreamCatcherRightPath,
+		[`${GameType.Megaball}${PageType.Left}`]: megaballLeftPath,
+		[`${GameType.Megaball}${PageType.Right}`]: megaballRightPath,
+	}
 
 export const logoPathMapping: Record<GameType, string> = {
 	[GameType.BlackJack]: blackJackLogoPath,

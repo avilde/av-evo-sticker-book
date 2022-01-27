@@ -1,6 +1,5 @@
 import { observer } from 'mobx-react-lite'
 import React from 'react'
-import { imagePathMapping } from '../../assets/images'
 import { StickerBookState } from '../../state/StickerBookState'
 import { BackCover } from '../page/BackCover/BackCover'
 import { FrontCover } from '../page/FrontCover/FrontCover'
@@ -33,9 +32,8 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 							<PageComponent
 								key={idx}
 								index={idx}
-								backgroundImage={
-									imagePathMapping[page.background]
-								}
+								gameType={page.gameType}
+								pageType={page.pageType}
 								zIndex={pages.length - idx}
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}

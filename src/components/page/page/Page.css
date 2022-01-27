@@ -8,6 +8,7 @@
 	backface-visibility: hidden;
 	background-size: 100% 100%;
 	will-change: transform;
+	box-sizing: border-box;
 }
 
 .page.isOdd::before,
@@ -39,7 +40,6 @@
 
 .page.isOdd {
 	right: 0;
-	pointer-events: all;
 	transform: rotateY(0deg);
 }
 

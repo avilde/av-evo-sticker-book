@@ -1,10 +1,8 @@
+import { GameTheme } from './state/types'
+
 export enum PageType {
-	FrontCover = 'frontCover',
-	BackCover = 'backCover',
-	DreamCatcherLeft = 'dreamCatcherLeft',
-	DreamCatcherRight = 'dreamCatcherRight',
-	MegaballLeft = 'megaballLeft',
-	MegaballRight = 'megaballRight',
+	Left = 'Left',
+	Right = 'Right',
 }
 
 export enum GameType {
@@ -25,4 +23,17 @@ export enum GameType {
 export enum StickerType {
 	Dynamic = 'Dynamic',
 	Logo = 'Logo',
+}
+
+export const gameThemeMapping: Record<string, GameTheme> = {
+	[GameType.DreamCatcher]: {
+		borderColor: 'border-rose-300',
+		textDecorationColor: 'decoration-rose-500',
+		logoFrameColor: 'bg-rose-500',
+	},
+	[GameType.Megaball]: {
+		borderColor: 'border-teal-300',
+		textDecorationColor: 'decoration-teal-500',
+		logoFrameColor: 'bg-teal-500',
+	},
 }

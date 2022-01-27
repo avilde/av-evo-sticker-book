@@ -1,9 +1,10 @@
 import { Story } from '@storybook/react'
 import { DynamicStickerComponent } from '../components/sticker/dynamic/DynamicSticker'
-import { PageType } from '../consts'
+import { GameType, PageType } from '../consts'
 
 interface StickerStoryProps {
 	pageType: PageType
+	gameType: GameType
 	top: number
 	left: number
 	isTurned: boolean
@@ -25,12 +26,17 @@ DynamicStickerStory.args = {
 	isTurned: false,
 	top: 0,
 	left: 0,
-	pageType: PageType.MegaballRight,
+	pageType: PageType.Left,
+	gameType: GameType.Megaball,
 }
 DynamicStickerStory.argTypes = {
 	pageType: {
 		control: { type: 'select' },
 		options: Object.values(PageType),
+	},
+	gameType: {
+		control: { type: 'select' },
+		options: Object.values(GameType),
 	},
 	top: {
 		control: { type: 'range', min: 0, max: 100, step: 1 },

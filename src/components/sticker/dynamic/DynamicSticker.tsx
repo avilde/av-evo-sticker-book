@@ -1,13 +1,14 @@
 import cn from 'classnames'
 import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
-import { PageType } from '../../../consts'
+import { GameType, PageType } from '../../../consts'
 import stickerBacksidePath from '../../../assets/stickerBackside.png'
 
 import './DynamicSticker.css'
 
 export interface DynamicStickerComponentProps {
 	pageType: PageType
+	gameType: GameType
 	top: number
 	left: number
 	isTurned: boolean
@@ -15,7 +16,7 @@ export interface DynamicStickerComponentProps {
 }
 
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
-	({ pageType, top, left, isTurned, className }) => {
+	({ pageType, gameType, top, left, isTurned, className }) => {
 		const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
@@ -42,8 +43,10 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 			{ isTurned: isTurned }
 		)
 
+		const backgroundImage = imagePathMapping[`${gameType}${pageType}`]
+
 		const stickerFrontStyle = {
-			backgroundImage: `url(${imagePathMapping[pageType]})`,
+			backgroundImage: `url(${backgroundImage})`,
 			backgroundPosition: `${top}% ${left}%`,
 			transform: `rotateY(${isTurned ? '180deg' : '0deg'})`,
 		} as React.CSSProperties
