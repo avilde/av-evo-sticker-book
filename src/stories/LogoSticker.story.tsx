@@ -1,12 +1,9 @@
 import { Story } from '@storybook/react'
 import { LogoStickerComponent } from '../components/sticker/logo/LogoSticker'
 import { GameType } from '../consts'
+import { LogoSticker } from '../state/types'
 
-interface StickerStoryProps {
-	gameType: GameType
-	isTurned: boolean
-	isUsed: boolean
-}
+interface StickerStoryProps extends LogoSticker {}
 
 export const LogoStickerStory: Story<StickerStoryProps> = (props) => (
 	<div
@@ -21,6 +18,7 @@ LogoStickerStory.args = {
 	isTurned: false,
 	isUsed: false,
 	gameType: GameType.Megaball,
+	nr: 1,
 }
 LogoStickerStory.argTypes = {
 	gameType: {

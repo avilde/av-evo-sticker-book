@@ -1,16 +1,11 @@
 import { Story } from '@storybook/react'
 import { DynamicStickerComponent } from '../components/sticker/dynamic/DynamicSticker'
 import { GameType, PageType } from '../consts'
+import { DynamicSticker } from '../state/types'
 
-interface StickerStoryProps {
-	pageType: PageType
-	gameType: GameType
-	top: number
-	left: number
-	isTurned: boolean
-}
+interface DynamicStickerStoryProps extends DynamicSticker {}
 
-export const DynamicStickerStory: Story<StickerStoryProps> = (props) => (
+export const DynamicStickerStory: Story<DynamicStickerStoryProps> = (props) => (
 	<>
 		<style>{`.storybookSticker {
 			top: 0 !important;
@@ -28,6 +23,7 @@ DynamicStickerStory.args = {
 	left: 0,
 	pageType: PageType.Left,
 	gameType: GameType.Megaball,
+	nr: 1,
 }
 DynamicStickerStory.argTypes = {
 	pageType: {

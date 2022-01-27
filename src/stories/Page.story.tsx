@@ -40,5 +40,9 @@ PageStory.argTypes = {
 		control: { type: 'select' },
 		options: Object.values(PageType),
 	},
+	gameType: {
+		control: { type: 'select' },
+		options: Object.values(GameType),
+	},
 }
 PageStory.storyName = 'Page'

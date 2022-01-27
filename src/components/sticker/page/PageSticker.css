@@ -3,3 +3,8 @@
 	width: 16.69em;
 	height: 11em;
 }
+
+.pageSticker .pageNumber {
+	top: 6%;
+	left: 35%;
+}

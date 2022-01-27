@@ -8,6 +8,7 @@ export interface PageStickerProps {
 	top: number
 	left: number
 	isUsed: boolean
+	nr: number
 	className?: string
 }
 
@@ -15,6 +16,7 @@ export const PageSticker: React.FC<PageStickerProps> = ({
 	top,
 	left,
 	isUsed,
+	nr,
 	className,
 }) => {
 	const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
@@ -33,5 +35,16 @@ export const PageSticker: React.FC<PageStickerProps> = ({
 		backgroundSize: isUsed ? 'initial' : '100% 100%',
 	} as React.CSSProperties
 
-	return <div className={stickerClasses} style={stickerStyle}></div>
+	const pageNumberClassNames = cn(
+		'pageNumber',
+		'absolute w-20 h-8 flex items-center justify-center',
+		'font-extrabold text-2xl font-mono text-center',
+		'bg-gray-300 rounded-md text-white'
+	)
+
+	return (
+		<div className={stickerClasses} style={stickerStyle}>
+			{!isUsed ? <div className={pageNumberClassNames}>{nr}</div> : null}
+		</div>
+	)
 }

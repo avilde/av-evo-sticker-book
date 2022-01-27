@@ -1,18 +1,13 @@
 import cn from 'classnames'
 import React from 'react'
 import { logoPathMapping } from '../../../assets/images'
-import { GameType } from '../../../consts'
 import stickerBacksidePath from '../../../assets/stickerBackside.png'
 import stickerPlaceholderPath from '../../../assets/stickerPlaceholder.png'
 
 import './LogoSticker.css'
+import { LogoSticker } from '../../../state/types'
 
-export interface LogoStickerComponentProps {
-	gameType: GameType
-	isTurned: boolean
-	top: number
-	left: number
-	isUsed: boolean
+export interface LogoStickerComponentProps extends LogoSticker {
 	className?: string
 }
 
@@ -23,6 +18,7 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 	left,
 	isUsed,
 	className,
+	nr,
 }) => {
 	const stickerClasses = cn('logoSticker', className)
 
@@ -61,10 +57,31 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 		backgroundImage: `url(${stickerBacksidePath})`,
 	} as React.CSSProperties
 
+	const pageNumberClassNames = cn(
+		'pageNumber',
+		'absolute w-20 h-8 flex items-center justify-center',
+		'font-extrabold text-2xl font-mono text-center'
+	)
+
 	return (
 		<div className={stickerClasses} style={stickerStyle}>
-			<div className={frontSideClassName} style={frontSideStyle}></div>
-			<div className={backSideClassNames} style={backSideStyle}></div>
+			<div className={frontSideClassName} style={frontSideStyle}>
+				{!isUsed ? (
+					<div
+						className={cn(
+							pageNumberClassNames,
+							'bg-gray-100 rounded-md text-gray-400'
+						)}
+					>
+						{nr}
+					</div>
+				) : null}
+			</div>
+			<div className={backSideClassNames} style={backSideStyle}>
+				<div className={cn(pageNumberClassNames, 'text-gray-50')}>
+					{nr}
+				</div>
+			</div>
 		</div>
 	)
 }

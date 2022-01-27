@@ -31,3 +31,8 @@
 .dynamicSticker > .side.back.isTurned {
 	transform: rotateY(0deg);
 }
+
+.dynamicSticker .pageNumber {
+	top: 6%;
+	left: 35%;
+}

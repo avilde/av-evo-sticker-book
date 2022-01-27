@@ -65,6 +65,7 @@
 	transform: rotateY(20deg);
 }
 
+/* stickers */
 .page .sticker {
 	width: calc(var(--page-width) / 3.5);
 	height: calc(var(--page-height) / 6);
@@ -74,4 +75,9 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
+}
+
+.page .sticker .pageNumber {
+	width: 4vw;
+	height: 2vw;
 }

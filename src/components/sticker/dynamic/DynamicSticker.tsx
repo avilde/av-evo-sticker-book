@@ -1,22 +1,17 @@
 import cn from 'classnames'
 import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
-import { GameType, PageType } from '../../../consts'
 import stickerBacksidePath from '../../../assets/stickerBackside.png'
 
 import './DynamicSticker.css'
+import { DynamicSticker } from '../../../state/types'
 
-export interface DynamicStickerComponentProps {
-	pageType: PageType
-	gameType: GameType
-	top: number
-	left: number
-	isTurned: boolean
+export interface DynamicStickerComponentProps extends DynamicSticker {
 	className?: string
 }
 
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
-	({ pageType, gameType, top, left, isTurned, className }) => {
+	({ pageType, gameType, top, left, isTurned, className, nr }) => {
 		const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
@@ -55,6 +50,12 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 			backgroundImage: `url(${stickerBacksidePath})`,
 		} as React.CSSProperties
 
+		const pageNumberClassNames = cn(
+			'pageNumber',
+			'absolute w-20 h-10',
+			'font-extrabold text-2xl font-mono text-gray-50 text-center'
+		)
+
 		return (
 			<div className={stickerClasses} style={stickerStyle}>
 				<div
@@ -64,7 +65,9 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 				<div
 					className={backSideClassNames}
 					style={stickerBacksideStyle}
-				></div>
+				>
+					<div className={pageNumberClassNames}>{nr}</div>
+				</div>
 			</div>
 		)
 	}
