@@ -17,7 +17,7 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 		const [currentPage, setCurrentPage] = React.useState<number>(-1)
 
 		return (
-			<div className="stickerBook">
+			<div className="stickerBook select-none">
 				<div className="pageContainer">
 					<FrontCover
 						zIndex={pages.length + 1}
