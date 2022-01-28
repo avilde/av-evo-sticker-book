@@ -4,6 +4,8 @@ import stickerPlaceholderPath from '../../../assets/stickerPlaceholder.png'
 
 import './PageSticker.css'
 
+// TODO: implement logo stickers
+
 export interface PageStickerProps {
 	top: number
 	left: number
