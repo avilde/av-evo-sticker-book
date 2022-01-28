@@ -1,0 +1,20 @@
+.stickerList {
+	width: auto;
+	max-height: 50vh;
+}
+
+.stickerList > .sticker {
+	width: auto;
+	line-height: 11em;
+	height: 11em;
+	font-size: 0.8em;
+}
+
+.stickerList > .sticker > .stickerCount {
+}
+
+.stickerList .stickerListSticker {
+	position: static;
+	display: flex;
+	pointer-events: none;
+}

@@ -4,9 +4,9 @@ import { PageStickerComponent } from '../../components/sticker/page/PageSticker'
 import { GameType } from '../../consts'
 import { PageSticker } from '../../state/types'
 
-interface StickerStoryProps extends PageSticker {}
+interface PageStickerStoryProps extends PageSticker {}
 
-export const PageStickerStory: Story<StickerStoryProps> = (props) => (
+export const PageStickerStory: Story<PageStickerStoryProps> = (props) => (
 	<div className="relative bg-slate-400 w-96 h-80">
 		<PageStickerComponent {...props} top={20} left={15} />
 	</div>

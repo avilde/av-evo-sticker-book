@@ -6,18 +6,18 @@ export interface PageSticker {
 	top: number
 	left: number
 	isUsed: boolean
-	isLogo: boolean
+	isLogo?: boolean
 }
 
 export interface DynamicSticker extends PageSticker {
 	type: StickerType.Dynamic
-	isTurned: boolean
+	isTurned?: boolean
 	pageType: PageType
 }
 
 export interface LogoSticker extends PageSticker {
 	type: StickerType.Logo
-	isTurned: boolean
+	isTurned?: boolean
 }
 
 export type Stickers = (DynamicSticker | LogoSticker)[]
