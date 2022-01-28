@@ -1,6 +1,5 @@
 .logoSticker {
 	position: absolute;
-	perspective: 150rem;
 	width: 16.69em;
 	height: 11em;
 }
@@ -8,6 +7,8 @@
 .logoSticker > .side {
 	transition: transform 0.8s ease;
 	backface-visibility: hidden;
+	perspective: 150rem;
+	transform-style: preserve-3d;
 	position: absolute;
 	width: inherit;
 	height: inherit;

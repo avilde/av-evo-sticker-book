@@ -7,7 +7,6 @@
 	transition: transform 1.5s;
 	backface-visibility: hidden;
 	background-size: 100% 100%;
-	will-change: transform;
 	box-sizing: border-box;
 }
 

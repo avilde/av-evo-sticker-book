@@ -3,7 +3,6 @@ import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
 import { gameThemeMapping } from '../../../consts'
 import { Page } from '../../../state/types'
-import { LogoStickerComponent } from '../../sticker/logo/LogoSticker'
 import { PageSticker } from '../../sticker/page/PageSticker'
 
 import './Page.css'
@@ -76,13 +75,6 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 						className="sticker"
 					/>
 				))}
-
-				{logoSticker ? (
-					<LogoStickerComponent
-						{...logoSticker}
-						className="sticker"
-					/>
-				) : null}
 			</div>
 
 			<div
@@ -98,7 +90,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 			<div
 				className={cn(
 					'absolute bottom-0 w-8 h-8 pb-2 select-none pointer-events-none',
-					`text-white text-lg text-bold underline`,
+					`text-white sm:text-sm lg:text-lg text-bold underline`,
 					theme.textDecorationColor,
 					isOdd ? 'right-0 pl-2 text-left' : 'left-0 pr-2 text-right'
 				)}

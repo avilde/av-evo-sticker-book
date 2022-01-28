@@ -2,7 +2,6 @@ import cn from 'classnames'
 import React from 'react'
 import { logoPathMapping } from '../../../assets/images'
 import stickerBacksidePath from '../../../assets/stickerBackside.png'
-import stickerPlaceholderPath from '../../../assets/stickerPlaceholder.png'
 
 import './LogoSticker.css'
 import { LogoSticker } from '../../../state/types'
@@ -16,7 +15,6 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 	isTurned,
 	top,
 	left,
-	isUsed,
 	className,
 	nr,
 }) => {
@@ -29,13 +27,9 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 
 	const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
 
-	const frontSideClassName = cn(
-		'front',
-		'side',
-		borderSizes,
-		isUsed ? 'shadow-xl' : null,
-		{ isTurned: isTurned }
-	)
+	const frontSideClassName = cn('front', 'side', borderSizes, 'shadow-xl', {
+		isTurned: isTurned,
+	})
 
 	const backSideClassNames = cn(
 		'back',
@@ -48,9 +42,7 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 	)
 
 	const frontSideStyle = {
-		backgroundImage: isUsed
-			? `url(${logoPathMapping[gameType]})`
-			: `url(${stickerPlaceholderPath})`,
+		backgroundImage: `url(${logoPathMapping[gameType]})`,
 	} as React.CSSProperties
 
 	const backSideStyle = {
@@ -65,18 +57,7 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 
 	return (
 		<div className={stickerClasses} style={stickerStyle}>
-			<div className={frontSideClassName} style={frontSideStyle}>
-				{!isUsed ? (
-					<div
-						className={cn(
-							pageNumberClassNames,
-							'bg-gray-100 rounded-md text-gray-400'
-						)}
-					>
-						{nr}
-					</div>
-				) : null}
-			</div>
+			<div className={frontSideClassName} style={frontSideStyle}></div>
 			<div className={backSideClassNames} style={backSideStyle}>
 				<div className={cn(pageNumberClassNames, 'text-gray-50')}>
 					{nr}

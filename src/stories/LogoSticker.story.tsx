@@ -16,7 +16,6 @@ export const LogoStickerStory: Story<StickerStoryProps> = (props) => (
 )
 LogoStickerStory.args = {
 	isTurned: false,
-	isUsed: false,
 	gameType: GameType.Megaball,
 	nr: 1,
 }
