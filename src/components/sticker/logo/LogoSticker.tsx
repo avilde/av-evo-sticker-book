@@ -25,7 +25,7 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 		left: `${left}%`,
 	} as React.CSSProperties
 
-	const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
+	const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 
 	const frontSideClassName = cn('front', 'side', borderSizes, 'shadow-xl', {
 		isTurned: isTurned,
@@ -50,7 +50,7 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 	} as React.CSSProperties
 
 	const pageNumberClassNames = cn(
-		'pageNumber',
+		'stickerNumber',
 		'absolute w-20 h-8 flex items-center justify-center',
 		'font-extrabold text-2xl font-mono text-center'
 	)

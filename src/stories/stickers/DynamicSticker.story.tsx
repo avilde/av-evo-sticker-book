@@ -1,18 +1,18 @@
 import { Story } from '@storybook/react'
-import { DynamicStickerComponent } from '../components/sticker/dynamic/DynamicSticker'
-import { GameType, PageType } from '../consts'
-import { DynamicSticker } from '../state/types'
+import { DynamicStickerComponent } from '../../components/sticker/dynamic/DynamicSticker'
+import { GameType, PageType } from '../../consts'
+import { DynamicSticker } from '../../state/types'
 
 interface DynamicStickerStoryProps extends DynamicSticker {}
 
 export const DynamicStickerStory: Story<DynamicStickerStoryProps> = (props) => (
 	<>
 		<style>{`.storybookSticker {
-			top: 0 !important;
-			left: 0 !important;
+			top: 20% !important;
+			left: 15% !important;
 		}`}</style>
 
-		<div style={{ position: 'relative' }}>
+		<div className="relative bg-slate-400 w-96 h-80">
 			<DynamicStickerComponent {...props} className="storybookSticker" />
 		</div>
 	</>

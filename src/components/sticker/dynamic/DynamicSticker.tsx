@@ -12,7 +12,7 @@ export interface DynamicStickerComponentProps extends DynamicSticker {
 
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 	({ pageType, gameType, top, left, isTurned, className, nr }) => {
-		const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
+		const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
 		const stickerStyle = {
@@ -51,7 +51,7 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 		} as React.CSSProperties
 
 		const pageNumberClassNames = cn(
-			'pageNumber',
+			'stickerNumber',
 			'absolute w-20 h-10',
 			'font-extrabold text-2xl font-mono text-gray-50 text-center'
 		)

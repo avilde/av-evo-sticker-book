@@ -1,21 +1,23 @@
 import { GameType, PageType, StickerType } from '../consts'
 
-interface Sticker {
+export interface PageSticker {
 	gameType: GameType
 	nr: number
 	top: number
 	left: number
-	isTurned: boolean
 	isUsed: boolean
+	isLogo: boolean
 }
 
-export interface DynamicSticker extends Sticker {
+export interface DynamicSticker extends PageSticker {
 	type: StickerType.Dynamic
+	isTurned: boolean
 	pageType: PageType
 }
 
-export interface LogoSticker extends Sticker {
+export interface LogoSticker extends PageSticker {
 	type: StickerType.Logo
+	isTurned: boolean
 }
 
 export type Stickers = (DynamicSticker | LogoSticker)[]

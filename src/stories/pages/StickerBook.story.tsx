@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react'
-import { StickerBook } from '../components/stickerBook/StickerBook'
-import { GameType, PageType } from '../consts'
-import { Pages } from '../state/types'
+import { StickerBook } from '../../components/stickerBook/StickerBook'
+import { GameType, PageType } from '../../consts'
+import { Pages } from '../../state/types'
 
 interface StickerBookStoryProps {
 	pages: Pages

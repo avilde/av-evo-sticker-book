@@ -30,7 +30,7 @@
 	transform: rotateY(0deg);
 }
 
-.dynamicSticker .pageNumber {
+.dynamicSticker .stickerNumber {
 	top: 6%;
 	left: 35%;
 }

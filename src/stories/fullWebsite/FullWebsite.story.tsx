@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react'
-import { StickerBook } from '../components/stickerBook/StickerBook'
-import { StickerList } from '../components/stickerList/StickerList'
-import { StickerBookState } from '../state/StickerBookState'
+import { StickerBook } from '../../components/stickerBook/StickerBook'
+import { StickerList } from '../../components/stickerList/StickerList'
+import { StickerBookState } from '../../state/StickerBookState'
 
 interface FullGameStoryProps {
 	randomWithSeed: number

@@ -14,14 +14,14 @@ export interface PageStickerProps {
 	className?: string
 }
 
-export const PageSticker: React.FC<PageStickerProps> = ({
+export const PageStickerComponent: React.FC<PageStickerProps> = ({
 	top,
 	left,
 	isUsed,
 	nr,
 	className,
 }) => {
-	const borderSizes = 'sm:border md:border-2 lg:border-4 xl:border-4'
+	const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 	const stickerClasses = cn(
 		'pageSticker',
 		isUsed ? 'shadow-sm shadow-black' : null,
@@ -37,17 +37,19 @@ export const PageSticker: React.FC<PageStickerProps> = ({
 		backgroundSize: isUsed ? 'initial' : '100% 100%',
 	} as React.CSSProperties
 
-	const pageNumberClassNames = cn(
-		'pageNumber',
+	const stickerNumberClassNames = cn(
+		'stickerNumber',
 		'absolute w-20 h-8 flex items-center justify-center',
 		'font-extrabold font-mono text-center',
 		'bg-gray-300 rounded-md text-white',
-		'sm:text-sm md:text-baseline lg:text-lg xl:text-2xl'
+		'sm:text-xs md:text-baseline lg:text-lg xl:text-2xl'
 	)
 
 	return (
 		<div className={stickerClasses} style={stickerStyle}>
-			{!isUsed ? <div className={pageNumberClassNames}>{nr}</div> : null}
+			{!isUsed ? (
+				<div className={stickerNumberClassNames}>{nr}</div>
+			) : null}
 		</div>
 	)
 }

@@ -1,6 +1,9 @@
 import { Story } from '@storybook/react'
-import { PageComponent, PageComponentProps } from '../components/page/page/Page'
-import { GameType, PageType } from '../consts'
+import {
+	PageComponent,
+	PageComponentProps,
+} from '../../components/page/page/Page'
+import { GameType, PageType } from '../../consts'
 import { noop } from 'lodash-es'
 
 interface PageStoryProps {
@@ -21,8 +24,8 @@ export const PageStory: Story<PageStoryProps> = ({ pageType, gameType }) => {
 
 	return (
 		<div
+			className="relative"
 			style={{
-				position: 'relative',
 				width: 'calc(var(--page-width) * 2)',
 				height: 'var(--page-height)',
 			}}

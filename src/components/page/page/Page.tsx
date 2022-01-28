@@ -3,7 +3,7 @@ import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
 import { gameThemeMapping } from '../../../consts'
 import { Page } from '../../../state/types'
-import { PageSticker } from '../../sticker/page/PageSticker'
+import { PageStickerComponent } from '../../sticker/page/PageSticker'
 
 import './Page.css'
 
@@ -69,7 +69,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 		<div className={pageClasses} style={pageStyle}>
 			<div className="stickerLayer select-none pointer-events-none">
 				{stickers?.map((sticker, stickerIndex) => (
-					<PageSticker
+					<PageStickerComponent
 						key={stickerIndex}
 						{...sticker}
 						className="sticker"
@@ -89,10 +89,12 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 
 			<div
 				className={cn(
-					'absolute bottom-0 w-8 h-8 pb-2 select-none pointer-events-none',
-					`text-white sm:text-sm lg:text-lg text-bold underline`,
+					'pageNumber',
+					'absolute bottom-0 w-4 h-4 md:w-8 md:h-8 mb-2',
+					'select-none pointer-events-none',
+					`text-white text-xs sm:text-sm lg:text-lg text-bold underline`,
 					theme.textDecorationColor,
-					isOdd ? 'right-0 pl-2 text-left' : 'left-0 pr-2 text-right'
+					isOdd ? 'right-0 ml-2 text-left' : 'left-0 mr-2 text-right'
 				)}
 			>
 				{index}
