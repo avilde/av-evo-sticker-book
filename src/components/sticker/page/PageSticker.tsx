@@ -1,16 +1,12 @@
 import cn from 'classnames'
 import React from 'react'
+import { logoPathMapping } from '../../../assets/images'
 import stickerPlaceholderPath from '../../../assets/stickerPlaceholder.png'
+import { PageSticker } from '../../../state/types'
 
 import './PageSticker.css'
 
-// TODO: implement logo stickers
-
-export interface PageStickerProps {
-	top: number
-	left: number
-	isUsed: boolean
-	nr: number
+export interface PageStickerProps extends PageSticker {
 	className?: string
 }
 
@@ -19,6 +15,8 @@ export const PageStickerComponent: React.FC<PageStickerProps> = ({
 	left,
 	isUsed,
 	nr,
+	isLogo,
+	gameType,
 	className,
 }) => {
 	const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
@@ -26,15 +24,23 @@ export const PageStickerComponent: React.FC<PageStickerProps> = ({
 		'pageSticker',
 		isUsed ? 'shadow-sm shadow-black' : null,
 		borderSizes,
-		'border-white',
+		isLogo ? 'logoBorder' : 'border-white',
 		className
 	)
+
+	const image =
+		isLogo && isUsed
+			? logoPathMapping[gameType]
+			: isUsed && !isLogo
+			? null
+			: stickerPlaceholderPath
+	const backgroundImage = image ? `url(${image})` : undefined
 
 	const stickerStyle = {
 		top: `${top}%`,
 		left: `${left}%`,
-		backgroundImage: isUsed ? null : `url(${stickerPlaceholderPath})`,
-		backgroundSize: isUsed ? 'initial' : '100% 100%',
+		backgroundImage: backgroundImage,
+		backgroundSize: isUsed && !isLogo ? 'initial' : '100% 100%',
 	} as React.CSSProperties
 
 	const stickerNumberClassNames = cn(

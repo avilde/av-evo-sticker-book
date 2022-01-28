@@ -54,25 +54,29 @@ StickerBookStory.args = {
 		{
 			pageType: PageType.Right,
 			gameType: GameType.DreamCatcher,
-			logoSticker: {
-				nr: 5,
-				gameType: GameType.DreamCatcher,
-				top: 80,
-				left: 20,
-				isUsed: false,
-			},
+			stickers: [
+				{
+					nr: 5,
+					gameType: GameType.DreamCatcher,
+					top: 80,
+					left: 20,
+					isLogo: true,
+					isUsed: false,
+				},
+			],
 		},
 		{
 			pageType: PageType.Left,
 			gameType: GameType.Megaball,
-			logoSticker: {
-				nr: 6,
-				gameType: GameType.Megaball,
-				top: 10,
-				left: 10,
-				isUsed: true,
-			},
 			stickers: [
+				{
+					nr: 6,
+					gameType: GameType.Megaball,
+					top: 10,
+					left: 10,
+					isLogo: true,
+					isUsed: true,
+				},
 				{
 					nr: 7,
 					top: 20,

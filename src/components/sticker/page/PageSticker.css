@@ -9,3 +9,14 @@
 	top: 6%;
 	left: 35%;
 }
+
+.pageSticker.logoBorder {
+	border-image: linear-gradient(
+			to left,
+			rgb(194, 255, 182),
+			rgb(255, 163, 182),
+			rgb(221, 169, 255),
+			rgb(162, 209, 255)
+		)
+		1;
+}
