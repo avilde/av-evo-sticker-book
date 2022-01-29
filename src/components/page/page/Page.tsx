@@ -22,7 +22,6 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	currentPage,
 	setCurrentPage,
 	stickers,
-	logoSticker,
 }) => {
 	const theme = gameThemeMapping[gameType]
 	const isOdd = index % 2 === 0

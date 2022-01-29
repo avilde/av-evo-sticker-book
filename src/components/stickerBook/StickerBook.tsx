@@ -38,7 +38,6 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
 								stickers={page.stickers}
-								logoSticker={page.logoSticker}
 							/>
 						)
 					})}

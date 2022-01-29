@@ -9,7 +9,7 @@
  * @param seed
  * @returns random number based on input seed
  */
-export function createRandomWithSeed(seed: number): () => number {
+export function createRandomWithSeed(seed: number): RandomWithSeed {
 	return () => {
 		seed |= 0
 		seed = (seed + 0x6d2b79f5) | 0
@@ -18,3 +18,5 @@ export function createRandomWithSeed(seed: number): () => number {
 		return ((imul ^ (imul >>> 14)) >>> 0) / 4294967296
 	}
 }
+
+export type RandomWithSeed = () => number

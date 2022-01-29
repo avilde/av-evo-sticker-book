@@ -26,7 +26,6 @@ export interface Page {
 	pageType: PageType
 	gameType: GameType
 	stickers: Stickers
-	logoSticker?: LogoSticker
 }
 
 export type Pages = Page[]
