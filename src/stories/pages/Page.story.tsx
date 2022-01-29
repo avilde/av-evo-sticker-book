@@ -12,11 +12,12 @@ interface PageStoryProps {
 }
 
 export const PageStory: Story<PageStoryProps> = ({ pageType, gameType }) => {
+	const isLeftPage = pageType === PageType.Left
 	const props: PageComponentProps = {
-		currentPage: 0,
+		currentPage: isLeftPage ? 1 : 0,
 		setCurrentPage: noop,
-		index: 2,
-		zIndex: 1,
+		index: isLeftPage ? 1 : 2,
+		zIndex: isLeftPage ? 0 : 1,
 		stickers: [],
 		gameType,
 		pageType,

@@ -8,7 +8,7 @@ import crapsLeftPath from './backgrounds/crapsLeft.png'
 import crapsRightPath from './backgrounds/crapsRight.png'
 import gonzoLeftPath from './backgrounds/gonzoLeft.png'
 import gonzoRightPath from './backgrounds/gonzoRight.png'
-import rouletteLeftPath from './backgrounds/rouletteRight.png'
+import rouletteLeftPath from './backgrounds/rouletteLeft.png'
 import rouletteRightPath from './backgrounds/rouletteRight.png'
 
 import crapsLogoPath from './logos/crapsLogo.png'

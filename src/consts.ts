@@ -40,4 +40,19 @@ export const gameThemeMapping: Record<string, GameTheme> = {
 		textDecorationColor: 'decoration-teal-500',
 		logoFrameColor: 'bg-teal-500',
 	},
+	[GameType.Craps]: {
+		borderColor: 'border-teal-400',
+		textDecorationColor: 'decoration-teal-400',
+		logoFrameColor: 'bg-teal-400',
+	},
+	[GameType.Roulette]: {
+		borderColor: 'border-red-500',
+		textDecorationColor: 'decoration-red-500',
+		logoFrameColor: 'bg-red-500',
+	},
+	[GameType.Gonzo]: {
+		borderColor: 'border-amber-400',
+		textDecorationColor: 'decoration-amber-400',
+		logoFrameColor: 'bg-amber-400',
+	},
 }
