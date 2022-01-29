@@ -6,19 +6,23 @@ export enum PageType {
 }
 
 export enum GameType {
-	BlackJack = 'blackJack',
-	CashOrCrash = 'cashOrCrash',
 	Craps = 'craps',
 	DreamCatcher = 'dreamCatcher',
-	CrazyTime = 'crazyTime',
 	Gonzo = 'gonzo',
+	Megaball = 'megaBall',
+	Roulette = 'roulette',
+}
+
+// TODO: find background image for games
+/* 
+	BlackJack = 'blackJack',
+	CashOrCrash = 'cashOrCrash',
+	CrazyTime = 'crazyTime',
 	Holdem = 'holdem',
 	LighteningDice = 'lighteningDice',
-	Megaball = 'megaBall',
 	Monopoly = 'monopoly',
-	Roulette = 'roulette',
 	SicBo = 'sicBo',
-}
+*/
 
 export enum StickerType {
 	Dynamic = 'Dynamic',
