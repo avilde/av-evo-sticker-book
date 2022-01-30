@@ -1,24 +1,25 @@
 import { Story } from '@storybook/react'
-import { StickerBook } from '../../components/stickerBook/StickerBook'
-import { StickerList } from '../../components/stickerList/StickerList'
+import { DesktopLayout } from '../../layout/DesktopLayout'
 import { StickerBookState } from '../../state/StickerBookState'
+import { generatePages } from '../../utils/randomDataUtils'
+import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
 interface FullGameStoryProps {
-	randomWithSeed: number
+	randomSeed: number
 }
 
-export const FullWebsiteStory: Story<FullGameStoryProps> = (props) => {
-	const state = new StickerBookState()
+export const FullWebsiteStory: Story<FullGameStoryProps> = ({ randomSeed }) => {
+	const random = createRandomWithSeed(randomSeed)
+	const pages = generatePages(random)
+	const state = new StickerBookState(pages)
 
 	return (
 		<div>
-			<StickerBook stickerBookState={state} />
-
-			<StickerList stickerBookState={state} />
+			<DesktopLayout stickerBookState={state} />
 		</div>
 	)
 }
 FullWebsiteStory.args = {
-	randomWithSeed: 123,
+	randomSeed: 123,
 }
 FullWebsiteStory.storyName = 'Full website'

@@ -4,9 +4,15 @@ import { Pages, Stickers } from './types'
 export class StickerBookState {
 	public stickers: Stickers = []
 
-	public pages: Pages = []
+	public pages: Pages
 
-	constructor() {
+	constructor(pages: Pages) {
 		makeAutoObservable(this)
+
+		this.pages = pages
+	}
+
+	public get availableStickers(): Stickers {
+		return this.pages.flatMap((p) => p.stickers)
 	}
 }

@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StickerBookState } from '../../state/StickerBookState'
@@ -9,15 +10,16 @@ import './StickerBook.css'
 
 export interface StickerBookProps {
 	stickerBookState: StickerBookState
+	className?: string
 }
 
 export const StickerBook: React.FC<StickerBookProps> = observer(
-	({ stickerBookState }) => {
+	({ stickerBookState, className }) => {
 		const { pages } = stickerBookState
 		const [currentPage, setCurrentPage] = React.useState<number>(-1)
 
 		return (
-			<div className="stickerBook select-none">
+			<div className={cn('stickerBook select-none', className)}>
 				<div className="pageContainer">
 					<FrontCover
 						zIndex={pages.length + 1}

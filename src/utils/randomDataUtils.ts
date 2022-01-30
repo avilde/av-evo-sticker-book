@@ -5,12 +5,12 @@ import { RandomWithSeed } from './randomWithSeed'
 // prettier-ignore
 const BASELINE_STICKER_POSITIONS = [
 	[15, 8],  [60, 8],
-	[15, 33], [60, 33],
+	[15, 32], [60, 32],
 	[15, 55], [60, 55],
 	[15, 78], [60, 78],
 ]
 const HORIZONTAL_DEVIATION = [-9, 9]
-const VERTICAL_DEVIATION = [-5, 4]
+const VERTICAL_DEVIATION = [-4, 4]
 const PAGE_TYPES = [PageType.Left, PageType.Right]
 
 export function getRandomGameTypes(random: RandomWithSeed): GameType[] {
@@ -74,12 +74,13 @@ export function generatePages(random: RandomWithSeed): Pages {
 
 	getRandomGameTypes(random).forEach((gameType) => {
 		let isLogoAlreadyAdded = false
+		const randomSideForSticker = getRandomPageType(random)
 
 		PAGE_TYPES.forEach((pageType) => {
 			const availableAreas = createAvailableAreas()
 			const stickers: Stickers = []
 
-			if (pageType === getRandomPageType(random) && !isLogoAlreadyAdded) {
+			if (pageType === randomSideForSticker && !isLogoAlreadyAdded) {
 				const [left, top] = getRandomStickerLocation(
 					availableAreas,
 					random
