@@ -1,6 +1,7 @@
 import { GameType, PageType } from '../../consts'
 import {
 	generatePages,
+	generateStickers,
 	getRandomGameTypes,
 	getRandomInBetween,
 	getRandomPageType,
@@ -61,5 +62,17 @@ describe('randomDataUtils', () => {
 
 		expect(pages[1].gameType).toBe(GameType.Megaball)
 		expect(pages[1].pageType).toBe(PageType.Right)
+	})
+
+	describe('generateStickers', () => {
+		it('should return random stickers from list', () => {
+			const random = createRandomWithSeed(123)
+
+			const stickers = generateStickers(random, 20)
+
+			expect(stickers).toHaveLength(20)
+
+			expect(stickers[0].gameType).toBe(GameType.Gonzo)
+		})
 	})
 })

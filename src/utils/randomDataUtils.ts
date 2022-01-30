@@ -29,6 +29,24 @@ export function getRandomInBetween(
 	return Math.floor(random() * (max - min + 1) + min)
 }
 
+const MARGIN = 3
+export function getRandomStickerLocation(
+	availableAreas: number[][],
+	random: RandomWithSeed
+): [number, number] {
+	let top = getRandomInBetween(random, MARGIN, 100 - MARGIN - 18)
+	let isAreaTaken = false
+	do {
+		availableAreas.push([top, top + 18])
+		isAreaTaken = availableAreas.every((el) => top < el[0] && top > el[1])
+		top = getRandomInBetween(random, MARGIN, 100 - MARGIN - 18)
+	} while (isAreaTaken)
+
+	let left = getRandomInBetween(random, MARGIN, 100 - MARGIN - 24)
+
+	return [top, left]
+}
+
 export function generatePages(random: RandomWithSeed): Pages {
 	const pages: Pages = []
 	let stickerNr = 1
@@ -37,32 +55,56 @@ export function generatePages(random: RandomWithSeed): Pages {
 		let isLogoAlreadyAdded = false
 		Object.values(PageType).forEach((pageType) => {
 			const stickers: Stickers = []
+			const availableAreas: number[][] = []
 
 			if (pageType === getRandomPageType(random) && !isLogoAlreadyAdded) {
+				const [top, left] = getRandomStickerLocation(
+					availableAreas,
+					random
+				)
 				stickers.push({
 					type: StickerType.Logo,
 					gameType: gameType,
 					isLogo: true,
 					isUsed: false,
 					isTurned: false,
-					top: getRandomInBetween(random, 4, 74),
-					left: getRandomInBetween(random, 4, 80),
+					top: top,
+					left: left,
 					nr: stickerNr++,
 				})
 				isLogoAlreadyAdded = true
+
+				console.log('logo', {
+					gameType,
+					pageType,
+					top,
+					left,
+					stickerNr: stickerNr - 1,
+				})
 			}
 
 			Array.from({ length: getRandomInBetween(random, 2, 5) }).forEach(
 				(_) => {
+					const [top, left] = getRandomStickerLocation(
+						availableAreas,
+						random
+					)
 					stickers.push({
 						type: StickerType.Dynamic,
 						gameType: gameType,
 						pageType: pageType,
 						isUsed: false,
 						isTurned: false,
-						top: getRandomInBetween(random, 4, 74),
-						left: getRandomInBetween(random, 4, 80),
+						top: top,
+						left: left,
 						nr: stickerNr++,
+					})
+					console.log('dynamic', {
+						gameType,
+						pageType,
+						top,
+						left,
+						stickerNr: stickerNr - 1,
 					})
 				}
 			)
@@ -78,4 +120,16 @@ export function generatePages(random: RandomWithSeed): Pages {
 	})
 
 	return pages
+}
+
+export function generateStickers(
+	random: RandomWithSeed,
+	count: number = 5
+): Stickers {
+	const pages = generatePages(random)
+	const stickers = pages.flatMap((p) => p.stickers)
+
+	return Array.from({ length: count }).map((_) => {
+		return stickers[Math.floor(random() * stickers.length)]
+	})
 }
