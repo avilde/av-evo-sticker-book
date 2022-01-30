@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { StickerPack } from '../../components/sticker/stickerPack/StickerPack'
+import { StickerPack } from '../../components/stickerPack/StickerPack'
 
 import { generateStickers } from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'

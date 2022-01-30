@@ -1,4 +1,4 @@
-import { createRandomWithSeed } from '../randomWithSeed'
+import { createRandomWithSeed } from './randomWithSeed'
 
 describe('randomWithSeed tests', () => {
 	it('should have the same random value 10_000 times', () => {

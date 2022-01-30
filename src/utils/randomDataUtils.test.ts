@@ -1,12 +1,13 @@
-import { GameType, PageType } from '../../consts'
+import { GameType, PageType } from '../consts'
 import {
+	createAvailableAreas,
 	generatePages,
 	generateStickers,
 	getRandomGameTypes,
 	getRandomInBetween,
 	getRandomPageType,
-} from '../randomDataUtils'
-import { createRandomWithSeed } from '../randomWithSeed'
+} from './randomDataUtils'
+import { createRandomWithSeed } from './randomWithSeed'
 
 describe('randomDataUtils', () => {
 	describe('getRandomGameTypes', () => {
@@ -72,7 +73,17 @@ describe('randomDataUtils', () => {
 
 			expect(stickers).toHaveLength(20)
 
-			expect(stickers[0].gameType).toBe(GameType.Gonzo)
+			expect(stickers[0].gameType).toBe(GameType.Megaball)
+			expect(stickers[stickers.length - 1].gameType).toBe(GameType.Gonzo)
+		})
+	})
+
+	describe('createAvailableAreas', () => {
+		it('should create available numbers with margin', () => {
+			const [topAreas, leftAreas] = createAvailableAreas()
+
+			expect(topAreas).toHaveLength(80)
+			expect(leftAreas).toHaveLength(73)
 		})
 	})
 })

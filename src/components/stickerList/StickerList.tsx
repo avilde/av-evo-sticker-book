@@ -16,9 +16,12 @@ export const StickerList: React.FC<StickerListProps> = observer(
 
 		return (
 			<div className="stickerList flex flex-col border overflow-y-auto overflow-x-hidden">
-				{stickers.map((sticker) => {
+				{stickers.map((sticker, index) => {
 					return (
-						<div className="sticker relative flex justify-center items-center my-1">
+						<div
+							key={index}
+							className="sticker relative flex justify-center items-center my-1"
+						>
 							{sticker.type === StickerType.Logo ? (
 								<LogoStickerComponent
 									key={sticker.nr}
