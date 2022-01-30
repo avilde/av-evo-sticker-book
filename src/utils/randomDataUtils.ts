@@ -2,10 +2,15 @@ import { GameType, PageType, StickerType } from '../consts'
 import { Page, Pages, Stickers } from '../state/types'
 import { RandomWithSeed } from './randomWithSeed'
 
-const PAGE_MARGIN_WIDTH = 3
-const PAGE_WIDTH = 100
-const STICKER_WIDTH = 20
-const STICKER_HEIGHT = 13
+// prettier-ignore
+const BASELINE_STICKER_POSITIONS = [
+	[15, 8],  [60, 8],
+	[15, 33], [60, 33],
+	[15, 55], [60, 55],
+	[15, 78], [60, 78],
+]
+const HORIZONTAL_DEVIATION = [-9, 9]
+const VERTICAL_DEVIATION = [-5, 4]
 const PAGE_TYPES = [PageType.Left, PageType.Right]
 
 export function getRandomGameTypes(random: RandomWithSeed): GameType[] {
@@ -35,45 +40,32 @@ export function getRandomInBetween(
 }
 
 export function getRandomStickerLocation(
-	topAreas: number[],
-	leftAreas: number[],
+	availableAreas: number[][],
 	random: RandomWithSeed
-): [number, number] {
-	const randomTop = topAreas[Math.floor(random() * topAreas.length)]
-	const randomLeft = leftAreas[Math.floor(random() * leftAreas.length)]
+): number[] {
+	const randomIndex = Math.floor(random() * availableAreas.length)
+	const randomArea = availableAreas.splice(randomIndex, 1)[0]
 
-	const topIndex = topAreas.findIndex((i) => i === randomTop)
-	topAreas.splice(topIndex - 6, STICKER_HEIGHT + 6)
+	const randomHorizontalAdjustment = getRandomInBetween(
+		random,
+		HORIZONTAL_DEVIATION[0],
+		HORIZONTAL_DEVIATION[1]
+	)
 
-	const leftIndex = leftAreas.findIndex((i) => i === randomLeft)
-	leftAreas.splice(leftIndex - 6, STICKER_WIDTH + 6)
+	const randomVerticalAdjustment = getRandomInBetween(
+		random,
+		VERTICAL_DEVIATION[0],
+		VERTICAL_DEVIATION[1]
+	)
 
-	return [randomTop, randomLeft]
+	randomArea[0] += randomHorizontalAdjustment
+	randomArea[1] += randomVerticalAdjustment
+
+	return randomArea
 }
 
-export function createAvailableAreas(
-	pageWidth: number = PAGE_WIDTH,
-	pageMarginWidth: number = PAGE_MARGIN_WIDTH,
-	stickerWidth: number = STICKER_WIDTH,
-	stickerHeight: number = STICKER_HEIGHT
-): number[][] {
-	const topAreas = Array.from({ length: pageWidth })
-		.map((_, i) => i)
-		.filter(
-			(i) =>
-				i > pageMarginWidth &&
-				i < PAGE_WIDTH - pageMarginWidth - stickerHeight
-		)
-
-	const leftAreas = Array.from({ length: pageWidth })
-		.map((_, i) => i)
-		.filter(
-			(i) =>
-				i > pageMarginWidth &&
-				i < PAGE_WIDTH - pageMarginWidth - stickerWidth
-		)
-
-	return [topAreas, leftAreas]
+export function createAvailableAreas(): number[][] {
+	return JSON.parse(JSON.stringify(BASELINE_STICKER_POSITIONS))
 }
 
 export function generatePages(random: RandomWithSeed): Pages {
@@ -84,13 +76,12 @@ export function generatePages(random: RandomWithSeed): Pages {
 		let isLogoAlreadyAdded = false
 
 		PAGE_TYPES.forEach((pageType) => {
-			const [topAreas, leftAreas] = createAvailableAreas()
+			const availableAreas = createAvailableAreas()
 			const stickers: Stickers = []
 
 			if (pageType === getRandomPageType(random) && !isLogoAlreadyAdded) {
-				const [top, left] = getRandomStickerLocation(
-					topAreas,
-					leftAreas,
+				const [left, top] = getRandomStickerLocation(
+					availableAreas,
 					random
 				)
 				stickers.push({
@@ -107,9 +98,8 @@ export function generatePages(random: RandomWithSeed): Pages {
 			}
 
 			Array.from({ length: 4 }).forEach((_) => {
-				const [top, left] = getRandomStickerLocation(
-					topAreas,
-					leftAreas,
+				const [left, top] = getRandomStickerLocation(
+					availableAreas,
 					random
 				)
 				stickers.push({
@@ -139,7 +129,7 @@ export function generatePages(random: RandomWithSeed): Pages {
 
 export function generateStickers(
 	random: RandomWithSeed,
-	count: number = 5
+	count: number
 ): Stickers {
 	const pages = generatePages(random)
 	const stickers = pages.flatMap((p) => p.stickers)

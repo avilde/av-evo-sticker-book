@@ -6,6 +6,7 @@ import {
 	getRandomGameTypes,
 	getRandomInBetween,
 	getRandomPageType,
+	getRandomStickerLocation,
 } from './randomDataUtils'
 import { createRandomWithSeed } from './randomWithSeed'
 
@@ -54,15 +55,17 @@ describe('randomDataUtils', () => {
 	})
 
 	describe('generatePages', () => {
-		const random = createRandomWithSeed(123)
+		it('should generate random pages', () => {
+			const random = createRandomWithSeed(123)
 
-		const pages = generatePages(random)
+			const pages = generatePages(random)
 
-		expect(pages[0].gameType).toBe(GameType.Megaball)
-		expect(pages[0].pageType).toBe(PageType.Left)
+			expect(pages[0].gameType).toBe(GameType.Megaball)
+			expect(pages[0].pageType).toBe(PageType.Left)
 
-		expect(pages[1].gameType).toBe(GameType.Megaball)
-		expect(pages[1].pageType).toBe(PageType.Right)
+			expect(pages[1].gameType).toBe(GameType.Megaball)
+			expect(pages[1].pageType).toBe(PageType.Right)
+		})
 	})
 
 	describe('generateStickers', () => {
@@ -74,16 +77,26 @@ describe('randomDataUtils', () => {
 			expect(stickers).toHaveLength(20)
 
 			expect(stickers[0].gameType).toBe(GameType.Megaball)
-			expect(stickers[stickers.length - 1].gameType).toBe(GameType.Gonzo)
+			expect(stickers[stickers.length - 1].gameType).toBe(GameType.Craps)
 		})
 	})
 
 	describe('createAvailableAreas', () => {
 		it('should create available numbers with margin', () => {
-			const [topAreas, leftAreas] = createAvailableAreas()
+			const areas = createAvailableAreas()
 
-			expect(topAreas).toHaveLength(80)
-			expect(leftAreas).toHaveLength(73)
+			expect(areas).toHaveLength(8)
+		})
+	})
+
+	describe('getRandomStickerLocation', () => {
+		it('should get random sticker location from available areas', () => {
+			const areas = createAvailableAreas()
+			const random = createRandomWithSeed(123)
+
+			expect(getRandomStickerLocation(areas, random)).toEqual([9, 77])
+			expect(getRandomStickerLocation(areas, random)).toEqual([58, 11])
+			expect(getRandomStickerLocation(areas, random)).toEqual([68, 80])
 		})
 	})
 })
