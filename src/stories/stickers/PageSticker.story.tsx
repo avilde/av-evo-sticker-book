@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react'
+import { noop } from 'lodash-es'
 import { PageStickerComponent } from '../../components/sticker/page/PageSticker'
 
 import { GameType } from '../../consts'
@@ -8,7 +9,13 @@ interface PageStickerStoryProps extends PageSticker {}
 
 export const PageStickerStory: Story<PageStickerStoryProps> = (props) => (
 	<div className="relative bg-slate-400 w-96 h-80">
-		<PageStickerComponent {...props} top={20} left={15} />
+		<PageStickerComponent
+			{...props}
+			top={20}
+			left={15}
+			applySticker={noop}
+			isVisible={true}
+		/>
 	</div>
 )
 PageStickerStory.args = {

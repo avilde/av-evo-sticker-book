@@ -12,6 +12,7 @@ export interface PageComponentProps extends Page {
 	currentPage: number
 	setCurrentPage: (index: number) => void
 	zIndex: number
+	applySticker: (pageIndex: number, nr: number) => void
 }
 
 export const PageComponent: React.FC<PageComponentProps> = ({
@@ -22,6 +23,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	currentPage,
 	setCurrentPage,
 	stickers,
+	applySticker,
 }) => {
 	const theme = gameThemeMapping[gameType]
 	const isOdd = index % 2 === 0
@@ -57,7 +59,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	const pageTurnerClasses = cn(
 		'pageTurner pointer-events-auto',
 		isOdd ? 'right-0' : 'left-0',
-		'bottom-0 top-0 w-20 h-full absolute cursor-pointer',
+		'bottom-0 top-0 w-12 h-full absolute cursor-pointer',
 		isOdd
 			? 'hover:bg-gradient-to-l from-black'
 			: 'hover:bg-gradient-to-r from-black',
@@ -72,6 +74,12 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 						key={stickerIndex}
 						{...sticker}
 						className="sticker"
+						isVisible={isPreviewEnabled}
+						applySticker={applySticker.bind(
+							this,
+							index - 1,
+							sticker.nr
+						)}
 					/>
 				))}
 			</div>

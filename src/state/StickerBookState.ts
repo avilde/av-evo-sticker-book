@@ -1,22 +1,22 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, observable } from 'mobx'
 import { RandomWithSeed } from '../utils/randomWithSeed'
-import { Pages, Sticker, Stickers } from './types'
+import { Page, Pages, Sticker, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
 
 	constructor(public pages: Pages, private random: RandomWithSeed) {
-		makeAutoObservable(this, undefined, { autoBind: true })
+		makeAutoObservable(
+			this,
+			{ pages: observable.shallow },
+			{ autoBind: true }
+		)
 
 		this.pages = pages
 
 		this.availableStickers.forEach((s) => {
 			this.stickerCountMap[s.nr] = 0
 		})
-	}
-
-	private get availableStickers(): Stickers {
-		return this.pages.flatMap((p) => p.stickers)
 	}
 
 	public findSticker(nr: number): Sticker {
@@ -31,11 +31,38 @@ export class StickerBookState {
 				]
 			})
 			.flatMap((s) => s.nr)
-		console.log(newStickerIds)
 		newStickerIds.forEach(this.increaseStickerCount)
+	}
+
+	public applySticker(pageIndex: number, nr: number): void {
+		if (this.stickerCountMap[nr] === 0) {
+			return
+		}
+
+		const page: Page = JSON.parse(JSON.stringify(this.pages[pageIndex]))
+
+		const stickerIdx = page.stickers.findIndex((s) => s.nr === nr)
+		const sticker = this.findSticker(nr)
+
+		page.stickers[stickerIdx] = {
+			...sticker,
+			isUsed: true,
+		}
+
+		this.pages[pageIndex] = page
+
+		this.decreaseStickerCount(nr)
 	}
 
 	private increaseStickerCount(nr: number) {
 		this.stickerCountMap[nr]++
+	}
+
+	private decreaseStickerCount(nr: number) {
+		this.stickerCountMap[nr]--
+	}
+
+	private get availableStickers(): Stickers {
+		return this.pages.flatMap((p) => p.stickers)
 	}
 }

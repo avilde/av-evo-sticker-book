@@ -15,7 +15,7 @@ export interface StickerBookProps {
 
 export const StickerBook: React.FC<StickerBookProps> = observer(
 	({ stickerBookState, className }) => {
-		const { pages } = stickerBookState
+		const { pages, applySticker } = stickerBookState
 		const [currentPage, setCurrentPage] = React.useState<number>(-1)
 
 		return (
@@ -40,6 +40,7 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
 								stickers={page.stickers}
+								applySticker={applySticker}
 							/>
 						)
 					})}

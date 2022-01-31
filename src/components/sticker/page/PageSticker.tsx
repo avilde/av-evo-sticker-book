@@ -7,6 +7,8 @@ import { PageSticker } from '../../../state/types'
 import './PageSticker.css'
 
 export interface PageStickerProps extends PageSticker {
+	applySticker: () => void
+	isVisible: boolean
 	className?: string
 }
 
@@ -17,12 +19,15 @@ export const PageStickerComponent: React.FC<PageStickerProps> = ({
 	nr,
 	isLogo,
 	gameType,
+	applySticker,
+	isVisible,
 	className,
 }) => {
 	const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 	const stickerClasses = cn(
 		'pageSticker',
 		isUsed ? 'shadow-sm shadow-black' : null,
+		!isUsed && isVisible ? 'cursor-pointer pointer-events-auto' : null,
 		borderSizes,
 		isLogo ? 'logoBorder' : 'border-white',
 		className
@@ -52,7 +57,11 @@ export const PageStickerComponent: React.FC<PageStickerProps> = ({
 	)
 
 	return (
-		<div className={stickerClasses} style={stickerStyle}>
+		<div
+			className={stickerClasses}
+			style={stickerStyle}
+			onClick={() => !isUsed && isVisible && applySticker()}
+		>
 			{!isUsed ? (
 				<div className={stickerNumberClassNames}>{nr}</div>
 			) : null}
