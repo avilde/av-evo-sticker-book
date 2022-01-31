@@ -5,13 +5,13 @@
 @layer utilities {
 	@variants responsive {
 		.text-shadow {
-			text-shadow: 2px 2px 4px black;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 		}
 		.text-shadow-md {
-			text-shadow: 4px 4px 8px black;
+			text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
 		}
 		.text-shadow-lg {
-			text-shadow: 15px 15px 30px black;
+			text-shadow: 15px 15px 30px rgba(0, 0, 0, 0.7);
 		}
 		.text-shadow-none {
 			text-shadow: none;

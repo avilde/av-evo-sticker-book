@@ -11,9 +11,8 @@ interface StickerBookStoryProps {
 export const StickerBookStory: Story<StickerBookStoryProps> = ({
 	randomSeed,
 }) => {
-	const state = new StickerBookState(
-		generatePages(createRandomWithSeed(randomSeed))
-	)
+	const random = createRandomWithSeed(randomSeed)
+	const state = new StickerBookState(generatePages(random), random)
 
 	return (
 		<div>

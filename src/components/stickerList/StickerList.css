@@ -1,16 +1,16 @@
 .stickerList {
 	width: 16.69em;
-	max-height: 50vh;
+	max-height: 70vh;
 }
 
-.stickerList > .sticker {
+.stickerList > .stickers > .sticker {
 	width: auto;
 	line-height: 11em;
 	height: 11em;
 	font-size: 0.8em;
 }
 
-.stickerList > .sticker.disabled {
+.stickerList > .stickers > .sticker.disabled {
 	pointer-events: none;
 	opacity: ;
 }
@@ -21,7 +21,7 @@
 	pointer-events: none;
 }
 
-.stickerList > .sticker.disabled > .stickerListSticker {
+.stickerList > .stickers > .sticker.disabled > .stickerListSticker {
 	opacity: 0.5;
 	filter: grayscale(1);
 }

@@ -12,6 +12,19 @@
 	transform: rotateY(0deg);
 }
 
+.frontCover::after {
+	width: 1vh;
+	height: 100%;
+	content: '';
+	position: absolute;
+	left: 0;
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.3) 0%,
+		rgba(255, 255, 255, 0) 100%
+	);
+}
+
 .frontCover:hover {
 	transform: rotateY(-20deg);
 	filter: saturate(1.1);
@@ -22,13 +35,19 @@
 	transform: rotateY(-180deg);
 }
 
-.textContainer {
+.frontCover .textContainer {
 	position: absolute;
 	top: 39%;
 	opacity: 0.8;
 }
 
-.coverText {
+.frontCover .coverText {
 	position: absolute;
 	top: 39%;
+	transition: text-shadow 1.5s ease-out;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.frontCover:hover .coverText {
+	text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5);
 }

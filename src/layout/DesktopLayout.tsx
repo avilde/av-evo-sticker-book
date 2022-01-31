@@ -12,7 +12,7 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = ({
 	stickerBookState,
 }) => {
 	return (
-		<div className="desktopLayout flex w-full h-full">
+		<div className="desktopLayout flex w-full h-full relative">
 			<StickerBook
 				stickerBookState={stickerBookState}
 				className="desktopStickerBook"

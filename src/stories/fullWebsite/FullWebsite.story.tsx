@@ -10,8 +10,7 @@ interface FullGameStoryProps {
 
 export const FullWebsiteStory: Story<FullGameStoryProps> = ({ randomSeed }) => {
 	const random = createRandomWithSeed(randomSeed)
-	const pages = generatePages(random)
-	const state = new StickerBookState(pages)
+	const state = new StickerBookState(generatePages(random), random)
 
 	return (
 		<div>

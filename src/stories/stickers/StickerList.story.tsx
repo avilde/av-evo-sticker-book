@@ -5,17 +5,14 @@ import { generatePages } from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
 interface StickerListStoryProps {
-	count: number
 	randomSeed: number
 }
 
 export const StickerListStory: Story<StickerListStoryProps> = ({
-	count,
 	randomSeed,
 }) => {
-	const state = new StickerBookState(
-		generatePages(createRandomWithSeed(randomSeed))
-	)
+	const random = createRandomWithSeed(randomSeed)
+	const state = new StickerBookState(generatePages(random), random)
 
 	return (
 		<div className="w-64 h-full">
@@ -24,7 +21,6 @@ export const StickerListStory: Story<StickerListStoryProps> = ({
 	)
 }
 StickerListStory.args = {
-	count: 5,
 	randomSeed: 123,
 }
 StickerListStory.storyName = 'Sticker list'
