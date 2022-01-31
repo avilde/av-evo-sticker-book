@@ -10,11 +10,18 @@
 	font-size: 0.8em;
 }
 
-.stickerList > .sticker > .stickerCount {
+.stickerList > .sticker.disabled {
+	pointer-events: none;
+	opacity: ;
 }
 
 .stickerList .stickerListSticker {
 	position: static;
 	display: flex;
 	pointer-events: none;
+}
+
+.stickerList > .sticker.disabled > .stickerListSticker {
+	opacity: 0.5;
+	filter: grayscale(1);
 }

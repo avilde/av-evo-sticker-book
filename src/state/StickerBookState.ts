@@ -1,18 +1,26 @@
 import { makeAutoObservable } from 'mobx'
-import { Pages, Stickers } from './types'
+import { Pages, Sticker, Stickers } from './types'
 
 export class StickerBookState {
-	public stickers: Stickers = []
+	public stickerCountMap: Record<number, number> = {}
 
 	public pages: Pages
 
 	constructor(pages: Pages) {
-		makeAutoObservable(this)
+		makeAutoObservable(this, undefined, { autoBind: true })
 
 		this.pages = pages
+
+		this.availableStickers.forEach((s) => {
+			this.stickerCountMap[s.nr] = 0
+		})
 	}
 
-	public get availableStickers(): Stickers {
+	private get availableStickers(): Stickers {
 		return this.pages.flatMap((p) => p.stickers)
+	}
+
+	public getSticker(nr: number): Sticker {
+		return this.availableStickers.find((s) => s.nr === nr)!
 	}
 }

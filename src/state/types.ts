@@ -20,6 +20,7 @@ export interface LogoSticker extends PageSticker {
 	isTurned?: boolean
 }
 
+export type Sticker = DynamicSticker | LogoSticker
 export type Stickers = (DynamicSticker | LogoSticker)[]
 
 export interface Page {
