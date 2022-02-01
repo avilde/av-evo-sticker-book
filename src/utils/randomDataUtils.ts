@@ -10,7 +10,7 @@ const BASELINE_STICKER_POSITIONS = [
 	[15, 78], [60, 78],
 ]
 const HORIZONTAL_DEVIATION = [-9, 9]
-const VERTICAL_DEVIATION = [-4, 4]
+const VERTICAL_DEVIATION = [-3, 3]
 const PAGE_TYPES = [PageType.Left, PageType.Right]
 
 export function getRandomGameTypes(random: RandomWithSeed): GameType[] {

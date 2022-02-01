@@ -33,6 +33,7 @@ export type Pages = Page[]
 
 export interface GameTheme {
 	borderColor: string
+	textColor: string
 	textDecorationColor: string
 	logoFrameColor: string
 }

@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { observer } from 'mobx-react-lite'
-import { StickerType } from '../../consts'
+import { gameThemeMapping, StickerType } from '../../consts'
 import { StickerBookState } from '../../state/StickerBookState'
 import { DynamicStickerComponent } from '../sticker/dynamic/DynamicSticker'
 import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
@@ -19,16 +19,17 @@ export const StickerList: React.FC<StickerListProps> = observer(
 		return (
 			<div
 				className={cn(
-					'stickerList ml-4 mt-16',
-					'flex flex-col',
+					'stickerList',
+					'flex flex-col ml-4 mt-16',
 					className
 				)}
 			>
-				<div className="buyButton mb-3 flex justify-center items-center">
+				<div className="mb-3 flex justify-center items-center">
 					<button
 						className={cn(
 							'bg-blue-500 shadow-lg shadow-blue-100',
-							'py-2 px-4 text-white rounded-lg',
+							'py-2 px-4 rounded-lg',
+							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
 						onClick={() => getStickers()}
@@ -41,6 +42,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					{Object.keys(stickerCountMap).map((nr) => {
 						const sticker = findSticker(+nr)
 						const count = stickerCountMap[+nr]
+						const theme = gameThemeMapping[sticker.gameType]
 
 						return (
 							<div
@@ -67,31 +69,31 @@ export const StickerList: React.FC<StickerListProps> = observer(
 									<div
 										className={cn(
 											'stickerCount',
-											'absolute',
-											'w-8 lg:w-10',
-											'h-6 lg:h-8',
-											'right-4',
-											'bottom-4',
-											'text-sm md:text-baseline lg:text-lg xl:text-xl',
-											'font-semibold shadow-sm shadow-black',
-											'text-white text-center bg-slate-800'
+											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4',
+											'w-4 h-4',
+											'text-[10px]',
+											'bg-slate-800 shadow-sm shadow-black',
+											'text-white text-center font-semibold'
 										)}
 									>
-										{count}
+										x{count}
 									</div>
 								) : null}
 
 								<div
 									className={cn(
 										'stickerNumber',
-										'absolute',
-										'w-6 lg:w-8',
-										'h-6 lg:h-8',
-										'left-2',
-										'top-2',
+										'absolute left-2 top-2',
+										'w-6 h-6 lg:w-8 lg:h-8',
 										'text-sm md:text-baseline lg:text-lg xl:text-xl',
 										'font-semibold font-mono',
-										'text-white text-center text-shadow'
+										'text-center text-shadow-md underline rounded-full border',
+										count === 0
+											? 'grayscale bg-gray-500'
+											: 'bg-black',
+										theme.textDecorationColor,
+										theme.textColor,
+										theme.borderColor
 									)}
 								>
 									{nr}
