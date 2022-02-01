@@ -4,6 +4,7 @@ import { Page, Pages, Sticker, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
+	public stickerPackCount = 0
 
 	constructor(public pages: Pages, private random: RandomWithSeed) {
 		makeAutoObservable(
@@ -32,6 +33,7 @@ export class StickerBookState {
 			})
 			.flatMap((s) => s.nr)
 		newStickerIds.forEach(this.increaseStickerCount)
+		this.stickerPackCount++
 	}
 
 	public applySticker(pageIndex: number, nr: number): void {

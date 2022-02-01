@@ -14,7 +14,8 @@ interface StickerListProps {
 
 export const StickerList: React.FC<StickerListProps> = observer(
 	({ stickerBookState, className }) => {
-		const { stickerCountMap, findSticker, getStickers } = stickerBookState
+		const { stickerCountMap, findSticker, getStickers, stickerPackCount } =
+			stickerBookState
 
 		return (
 			<div
@@ -24,7 +25,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					className
 				)}
 			>
-				<div className="mb-3 flex justify-center items-center">
+				<div className="mb-3 flex flex-col justify-center items-center">
 					<button
 						className={cn(
 							'bg-blue-500 shadow-lg shadow-blue-100',
@@ -36,6 +37,10 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					>
 						Get more stickers
 					</button>
+
+					<div className="text-sm select-none">
+						Sticker packs opened: {stickerPackCount}
+					</div>
 				</div>
 
 				<div className="stickers flex flex-col border overflow-y-auto overflow-x-hidden">

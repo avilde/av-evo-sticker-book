@@ -1,3 +1,3 @@
-export { FullWebsiteStory as FullWebsite } from './FullWebsite.story'
+export { FullWebsiteStory as FullWebsite } from './Desktop.story'
 
 export default { title: 'Full website' }

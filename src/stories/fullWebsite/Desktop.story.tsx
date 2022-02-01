@@ -21,4 +21,4 @@ export const FullWebsiteStory: Story<FullGameStoryProps> = ({ randomSeed }) => {
 FullWebsiteStory.args = {
 	randomSeed: 123,
 }
-FullWebsiteStory.storyName = 'Full website'
+FullWebsiteStory.storyName = 'Desktop'
