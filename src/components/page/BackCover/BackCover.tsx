@@ -12,20 +12,17 @@ export interface BackCoverProps {
 export const BackCover: React.FC<BackCoverProps> = ({ isTurned, onClick }) => {
 	const backCoverClasses = cn(
 		'backCover',
-		'border',
-		'border-black',
+		'border border-black',
 		'cursor-pointer',
 		'relative',
-		{
-			isTurned: isTurned,
-		}
+		{ isTurned: isTurned }
 	)
 
 	const backCoverStyle = {
 		backgroundImage: `url(${backCoverPath})`,
 	} as React.CSSProperties
 
-	const textSizeClasses = 'sm: text-sm md:text-baseline'
+	const textSizeClasses = 'text-[12px] sm:text-sm md:text-baseline'
 
 	return (
 		<div

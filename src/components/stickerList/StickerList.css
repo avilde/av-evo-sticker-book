@@ -12,7 +12,6 @@
 
 .stickerList > .stickers > .sticker.disabled {
 	pointer-events: none;
-	opacity: ;
 }
 
 .stickerList .stickerListSticker {

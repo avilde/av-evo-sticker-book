@@ -31,7 +31,7 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 	} as React.CSSProperties
 
 	const textSizeClasses =
-		'sm: text-sm md:text-lg lg:text-2xl xl:text-4xl 2xl:text-4xl'
+		'text-sm md:text-lg lg:text-2xl xl:text-4xl 2xl:text-4xl'
 
 	return (
 		<div
@@ -42,7 +42,7 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 			<span
 				className={cn(
 					'textContainer',
-					'w-full h-16 shadow-xl shadow-sky-200',
+					'w-full h-10 lg:h-16 shadow-xl shadow-sky-200',
 					'flex items-center justify-center',
 					'bg-gradient-to-r from-slate-100 to-sky-700'
 				)}
@@ -50,9 +50,9 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 			<span
 				className={cn(
 					'coverText',
-					'w-full h-16 border-t border-b border-black',
+					'w-full h-10 lg:h-16 border-t border-b border-black',
 					'flex items-center justify-center',
-					'text-black  px-2 text-center font-semibold',
+					'text-black px-2 text-center font-semibold',
 					textSizeClasses
 				)}
 			>
