@@ -1,21 +1,21 @@
 import { GameType, PageType } from '../consts'
 
-import dreamCatcherLeftPath from './backgrounds/dreamCatcherLeft.png'
-import dreamCatcherRightPath from './backgrounds/dreamCatcherRight.png'
-import megaballLeftPath from './backgrounds/megaballLeft.png'
-import megaballRightPath from './backgrounds/megaballRight.png'
-import crapsLeftPath from './backgrounds/crapsLeft.png'
-import crapsRightPath from './backgrounds/crapsRight.png'
-import gonzoLeftPath from './backgrounds/gonzoLeft.png'
-import gonzoRightPath from './backgrounds/gonzoRight.png'
-import rouletteLeftPath from './backgrounds/rouletteLeft.png'
-import rouletteRightPath from './backgrounds/rouletteRight.png'
+import dreamCatcherLeftPath from './backgrounds/dreamCatcherLeft.webp'
+import dreamCatcherRightPath from './backgrounds/dreamCatcherRight.webp'
+import megaballLeftPath from './backgrounds/megaballLeft.webp'
+import megaballRightPath from './backgrounds/megaballRight.webp'
+import crapsLeftPath from './backgrounds/crapsLeft.webp'
+import crapsRightPath from './backgrounds/crapsRight.webp'
+import gonzoLeftPath from './backgrounds/gonzoLeft.webp'
+import gonzoRightPath from './backgrounds/gonzoRight.webp'
+import rouletteLeftPath from './backgrounds/rouletteLeft.webp'
+import rouletteRightPath from './backgrounds/rouletteRight.webp'
 
-import crapsLogoPath from './logos/crapsLogo.png'
-import dreamCatcherLogoPath from './logos/dreamCatcherLogo.png'
-import gonzoLogoPath from './logos/gonzoLogo.png'
-import megaBallLogoPath from './logos/megaBallLogo.png'
-import rouletteLogoPath from './logos/rouletteLogo.png'
+import crapsLogoPath from './logos/crapsLogo.webp'
+import dreamCatcherLogoPath from './logos/dreamCatcherLogo.webp'
+import gonzoLogoPath from './logos/gonzoLogo.webp'
+import megaBallLogoPath from './logos/megaBallLogo.webp'
+import rouletteLogoPath from './logos/rouletteLogo.webp'
 
 import { PartialRecord } from '../types'
 
@@ -43,13 +43,13 @@ export const logoPathMapping: PartialRecord<GameType, string> = {
 
 // TODO: missing background images
 /*
-import blackJackLogoPath from './logos/blackJackLogo.png'
-import cashOrCrashLogoPath from './logos/cashOrCrashLogo.png'
-import crazyTimeLogoPath from './logos/crazyTimeLogo.png'
-import holdemLogoPath from './logos/holdemLogo.png'
-import lightningDiceLogoPath from './logos/lightningDiceLogo.png'
-import monopolyLogoPath from './logos/monopolyLogo.png'
-import sicBoLogoPath from './logos/sicBoLogo.png'
+import blackJackLogoPath from './logos/blackJackLogo.webp'
+import cashOrCrashLogoPath from './logos/cashOrCrashLogo.webp'
+import crazyTimeLogoPath from './logos/crazyTimeLogo.webp'
+import holdemLogoPath from './logos/holdemLogo.webp'
+import lightningDiceLogoPath from './logos/lightningDiceLogo.webp'
+import monopolyLogoPath from './logos/monopolyLogo.webp'
+import sicBoLogoPath from './logos/sicBoLogo.webp'
 
 [GameType.BlackJack]: blackJackLogoPath,
 [GameType.CashOrCrash]: cashOrCrashLogoPath,
