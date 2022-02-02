@@ -15,8 +15,8 @@ export interface StickerBookProps {
 
 export const StickerBook: React.FC<StickerBookProps> = observer(
 	({ stickerBookState, className }) => {
-		const { pages, applySticker } = stickerBookState
-		const [currentPage, setCurrentPage] = React.useState<number>(-1)
+		const { pages, applySticker, currentPage, setCurrentPage } =
+			stickerBookState
 
 		return (
 			<div className={cn('stickerBook select-none', className)}>

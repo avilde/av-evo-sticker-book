@@ -14,14 +14,19 @@ interface StickerListProps {
 
 export const StickerList: React.FC<StickerListProps> = observer(
 	({ stickerBookState, className }) => {
-		const { stickerCountMap, findSticker, getStickers, stickerPackCount } =
-			stickerBookState
+		const {
+			stickerCountMap,
+			findSticker,
+			getStickers,
+			stickerPackCount,
+			setCurrentSticker,
+		} = stickerBookState
 
 		return (
 			<div
 				className={cn(
 					'stickerList',
-					'flex flex-col ml-4 mt-16',
+					'flex flex-col ml-4 mt-16 relative',
 					className
 				)}
 			>
@@ -55,8 +60,12 @@ export const StickerList: React.FC<StickerListProps> = observer(
 								className={cn(
 									'sticker',
 									'relative flex justify-center items-center my-1',
+									count === 0
+										? 'pointer-events-none'
+										: 'cursor-pointer',
 									{ disabled: count === 0 }
 								)}
+								onClick={() => setCurrentSticker(sticker)}
 							>
 								{sticker.type === StickerType.Logo ? (
 									<LogoStickerComponent

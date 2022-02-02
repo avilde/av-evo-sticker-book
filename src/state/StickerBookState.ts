@@ -1,15 +1,21 @@
-import { makeAutoObservable, observable } from 'mobx'
+import { action, makeAutoObservable, observable } from 'mobx'
 import { RandomWithSeed } from '../utils/randomWithSeed'
 import { Page, Pages, Sticker, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
 	public stickerPackCount = 0
+	public currentSticker: Sticker | null = null
+	public currentPage = -1
 
 	constructor(public pages: Pages, private random: RandomWithSeed) {
 		makeAutoObservable(
 			this,
-			{ pages: observable.shallow },
+			{
+				pages: observable.shallow,
+				setCurrentSticker: action.bound,
+				setCurrentPage: action.bound,
+			},
 			{ autoBind: true }
 		)
 
@@ -56,11 +62,19 @@ export class StickerBookState {
 		this.decreaseStickerCount(nr)
 	}
 
-	private increaseStickerCount(nr: number) {
+	public setCurrentSticker(sticker: Sticker | null): void {
+		this.currentSticker = sticker ? sticker : null
+	}
+
+	public setCurrentPage(pageNr: number) {
+		this.currentPage = pageNr
+	}
+
+	private increaseStickerCount(nr: number): void {
 		this.stickerCountMap[nr]++
 	}
 
-	private decreaseStickerCount(nr: number) {
+	private decreaseStickerCount(nr: number): void {
 		this.stickerCountMap[nr]--
 	}
 
