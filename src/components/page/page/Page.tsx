@@ -68,7 +68,13 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 
 	return (
 		<div className={pageClasses} style={pageStyle}>
-			<div className="stickerLayer select-none pointer-events-none">
+			<div
+				className={cn(
+					'stickerLayer',
+					'select-none pointer-events-none',
+					{ isOdd: isOdd, isEven: !isOdd }
+				)}
+			>
 				{stickers?.map((sticker, stickerIndex) => (
 					<PageStickerComponent
 						key={stickerIndex}
