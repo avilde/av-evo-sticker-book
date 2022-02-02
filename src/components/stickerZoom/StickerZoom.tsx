@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { observer } from 'mobx-react-lite'
 import { StickerType } from '../../consts'
 import { StickerBookState } from '../../state/StickerBookState'
+import { Sticker } from '../../state/types'
 import { DynamicStickerComponent } from '../sticker/dynamic/DynamicSticker'
 import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
 
@@ -16,6 +17,14 @@ export const StickerZoom: React.FC<StickerZoomProps> = observer(
 		const { currentSticker, setCurrentSticker } = stickerBookState
 
 		if (!currentSticker) return null
+
+		function turnAroundSticker() {
+			if (!currentSticker) return
+
+			const newSticker: Sticker = { ...currentSticker }
+			newSticker.isTurned = !newSticker.isTurned
+			setCurrentSticker(newSticker)
+		}
 
 		return (
 			<div className="stickerZoom fixed w-full h-full pointer-events-auto">
@@ -39,9 +48,9 @@ export const StickerZoom: React.FC<StickerZoomProps> = observer(
 						role="button"
 						className={cn(
 							'closeButton',
-							'absolute flex justify-center items-center -top-6 -right-6',
-							'w-6 h-6 rounded-full bg-white shadow-black shadow-md rotate-45',
-							'text-center font-semibold text-xl pb-1',
+							'absolute flex justify-center items-center -top-2 -right-2 lg:-top-10 lg:-right-10',
+							'w-6 h-6 lg:w-10 lg:h-10 rounded-full bg-white shadow-black shadow-md rotate-45',
+							'text-center font-semibold text-lg md:text-4xl pb-1 md:pb-2',
 							'hover:scale-105 hover:shadow-lg hover:shadow-black'
 						)}
 						onClick={() => setCurrentSticker(null)}
@@ -58,9 +67,7 @@ export const StickerZoom: React.FC<StickerZoomProps> = observer(
 							'text-white text-[10px] sm:text-sm',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
-						onClick={() => {
-							currentSticker.isTurned = !currentSticker.isTurned
-						}}
+						onClick={turnAroundSticker}
 					>
 						Turn around
 					</button>

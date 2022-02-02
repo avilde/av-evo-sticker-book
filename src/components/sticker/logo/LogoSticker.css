@@ -66,8 +66,3 @@
 .logoSticker > .side.back.isTurned {
 	transform: rotateY(0deg);
 }
-
-.logoSticker .stickerNumber {
-	top: 6%;
-	left: 35%;
-}

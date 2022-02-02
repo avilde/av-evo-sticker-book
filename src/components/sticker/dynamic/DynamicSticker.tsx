@@ -50,10 +50,10 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 			backgroundImage: `url(${stickerBacksidePath})`,
 		} as React.CSSProperties
 
-		const pageNumberClassNames = cn(
+		const stickerNumberClassNames = cn(
 			'stickerNumber',
-			'absolute w-20 h-10',
-			'font-extrabold text-2xl font-mono text-gray-50 text-center'
+			'absolute top-0 left-0 md:pt-1 lg:pt-2 w-full h-full flex justify-center items-start',
+			'font-extrabold text-[2vw] font-mono text-gray-50 text-center select-none'
 		)
 
 		return (
@@ -66,7 +66,7 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 					className={backSideClassNames}
 					style={stickerBacksideStyle}
 				>
-					<div className={pageNumberClassNames}>{nr}</div>
+					<div className={stickerNumberClassNames}>{nr}</div>
 				</div>
 			</div>
 		)

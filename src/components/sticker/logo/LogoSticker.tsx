@@ -51,8 +51,8 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 
 	const pageNumberClassNames = cn(
 		'stickerNumber',
-		'absolute w-20 h-8 flex items-center justify-center',
-		'font-extrabold text-2xl font-mono text-center'
+		'absolute top-0 left-0 md:pt-1 lg:pt-2 w-full h-full flex justify-center items-start',
+		'font-extrabold text-[2vw] font-mono text-gray-50 text-center select-none'
 	)
 
 	return (
