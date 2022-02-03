@@ -14,7 +14,7 @@ export interface StickerPackProps {
 	className?: string
 }
 
-export const StickerPack: React.FC<StickerPackProps> = ({
+export const StickerPackComponent: React.FC<StickerPackProps> = ({
 	stickers,
 	isUsed,
 	isTurned,

@@ -1,12 +1,15 @@
 import { action, makeAutoObservable, observable } from 'mobx'
 import { RandomWithSeed } from '../utils/randomWithSeed'
-import { Page, Pages, Sticker, Stickers } from './types'
+import { Page, Pages, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
 	public stickerPackCount = 0
+
 	public currentSticker: Sticker | null = null
 	public currentPage = -1
+	// TODO: create an array of sticker packs which can be opened later.
+	public currentStickerPack: StickerPack | null = null
 
 	constructor(public pages: Pages, private random: RandomWithSeed) {
 		makeAutoObservable(
@@ -30,16 +33,14 @@ export class StickerBookState {
 		return this.availableStickers.find((s) => s.nr === nr)!
 	}
 
-	public getStickers(): void {
-		const newStickerIds = Array.from({ length: 5 })
-			.map((_) => {
-				return this.availableStickers[
-					Math.floor(this.random() * this.availableStickers.length)
-				]
-			})
-			.flatMap((s) => s.nr)
-		newStickerIds.forEach(this.increaseStickerCount)
+	public getStickers(): Stickers {
 		this.stickerPackCount++
+
+		return Array.from({ length: 5 }).map((_) => {
+			return this.availableStickers[
+				Math.floor(this.random() * this.availableStickers.length)
+			]
+		})
 	}
 
 	public applySticker(pageIndex: number, nr: number): void {
@@ -63,13 +64,22 @@ export class StickerBookState {
 	}
 
 	public setCurrentSticker(sticker: Sticker | null): void {
-		this.currentSticker = sticker ? sticker : null
+		this.currentSticker = sticker
 	}
 
 	public setCurrentPage(pageNr: number) {
 		this.currentPage = pageNr
 	}
 
+	public setCurrentStickerPack(stickerPack: StickerPack | null) {
+		this.currentStickerPack = stickerPack
+	}
+
+	public getNewStickerPack(): StickerPack {
+		return {} as StickerPack
+		// TODO: implement adding new sticker pack to array
+	}
+	// TODO: when a sticker pack is opened then increase stickers count
 	private increaseStickerCount(nr: number): void {
 		this.stickerCountMap[nr]++
 	}

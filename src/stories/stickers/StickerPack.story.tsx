@@ -1,5 +1,5 @@
 import { Story } from '@storybook/react'
-import { StickerPack } from '../../components/stickerPack/StickerPack'
+import { StickerPackComponent } from '../../components/stickerPack/StickerPack'
 
 import { generateStickers } from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'
@@ -20,7 +20,7 @@ export const StickerPackStory: Story<StickerPackStoryProps> = ({
 
 	return (
 		<div className="w-80 h-80">
-			<StickerPack
+			<StickerPackComponent
 				stickers={stickers}
 				isTurned={isTurned}
 				isUsed={isUsed}

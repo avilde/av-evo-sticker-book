@@ -23,6 +23,12 @@ export interface LogoSticker extends PageSticker {
 export type Sticker = DynamicSticker | LogoSticker
 export type Stickers = (DynamicSticker | LogoSticker)[]
 
+export interface StickerPack {
+	isUsed: boolean
+	isTurned: boolean
+	stickers: Stickers
+}
+
 export interface Page {
 	pageType: PageType
 	gameType: GameType
