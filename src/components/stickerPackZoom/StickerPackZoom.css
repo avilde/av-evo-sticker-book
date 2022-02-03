@@ -1,24 +1,24 @@
-.stickerZoom {
+.stickerPackZoom {
 	z-index: 1000;
 	background-color: rgba(0, 0, 0, 0.5);
 	width: 100vw;
 	height: 100vh;
 }
 
-.stickerZoom > .stickerContainer {
+.stickerPackZoom > .stickerPackContainer {
 	top: 30%;
 	left: 30%;
-	width: 16.69em;
-	height: 11em;
+	width: 25vw;
+	height: 20vw;
 	font-size: 1vw;
 }
 
-.stickerZoom > .stickerContainer > .sticker {
+.stickerPackZoom > .stickerPackContainer > .sticker {
 	width: 100%;
 	height: 100%;
 }
 
-.stickerZoom > .stickerContainer > .sticker > .stickerZoomSticker {
+.stickerPackZoom > .stickerPackContainer > .sticker > .stickerPackZoomSticker {
 	position: static;
 	width: inherit;
 	height: inherit;

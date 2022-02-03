@@ -1,3 +1,3 @@
-export { FullWebsiteStory as FullWebsite } from './Desktop.story'
+export { DesktopLayoutStory as DesktopLayout } from './Desktop.story'
 
 export default { title: 'Full website' }

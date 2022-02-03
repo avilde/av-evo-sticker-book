@@ -1,26 +1,34 @@
 import { Story } from '@storybook/react'
-import { DesktopLayout } from '../../layout/DesktopLayout'
+import { StickerZoom } from '../../components/stickerZoom/StickerZoom'
 import { StickerBookState } from '../../state/StickerBookState'
 import { generatePages } from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
-interface FullGameStoryProps {
+interface StickerZoomStoryProps {
 	randomSeed: number
 }
 
-export const DesktopLayoutStory: Story<FullGameStoryProps> = ({
+export const StickerZoomStory: Story<StickerZoomStoryProps> = ({
 	randomSeed,
 }) => {
 	const random = createRandomWithSeed(randomSeed)
 	const state = new StickerBookState(generatePages(random), random)
 
+	state.setCurrentSticker(state.getStickers()[0])
+
 	return (
-		<div>
-			<DesktopLayout stickerBookState={state} />
+		<div
+			style={{
+				position: 'relative',
+				width: '100%',
+				height: '100%',
+			}}
+		>
+			<StickerZoom stickerBookState={state} />
 		</div>
 	)
 }
-DesktopLayoutStory.args = {
+StickerZoomStory.args = {
 	randomSeed: 123,
 }
-DesktopLayoutStory.storyName = 'Desktop'
+StickerZoomStory.storyName = 'Sticker zoom'

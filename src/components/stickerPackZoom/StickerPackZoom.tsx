@@ -25,7 +25,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 		}
 
 		return (
-			<div className="stickerPackZoom fixed w-full h-full pointer-events-auto">
+			<div className="stickerPackZoom relative fixed w-full h-full pointer-events-auto">
 				<div className="stickerPackContainer absolute flex justify-center items-center">
 					<div className="stickerPack absolute">
 						<StickerPackComponent {...currentStickerPack} />

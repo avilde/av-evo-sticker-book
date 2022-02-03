@@ -4,6 +4,7 @@ import { gameThemeMapping, StickerType } from '../../consts'
 import { StickerBookState } from '../../state/StickerBookState'
 import { DynamicStickerComponent } from '../sticker/dynamic/DynamicSticker'
 import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
+import stickerPackMiniPath from '../../assets/stickerPackMini.png'
 
 import './StickerList.css'
 
@@ -18,7 +19,8 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			stickerCountMap,
 			findSticker,
 			getStickers,
-			stickerPackCount,
+			stickerPacksAcquired,
+			stickerPacksOpened,
 			setCurrentSticker,
 		} = stickerBookState
 
@@ -26,25 +28,55 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			<div
 				className={cn(
 					'stickerList',
-					'flex flex-col ml-4 mt-16 relative',
+					'flex flex-col justify-center align-center ml-4 relative',
 					className
 				)}
 			>
+				<div
+					className={cn(
+						'stickerPackButton',
+						'flex w-32 h-24 self-center items-center my-2 relative',
+						'bg-contain bg-no-repeat select-none',
+						stickerPacksAcquired === 0
+							? 'pointer-events-none grayscale opacity-50'
+							: 'cursor-pointer hover:scale-110'
+					)}
+					style={{
+						backgroundImage: `url(${stickerPackMiniPath})`,
+					}}
+					title="Open sticker pack"
+				>
+					{stickerPacksAcquired > 0 ? (
+						<div
+							className={cn(
+								'stickerPacksAcquired',
+								'absolute bottom-2 right-4',
+								'w-4 h-4',
+								'text-[10px] select-none',
+								'bg-slate-800 shadow-sm shadow-black',
+								'text-white text-center font-semibold'
+							)}
+						>
+							x{stickerPacksAcquired}
+						</div>
+					) : null}
+				</div>
+
 				<div className="mb-3 flex flex-col justify-center items-center">
 					<button
 						className={cn(
 							'bg-blue-500 shadow-lg shadow-blue-100',
 							'py-2 px-4 rounded-lg',
-							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg',
+							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg select-none',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
 						onClick={() => getStickers()}
 					>
-						Get more stickers
+						Get more sticker packs
 					</button>
 
 					<div className="text-sm select-none">
-						Sticker packs opened: {stickerPackCount}
+						Sticker packs opened: {stickerPacksOpened}
 					</div>
 				</div>
 
@@ -85,7 +117,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 											'stickerCount',
 											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4',
 											'w-4 h-4',
-											'text-[10px]',
+											'text-[10px] select-none',
 											'bg-slate-800 shadow-sm shadow-black',
 											'text-white text-center font-semibold'
 										)}
@@ -99,7 +131,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 										'stickerNumber',
 										'absolute left-2 top-2',
 										'w-6 h-6 lg:w-8 lg:h-8',
-										'text-sm md:text-baseline lg:text-lg xl:text-xl',
+										'text-sm md:text-baseline lg:text-lg xl:text-xl select-none',
 										'font-semibold font-mono',
 										'text-center text-shadow-md underline rounded-full border',
 										count === 0

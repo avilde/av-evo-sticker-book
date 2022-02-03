@@ -1,5 +1,9 @@
 .stickerList {
 	width: 13vw;
+	max-height: 100vh;
+}
+
+.stickerList > .stickers {
 	max-height: 70vh;
 }
 

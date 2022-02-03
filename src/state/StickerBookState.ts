@@ -4,12 +4,15 @@ import { Page, Pages, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
-	public stickerPackCount = 0
-
+	public stickerPacksAcquired = 0
+	// TODO: increase counter
+	public stickerPacksOpened = 0
 	public currentSticker: Sticker | null = null
+
 	public currentPage = -1
 	// TODO: create an array of sticker packs which can be opened later.
 	public currentStickerPack: StickerPack | null = null
+	public stickerPacks: StickerPack[] = []
 
 	constructor(public pages: Pages, private random: RandomWithSeed) {
 		makeAutoObservable(
@@ -34,7 +37,7 @@ export class StickerBookState {
 	}
 
 	public getStickers(): Stickers {
-		this.stickerPackCount++
+		this.stickerPacksAcquired++
 
 		return Array.from({ length: 5 }).map((_) => {
 			return this.availableStickers[
@@ -75,9 +78,13 @@ export class StickerBookState {
 		this.currentStickerPack = stickerPack
 	}
 
-	public getNewStickerPack(): StickerPack {
-		return {} as StickerPack
-		// TODO: implement adding new sticker pack to array
+	public getNewStickerPack(): void {
+		const newStickerPack: StickerPack = {
+			isTurned: false,
+			isUsed: false,
+			stickers: this.getStickers(),
+		}
+		this.stickerPacks.unshift(newStickerPack)
 	}
 	// TODO: when a sticker pack is opened then increase stickers count
 	private increaseStickerCount(nr: number): void {
