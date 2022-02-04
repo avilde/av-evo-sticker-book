@@ -30,3 +30,18 @@
 .stickerPack > .side.back.isTurned {
 	transform: rotateY(0deg);
 }
+
+.stickerPack > .sticker {
+	width: 20vw;
+	height: 12vw;
+	top: 15%;
+	left: 10%;
+}
+
+.stickerPack .stickerPackSticker {
+	width: inherit;
+	height: inherit;
+	position: static;
+	display: flex;
+	pointer-events: none;
+}

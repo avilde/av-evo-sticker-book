@@ -10,7 +10,7 @@ export class StickerBookState {
 	public currentSticker: Sticker | null = null
 
 	public currentPage = -1
-	// TODO: create an array of sticker packs which can be opened later.
+
 	public currentStickerPack: StickerPack | null = null
 	public stickerPacks: StickerPack[] = []
 
@@ -20,6 +20,7 @@ export class StickerBookState {
 			{
 				pages: observable.shallow,
 				setCurrentSticker: action.bound,
+				setCurrentStickerPack: action.bound,
 				setCurrentPage: action.bound,
 			},
 			{ autoBind: true }
@@ -37,8 +38,6 @@ export class StickerBookState {
 	}
 
 	public getStickers(): Stickers {
-		this.stickerPacksAcquired++
-
 		return Array.from({ length: 5 }).map((_) => {
 			return this.availableStickers[
 				Math.floor(this.random() * this.availableStickers.length)
@@ -85,6 +84,7 @@ export class StickerBookState {
 			stickers: this.getStickers(),
 		}
 		this.stickerPacks.unshift(newStickerPack)
+		this.stickerPacksAcquired++
 	}
 	// TODO: when a sticker pack is opened then increase stickers count
 	private increaseStickerCount(nr: number): void {

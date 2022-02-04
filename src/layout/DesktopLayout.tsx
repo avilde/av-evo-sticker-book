@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import { StickerBook } from '../components/stickerBook/StickerBook'
 import { StickerList } from '../components/stickerList/StickerList'
+import { StickerPackZoom } from '../components/stickerPackZoom/StickerPackZoom'
 import { StickerZoom } from '../components/stickerZoom/StickerZoom'
 import { StickerBookState } from '../state/StickerBookState'
 
@@ -12,10 +13,10 @@ interface DesktopLayoutProps {
 
 export const DesktopLayout: React.FC<DesktopLayoutProps> = observer(
 	({ stickerBookState }) => {
-		const { currentSticker } = stickerBookState
+		const { currentSticker, currentStickerPack } = stickerBookState
 
 		return (
-			<div className="desktopLayout flex w-full h-full relative">
+			<div className="desktopLayout flex w-full h-full fixed top-0 left-0">
 				<StickerBook
 					stickerBookState={stickerBookState}
 					className="desktopStickerBook"
@@ -28,6 +29,10 @@ export const DesktopLayout: React.FC<DesktopLayoutProps> = observer(
 
 				{currentSticker ? (
 					<StickerZoom stickerBookState={stickerBookState} />
+				) : null}
+
+				{currentStickerPack ? (
+					<StickerPackZoom stickerBookState={stickerBookState} />
 				) : null}
 			</div>
 		)

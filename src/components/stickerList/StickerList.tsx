@@ -18,10 +18,12 @@ export const StickerList: React.FC<StickerListProps> = observer(
 		const {
 			stickerCountMap,
 			findSticker,
-			getStickers,
+			getNewStickerPack,
 			stickerPacksAcquired,
 			stickerPacksOpened,
 			setCurrentSticker,
+			stickerPacks,
+			setCurrentStickerPack,
 		} = stickerBookState
 
 		return (
@@ -35,7 +37,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div
 					className={cn(
 						'stickerPackButton',
-						'flex w-32 h-24 self-center items-center my-2 relative',
+						'flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center mb-2 relative',
 						'bg-contain bg-no-repeat select-none',
 						stickerPacksAcquired === 0
 							? 'pointer-events-none grayscale opacity-50'
@@ -45,12 +47,13 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						backgroundImage: `url(${stickerPackMiniPath})`,
 					}}
 					title="Open sticker pack"
+					onClick={() => setCurrentStickerPack(stickerPacks[0])}
 				>
 					{stickerPacksAcquired > 0 ? (
 						<div
 							className={cn(
 								'stickerPacksAcquired',
-								'absolute bottom-2 right-4',
+								'absolute bottom-4 right-2',
 								'w-4 h-4',
 								'text-[10px] select-none',
 								'bg-slate-800 shadow-sm shadow-black',
@@ -66,11 +69,11 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					<button
 						className={cn(
 							'bg-blue-500 shadow-lg shadow-blue-100',
-							'py-2 px-4 rounded-lg',
+							'py-2 px-2 lg:px-4 rounded-lg',
 							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg select-none',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
-						onClick={() => getStickers()}
+						onClick={() => getNewStickerPack()}
 					>
 						Get more sticker packs
 					</button>
