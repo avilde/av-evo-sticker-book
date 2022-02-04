@@ -21,7 +21,9 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 		if (!currentStickerPack) return null
 
 		const isOpenStickerDisabled =
-			isOpenDisabled || currentStickerPack.isUsed
+			currentStickerPack.isTurned ||
+			isOpenDisabled ||
+			currentStickerPack.isUsed
 
 		function turnAroundStickerPack() {
 			if (!currentStickerPack) return
@@ -68,8 +70,8 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 					<div className="flex justify-center items-center absolute -bottom-12">
 						<button
 							className={cn(
-								'bg-blue-500 shadow-lg shadow-blue-100',
 								'flex',
+								'bg-blue-500 shadow-md',
 								'py-2 px-2 rounded-lg',
 								'text-white text-[10px] sm:text-sm',
 								'hover:shadow-blue-300 hover:scale-105'
@@ -82,10 +84,10 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 						<button
 							className={cn(
 								'flex',
-								'ml-2 py-2 px-2 rounded-lg',
+								'ml-2 py-2 px-2 rounded-lg shadow-md',
 								'text-white text-[10px] sm:text-sm',
 								!isOpenStickerDisabled
-									? 'hover:shadow-blue-300 hover:scale-105 bg-blue-500 shadow-lg shadow-blue-100'
+									? 'hover:shadow-blue-300 hover:scale-105 bg-blue-500'
 									: 'grayscale-0 bg-gray-200 text-black',
 								'disabled:opacity-75'
 							)}
