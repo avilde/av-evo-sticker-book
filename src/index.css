@@ -20,6 +20,8 @@
 :root {
 	--page-width: 40vw;
 	--page-height: 45vw;
+	--sticker-width: 12vw;
+	--sticker-height: 8vw;
 }
 
 html,

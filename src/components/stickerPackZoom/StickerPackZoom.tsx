@@ -14,8 +14,14 @@ interface StickerPackZoomProps {
 
 export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 	({ stickerBookState }) => {
-		const { currentStickerPack, setCurrentStickerPack } = stickerBookState
-		const [isOpenDisabled, setIsOpenDisabled] = React.useState<boolean>()
+		const {
+			currentStickerPack,
+			setCurrentStickerPack,
+			decreaseStickerPacksAcquired,
+			increaseStickerPacksOpened,
+			updateStickerCount,
+		} = stickerBookState
+		const [isOpenDisabled, setIsOpenDisabled] = React.useState(false)
 		const [timeoutMap] = React.useState<TimeoutMap>(new TimeoutMap())
 
 		if (!currentStickerPack) return null
@@ -32,7 +38,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 
 			timeoutMap.addTimeout({
 				uniqueId: 'unblock-open-button',
-				timer: 800 /* sticker pack rotate animation duration */,
+				timer: 600,
 				callback: () => {
 					setIsOpenDisabled(false)
 				},
@@ -46,47 +52,68 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 		function openStickerPack() {
 			if (!currentStickerPack) return
 
-			stickerBookState.decreaseStickerPacksAcquired()
-			stickerBookState.increaseStickerPacksOpened()
+			decreaseStickerPacksAcquired()
+			increaseStickerPacksOpened()
 
 			const newStickerPack: StickerPack = { ...currentStickerPack }
 			newStickerPack.isUsed = true
 			setCurrentStickerPack(newStickerPack)
 		}
 
-		function updateStickerCount() {
+		function updateStickerList() {
 			if (!currentStickerPack) return
 
-			stickerBookState.updateStickerCount()
+			updateStickerCount()
 		}
 
+		const stickerPackZoomClassNames = cn(
+			'stickerPackZoom',
+			'absolute fixed w-full h-full',
+			'pointer-events-auto',
+			{ isUsed: currentStickerPack.isUsed }
+		)
+
+		const closeButtonClassNames = cn(
+			'closeButton',
+			'flex justify-center items-center',
+			'absolute -top-2 -right-2 lg:-top-10 lg:-right-10',
+			'w-6 h-6 lg:w-10 lg:h-10 rounded-full bg-white shadow-black shadow-md rotate-45',
+			'text-center font-semibold text-lg md:text-4xl pb-1 md:pb-2',
+			'hover:scale-105 hover:shadow-lg hover:shadow-black'
+		)
+
+		const turnAroundClassNames = cn(
+			'flex',
+			'bg-blue-500 shadow-md',
+			'py-2 px-2 rounded-lg',
+			'text-white text-[10px] sm:text-sm',
+			'hover:shadow-blue-300 hover:scale-105'
+		)
+
+		const openStickerPackClassNames = cn(
+			'flex',
+			'ml-2 py-2 px-2 rounded-lg shadow-md',
+			'text-white text-[10px] sm:text-sm',
+			!isOpenStickerDisabled
+				? 'hover:shadow-blue-300 hover:scale-105 bg-blue-500'
+				: 'grayscale-0 bg-gray-200 text-black',
+			'disabled:opacity-75'
+		)
+
 		return (
-			<div
-				className={cn(
-					'stickerPackZoom',
-					'absolute fixed w-full h-full',
-					'pointer-events-auto',
-					{ isUsed: currentStickerPack.isUsed }
-				)}
-			>
+			<div className={stickerPackZoomClassNames}>
 				<div className="stickerPackContainer absolute flex justify-center items-center">
 					<div className="stickerPack absolute">
 						<StickerPackComponent
 							{...currentStickerPack}
-							updateStickerCount={updateStickerCount}
+							updateStickerCount={updateStickerList}
 						/>
 					</div>
 
 					<div
 						title="Close"
 						role="button"
-						className={cn(
-							'closeButton',
-							'absolute flex justify-center items-center -top-2 -right-2 lg:-top-10 lg:-right-10',
-							'w-6 h-6 lg:w-10 lg:h-10 rounded-full bg-white shadow-black shadow-md rotate-45',
-							'text-center font-semibold text-lg md:text-4xl pb-1 md:pb-2',
-							'hover:scale-105 hover:shadow-lg hover:shadow-black'
-						)}
+						className={closeButtonClassNames}
 						onClick={() => setCurrentStickerPack(null)}
 						style={{ opacity: !currentStickerPack.isUsed ? 1 : 0 }}
 					>
@@ -101,28 +128,14 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 						}}
 					>
 						<button
-							className={cn(
-								'flex',
-								'bg-blue-500 shadow-md',
-								'py-2 px-2 rounded-lg',
-								'text-white text-[10px] sm:text-sm',
-								'hover:shadow-blue-300 hover:scale-105'
-							)}
+							className={turnAroundClassNames}
 							onClick={turnAroundStickerPack}
 						>
 							Turn around
 						</button>
 
 						<button
-							className={cn(
-								'flex',
-								'ml-2 py-2 px-2 rounded-lg shadow-md',
-								'text-white text-[10px] sm:text-sm',
-								!isOpenStickerDisabled
-									? 'hover:shadow-blue-300 hover:scale-105 bg-blue-500'
-									: 'grayscale-0 bg-gray-200 text-black',
-								'disabled:opacity-75'
-							)}
+							className={openStickerPackClassNames}
 							onClick={openStickerPack}
 							disabled={isOpenStickerDisabled}
 						>

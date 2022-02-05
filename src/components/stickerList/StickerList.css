@@ -8,8 +8,8 @@
 }
 
 .stickerList > .stickers > .sticker {
-	width: 12vw;
-	height: 8vw;
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 }
 
 .stickerList > .stickers > .sticker.disabled {
@@ -17,8 +17,8 @@
 }
 
 .stickerList .stickerListSticker {
-	width: 12vw;
-	height: 8vw;
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 	position: static;
 	display: flex;
 	pointer-events: none;

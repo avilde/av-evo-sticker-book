@@ -1,8 +1,7 @@
 .dynamicSticker {
 	position: absolute;
-	width: 16.69em;
-	height: 11em;
-}
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 
 .dynamicSticker > .side {
 	transition: transform 0.8s ease;

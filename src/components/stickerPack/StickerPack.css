@@ -32,8 +32,8 @@
 }
 
 .stickerPack > .sticker {
-	width: 15em;
-	height: 10em;
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 	top: 25%;
 	left: 10%;
 }

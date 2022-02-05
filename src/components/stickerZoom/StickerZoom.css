@@ -8,9 +8,8 @@
 .stickerZoom > .stickerContainer {
 	top: 30%;
 	left: 30%;
-	width: 16.69em;
-	height: 11em;
-	font-size: 1vw;
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 }
 
 .stickerZoom > .stickerContainer > .sticker {
