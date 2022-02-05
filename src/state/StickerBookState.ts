@@ -5,14 +5,14 @@ import { Page, Pages, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
-	public stickerPacksAcquired = 0
-	public stickerPacksOpened = 0
 	public currentSticker: Sticker | null = null
 
 	public currentPage = -1
 
 	public currentStickerPack: StickerPack | null = null
 	public stickerPacks: StickerPack[] = []
+	public stickerPacksAcquired = 0
+	public stickerPacksOpened = 0
 
 	public timeoutMap = new TimeoutMap()
 
