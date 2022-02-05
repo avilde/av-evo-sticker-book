@@ -44,7 +44,7 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 
 		const stickerFrontStyle = {
 			backgroundImage: `url(${backgroundImage})`,
-			backgroundPosition: `${top}% ${left}%`,
+			backgroundPosition: `${left * 1.6}% ${top * 1.3}%`,
 			transform: `rotateY(${isTurned ? '180deg' : '0deg'})`,
 		} as React.CSSProperties
 

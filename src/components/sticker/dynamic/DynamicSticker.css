@@ -2,6 +2,7 @@
 	position: absolute;
 	width: var(--sticker-width);
 	height: var(--sticker-height);
+}
 
 .dynamicSticker > .side {
 	transition: transform 0.8s ease;
@@ -19,8 +20,11 @@
 }
 
 .dynamicSticker > .side.front {
-	background-size: 200% 400%;
+	background-size: calc(1704px * 0.5) calc(1912px * 0.45);
+	background-origin: border-box;
+	background-repeat: no-repeat;
 }
+
 .dynamicSticker > .side.front.isTurned {
 	transform: rotateY(180deg);
 }
