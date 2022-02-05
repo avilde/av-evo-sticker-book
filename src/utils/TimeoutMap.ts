@@ -12,7 +12,7 @@ export class TimeoutMap {
 	private timeoutMap: { [key in string]?: InternalTimeoutItem } = {}
 
 	public addTimeout(item: TimeoutItem): void {
-		if (item.uniqueId in this.timeoutMap) {
+		if (this.isTimeoutActive(item.uniqueId)) {
 			this.removeTimeout(item.uniqueId)
 		}
 
@@ -29,6 +29,7 @@ export class TimeoutMap {
 
 	public removeTimeout(id: string): void {
 		const item = this.timeoutMap[id]
+		// istanbul ignore else
 		if (item) {
 			window.clearTimeout(item.timeoutId)
 			delete this.timeoutMap[id]

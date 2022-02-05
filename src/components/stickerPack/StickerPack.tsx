@@ -9,7 +9,7 @@ import './StickerPack.css'
 import { StickerType } from '../../consts'
 import { DynamicStickerComponent } from '../sticker/dynamic/DynamicSticker'
 import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
-import { TimeoutMap } from '../../utils/Timeout'
+import { TimeoutMap } from '../../utils/TimeoutMap'
 
 export interface StickerPackProps {
 	stickers: Stickers

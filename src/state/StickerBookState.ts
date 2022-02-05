@@ -1,6 +1,6 @@
 import { action, makeAutoObservable, observable } from 'mobx'
 import { RandomWithSeed } from '../utils/randomWithSeed'
-import { TimeoutMap } from '../utils/Timeout'
+import { TimeoutMap } from '../utils/TimeoutMap'
 import { Page, Pages, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {

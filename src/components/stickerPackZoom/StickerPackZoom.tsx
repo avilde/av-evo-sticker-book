@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StickerBookState } from '../../state/StickerBookState'
 import { StickerPack } from '../../state/types'
-import { TimeoutMap } from '../../utils/Timeout'
+import { TimeoutMap } from '../../utils/TimeoutMap'
 import { StickerPackComponent } from '../stickerPack/StickerPack'
 
 import './StickerPackZoom.css'
