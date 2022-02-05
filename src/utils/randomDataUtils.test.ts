@@ -95,8 +95,8 @@ describe('randomDataUtils', () => {
 			const random = createRandomWithSeed(123)
 
 			expect(getRandomStickerLocation(areas, random)).toEqual([9, 78])
-			expect(getRandomStickerLocation(areas, random)).toEqual([58, 11])
-			expect(getRandomStickerLocation(areas, random)).toEqual([68, 81])
+			expect(getRandomStickerLocation(areas, random)).toEqual([58, 10])
+			expect(getRandomStickerLocation(areas, random)).toEqual([68, 80])
 		})
 	})
 })
