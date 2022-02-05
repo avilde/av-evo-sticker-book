@@ -32,9 +32,9 @@
 }
 
 .stickerPack > .sticker {
-	width: 20vw;
-	height: 12vw;
-	top: 15%;
+	width: 15em;
+	height: 10em;
+	top: 25%;
 	left: 10%;
 }
 
@@ -44,4 +44,61 @@
 	position: static;
 	display: flex;
 	pointer-events: none;
+}
+
+.stickerPack.isUsed {
+	perspective: 0;
+	transform-style: flat;
+}
+
+.stickerPack.isUsed > .side.front {
+	animation: stickerPackKeyframes 1.5s ease-in-out forwards;
+}
+
+.stickerPack.isUsed > .sticker {
+	animation: revealKeyframes 0.7s ease-in-out forwards;
+}
+
+.stickerPack.isUsed > .sticker.flyAway {
+	animation: flyAwayKeyframes 0.5s ease-out forwards;
+}
+
+@keyframes revealKeyframes {
+	from {
+		transform: translateX(0%);
+	}
+
+	to {
+		transform: translateX(-60%);
+	}
+}
+
+@keyframes stickerPackKeyframes {
+	0% {
+		tranform: initial;
+	}
+
+	30% {
+		transform: translateX(70%) scale(1) rotate(0);
+	}
+
+	100% {
+		transform: translate(300%, -200%) scale(0.1) rotate(1000deg);
+	}
+}
+
+@keyframes flyAwayKeyframes {
+	0% {
+		transform: translateX(-60%);
+	}
+
+	70% {
+		transform: translateX(45vw);
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(45vw);
+	}
 }

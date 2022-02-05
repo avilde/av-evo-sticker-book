@@ -8,16 +8,18 @@ import { DynamicSticker } from '../../../state/types'
 
 export interface DynamicStickerComponentProps extends DynamicSticker {
 	className?: string
+	style?: React.CSSProperties
 }
 
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
-	({ pageType, gameType, top, left, isTurned, className, nr }) => {
+	({ pageType, gameType, top, left, isTurned, className, nr, style }) => {
 		const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
 		const stickerStyle = {
 			top: `${top}%`,
 			left: `${left}%`,
+			...style,
 		} as React.CSSProperties
 
 		const frontSideClassName = cn(

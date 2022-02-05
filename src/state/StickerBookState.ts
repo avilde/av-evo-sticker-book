@@ -1,11 +1,11 @@
 import { action, makeAutoObservable, observable } from 'mobx'
 import { RandomWithSeed } from '../utils/randomWithSeed'
+import { TimeoutMap } from '../utils/Timeout'
 import { Page, Pages, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {
 	public stickerCountMap: Record<number, number> = {}
 	public stickerPacksAcquired = 0
-	// TODO: increase counter
 	public stickerPacksOpened = 0
 	public currentSticker: Sticker | null = null
 
@@ -13,6 +13,8 @@ export class StickerBookState {
 
 	public currentStickerPack: StickerPack | null = null
 	public stickerPacks: StickerPack[] = []
+
+	public timeoutMap = new TimeoutMap()
 
 	constructor(public pages: Pages, private random: RandomWithSeed) {
 		makeAutoObservable(
@@ -22,6 +24,7 @@ export class StickerBookState {
 				setCurrentSticker: action.bound,
 				setCurrentStickerPack: action.bound,
 				setCurrentPage: action.bound,
+				updateStickerCount: action.bound,
 			},
 			{ autoBind: true }
 		)
@@ -69,12 +72,33 @@ export class StickerBookState {
 		this.currentSticker = sticker
 	}
 
-	public setCurrentPage(pageNr: number) {
+	public setCurrentPage(pageNr: number): void {
 		this.currentPage = pageNr
 	}
 
 	public setCurrentStickerPack(stickerPack: StickerPack | null) {
 		this.currentStickerPack = stickerPack
+	}
+
+	public updateStickerCount(): void {
+		if (!this.currentStickerPack) return
+
+		this.currentStickerPack.stickers.forEach((sticker, index) => {
+			this.timeoutMap.addTimeout({
+				uniqueId: String(sticker.nr),
+				timer: index * 300,
+				callback: () => this.increaseStickerCount(sticker.nr),
+			})
+		})
+
+		this.timeoutMap.addTimeout({
+			uniqueId: 'hide-sticker-zoom',
+			timer: 1500,
+			callback: () => {
+				this.setCurrentStickerPack(null)
+				this.stickerPacks.splice(0, 1)
+			},
+		})
 	}
 
 	public getNewStickerPack(): void {
@@ -86,7 +110,15 @@ export class StickerBookState {
 		this.stickerPacks.unshift(newStickerPack)
 		this.stickerPacksAcquired++
 	}
-	// TODO: when a sticker pack is opened then increase stickers count
+
+	public decreaseStickerPacksAcquired(): void {
+		this.stickerPacksAcquired--
+	}
+
+	public increaseStickerPacksOpened(): void {
+		this.stickerPacksOpened++
+	}
+
 	private increaseStickerCount(nr: number): void {
 		this.stickerCountMap[nr]++
 	}

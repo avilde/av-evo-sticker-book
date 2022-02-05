@@ -8,6 +8,7 @@ import { LogoSticker } from '../../../state/types'
 
 export interface LogoStickerComponentProps extends LogoSticker {
 	className?: string
+	style?: React.CSSProperties
 }
 
 export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
@@ -15,14 +16,16 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 	isTurned,
 	top,
 	left,
-	className,
 	nr,
+	className,
+	style,
 }) => {
 	const stickerClasses = cn('logoSticker', className)
 
 	const stickerStyle = {
 		top: `${top}%`,
 		left: `${left}%`,
+		...style,
 	} as React.CSSProperties
 
 	const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'

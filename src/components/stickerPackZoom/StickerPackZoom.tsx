@@ -43,13 +43,38 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 			setCurrentStickerPack(newStickerPack)
 		}
 
-		function openStickerPack() {}
+		function openStickerPack() {
+			if (!currentStickerPack) return
+
+			stickerBookState.decreaseStickerPacksAcquired()
+			stickerBookState.increaseStickerPacksOpened()
+
+			const newStickerPack: StickerPack = { ...currentStickerPack }
+			newStickerPack.isUsed = true
+			setCurrentStickerPack(newStickerPack)
+		}
+
+		function updateStickerCount() {
+			if (!currentStickerPack) return
+
+			stickerBookState.updateStickerCount()
+		}
 
 		return (
-			<div className="stickerPackZoom relative fixed w-full h-full pointer-events-auto">
+			<div
+				className={cn(
+					'stickerPackZoom',
+					'absolute fixed w-full h-full',
+					'pointer-events-auto',
+					{ isUsed: currentStickerPack.isUsed }
+				)}
+			>
 				<div className="stickerPackContainer absolute flex justify-center items-center">
 					<div className="stickerPack absolute">
-						<StickerPackComponent {...currentStickerPack} />
+						<StickerPackComponent
+							{...currentStickerPack}
+							updateStickerCount={updateStickerCount}
+						/>
 					</div>
 
 					<div
@@ -63,11 +88,18 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 							'hover:scale-105 hover:shadow-lg hover:shadow-black'
 						)}
 						onClick={() => setCurrentStickerPack(null)}
+						style={{ opacity: !currentStickerPack.isUsed ? 1 : 0 }}
 					>
 						+
 					</div>
 
-					<div className="flex justify-center items-center absolute -bottom-12">
+					<div
+						className="flex justify-center items-center absolute -bottom-20"
+						style={{
+							opacity: !currentStickerPack.isUsed ? 1 : 0,
+							transition: 'opacity 0.5s linear',
+						}}
+					>
 						<button
 							className={cn(
 								'flex',

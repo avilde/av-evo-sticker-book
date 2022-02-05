@@ -9,11 +9,13 @@ import './StickerPack.css'
 import { StickerType } from '../../consts'
 import { DynamicStickerComponent } from '../sticker/dynamic/DynamicSticker'
 import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
+import { TimeoutMap } from '../../utils/Timeout'
 
 export interface StickerPackProps {
 	stickers: Stickers
 	isUsed: boolean
 	isTurned: boolean
+	updateStickerCount: () => void
 	className?: string
 }
 
@@ -21,9 +23,19 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 	stickers,
 	isUsed,
 	isTurned,
+	updateStickerCount,
 	className,
 }) => {
-	const stickerPackClasses = cn('stickerPack', className)
+	const [startFlyAway, setStartFlyAway] = React.useState(false)
+	const [updateStickers, setUpdateStickers] = React.useState(false)
+	const [timeoutMap] = React.useState<TimeoutMap>(new TimeoutMap())
+
+	const stickerPackClasses = cn(
+		'stickerPack',
+		className,
+		{ isUsed: isUsed },
+		isUsed ? 'absolute' : null
+	)
 
 	const frontSideClassName = cn('front', 'side', 'shadow-xl', {
 		isTurned: isTurned,
@@ -35,13 +47,37 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 
 	const frontSideStyle = {
 		backgroundImage: `url(${frontSidePath})`,
-		zIndex: isTurned ? 0 : 6,
+		zIndex: isUsed ? 6 : 0,
 	} as React.CSSProperties
 
 	const backSideStyle = {
 		backgroundImage: `url(${backSidePath})`,
-		zIndex: isTurned ? 0 : 6,
+		display: isUsed ? 'none' : 'block',
 	} as React.CSSProperties
+
+	if (isUsed && !startFlyAway) {
+		timeoutMap.addTimeout({
+			uniqueId: 'fly-away',
+			timer: 1000,
+			callback: () => {
+				setStartFlyAway(true)
+			},
+		})
+	}
+
+	if (startFlyAway && !updateStickers) {
+		setUpdateStickers(true)
+	}
+
+	if (isUsed && startFlyAway && updateStickers) {
+		timeoutMap.addTimeout({
+			uniqueId: 'update-stickers',
+			timer: 100,
+			callback: () => {
+				updateStickerCount()
+			},
+		})
+	}
 
 	return (
 		<div className={stickerPackClasses}>
@@ -51,23 +87,31 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 					return (
 						<div
 							key={index}
-							className={cn(
-								'sticker',
-								'absolute',
-								'top-50',
-								'left-50'
-							)}
-							style={{ zIndex: stickers.length - index }}
+							className={cn('sticker', 'absolute', {
+								flyAway: startFlyAway,
+							})}
+							style={{
+								zIndex: stickers.length - index,
+								animationDelay: startFlyAway
+									? `${index * 0.3}s`
+									: `${index * 0.01}s`,
+							}}
 						>
 							{sticker.type === StickerType.Logo ? (
 								<LogoStickerComponent
 									{...sticker}
 									className="stickerPackSticker"
+									style={{
+										transform: `rotate(${index * 3}deg)`,
+									}}
 								/>
 							) : (
 								<DynamicStickerComponent
 									{...sticker}
 									className="stickerPackSticker"
+									style={{
+										transform: `rotate(${index * -3}deg)`,
+									}}
 								/>
 							)}
 						</div>

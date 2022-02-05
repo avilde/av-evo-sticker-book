@@ -1,4 +1,5 @@
 import { Story } from '@storybook/react'
+import noop from 'lodash-es/noop'
 import { StickerPackComponent } from '../../components/stickerPack/StickerPack'
 
 import { generateStickers } from '../../utils/randomDataUtils'
@@ -24,6 +25,7 @@ export const StickerPackStory: Story<StickerPackStoryProps> = ({
 				stickers={stickers}
 				isTurned={isTurned}
 				isUsed={isUsed}
+				updateStickerCount={noop}
 			/>
 		</div>
 	)
