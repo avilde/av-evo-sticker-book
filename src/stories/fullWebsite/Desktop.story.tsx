@@ -4,11 +4,11 @@ import { StickerBookState } from '../../state/StickerBookState'
 import { generatePages } from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
-interface FullGameStoryProps {
+interface DesktopLayoutStoryProps {
 	randomSeed: number
 }
 
-export const DesktopLayoutStory: Story<FullGameStoryProps> = ({
+export const DesktopLayoutStory: Story<DesktopLayoutStoryProps> = ({
 	randomSeed,
 }) => {
 	const random = createRandomWithSeed(randomSeed)
