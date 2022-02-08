@@ -48,8 +48,7 @@ export const StickerZoom: React.FC<StickerZoomProps> = observer(
 		const closeButtonClassNames = cn(
 			'closeButton',
 			'flex justify-center items-center',
-			' absolute -top-4 -right-4 lg:-top-10 lg:-right-10',
-			'w-6 h-6 lg:w-10 lg:h-10',
+			'absolute -top-4 -right-4 lg:-top-10 lg:-right-10 w-6 h-6 lg:w-10 lg:h-10',
 			'rounded-full bg-white shadow-black shadow-md rotate-45',
 			'text-center font-semibold text-lg sm:text-4xl pb-1 sm:pb-2',
 			'hover:scale-105 hover:shadow-lg hover:shadow-black'
@@ -57,8 +56,8 @@ export const StickerZoom: React.FC<StickerZoomProps> = observer(
 
 		const turnAroundButtonClassNames = cn(
 			'flex',
-			'bg-blue-500 shadow-md',
 			'py-2 px-2 rounded-lg',
+			'bg-blue-500 shadow-md',
 			'text-white text-[10px] sm:text-sm',
 			'hover:shadow-blue-300 hover:scale-105'
 		)

@@ -19,7 +19,7 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 			stickerBookState
 
 		return (
-			<div className={cn('stickerBook select-none', className)}>
+			<div className={cn('stickerBook', 'select-none', className)}>
 				<div className="pageContainer">
 					<FrontCover
 						zIndex={pages.length + 1}

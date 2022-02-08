@@ -25,8 +25,7 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 		const frontSideClassName = cn(
 			'front',
 			'side',
-			'border-white',
-			'shadow-xl',
+			'border-white shadow-xl',
 			borderSizes,
 			{ isTurned: isTurned }
 		)
@@ -34,9 +33,8 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 		const backSideClassNames = cn(
 			'back',
 			'side',
+			'border-white shadow-xl',
 			borderSizes,
-			'border-white',
-			'shadow-xl',
 			{ isTurned: isTurned }
 		)
 

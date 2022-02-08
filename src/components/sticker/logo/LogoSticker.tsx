@@ -37,10 +37,8 @@ export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
 	const backSideClassNames = cn(
 		'back',
 		'side',
-		'shadow-xl',
-		'shadow-slate-300',
+		'shadow-xl shadow-slate-300 border-white',
 		borderSizes,
-		'border-white',
 		{ isTurned: isTurned }
 	)
 

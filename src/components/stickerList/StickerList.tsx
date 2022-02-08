@@ -30,14 +30,14 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			<div
 				className={cn(
 					'stickerList',
-					'flex flex-col justify-center align-center ml-4 relative',
+					'relative flex flex-col justify-center align-center ml-4',
 					className
 				)}
 			>
 				<div
 					className={cn(
 						'stickerPackButton',
-						'flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center mb-2 relative',
+						'relative flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center mb-2',
 						'bg-contain bg-no-repeat select-none',
 						stickerPacksAcquired === 0
 							? 'pointer-events-none grayscale opacity-50'
@@ -53,11 +53,9 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						<div
 							className={cn(
 								'stickerPacksAcquired',
-								'absolute bottom-4 right-2',
-								'w-4 h-4',
-								'text-[10px] select-none',
-								'bg-slate-800 shadow-sm shadow-black',
-								'text-white text-center font-semibold'
+								'absolute bottom-4 right-2 w-4 h-4',
+								'select-none bg-slate-800 shadow-sm shadow-black',
+								'text-[10px] text-white text-center font-semibold'
 							)}
 						>
 							x{stickerPacksAcquired}
@@ -65,11 +63,11 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					) : null}
 				</div>
 
-				<div className="mb-3 flex flex-col justify-center items-center">
+				<div className="flex flex-col justify-center items-center mb-3">
 					<button
 						className={cn(
-							'bg-blue-500 shadow-lg shadow-blue-100',
-							'py-2 px-2 lg:px-4 rounded-lg',
+							'py-2 px-2 lg:px-4',
+							'bg-blue-500 shadow-lg shadow-blue-100 rounded-lg',
 							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg select-none',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
@@ -88,7 +86,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						'stickers',
 						className
 							? className
-							: 'flex flex-col border overflow-y-auto overflow-x-hidden'
+							: 'flex flex-col overflow-y-auto overflow-x-hidden border'
 					)}
 				>
 					{Object.keys(stickerCountMap).map((nr) => {
@@ -126,11 +124,9 @@ export const StickerList: React.FC<StickerListProps> = observer(
 									<div
 										className={cn(
 											'stickerCount',
-											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4',
-											'w-4 h-4',
-											'text-[10px] select-none',
+											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4 w-4 h-4',
 											'bg-slate-800 shadow-sm shadow-black',
-											'text-white text-center font-semibold'
+											'text-[10px] select-none text-white text-center font-semibold'
 										)}
 									>
 										x{count}
@@ -140,11 +136,9 @@ export const StickerList: React.FC<StickerListProps> = observer(
 								<div
 									className={cn(
 										'stickerNumber',
-										'absolute left-2 top-2',
-										'w-6 h-6 lg:w-8 lg:h-8',
+										'absolute left-2 top-2 w-6 h-6 lg:w-8 lg:h-8',
 										'text-sm md:text-baseline lg:text-lg xl:text-xl select-none',
-										'font-semibold font-mono',
-										'text-center text-shadow-md underline rounded-full border',
+										'text-center text-shadow-md underline rounded-full border font-semibold font-mono',
 										count === 0
 											? 'grayscale bg-gray-500'
 											: 'bg-black',

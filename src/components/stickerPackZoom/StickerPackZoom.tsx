@@ -75,17 +75,17 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 
 		const closeButtonClassNames = cn(
 			'closeButton',
-			'flex justify-center items-center',
 			'absolute -top-2 -right-2 lg:-top-10 lg:-right-10',
-			'w-6 h-6 lg:w-10 lg:h-10 rounded-full bg-white shadow-black shadow-md rotate-45',
+			'w-6 h-6 lg:w-10 lg:h-10 flex justify-center items-center',
+			'rounded-full bg-white shadow-black shadow-md rotate-45',
 			'text-center font-semibold text-lg md:text-4xl pb-1 md:pb-2',
 			'hover:scale-105 hover:shadow-lg hover:shadow-black'
 		)
 
 		const turnAroundClassNames = cn(
 			'flex',
-			'bg-blue-500 shadow-md',
 			'py-2 px-2 rounded-lg',
+			'bg-blue-500 shadow-md',
 			'text-white text-[10px] sm:text-sm',
 			'hover:shadow-blue-300 hover:scale-105'
 		)
