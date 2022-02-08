@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import backCoverPath from '../../../assets/backgrounds/backCover.png'
+import backCoverPath from '../../../assets/backgrounds/backCover.webp'
 
 import './BackCover.css'
 

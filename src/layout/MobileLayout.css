@@ -1,23 +1,15 @@
-.mobileLayout > .mobileStickerList.stickerList {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	width: 100%;
-	height: 20vh;
+.mobileLayout {
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-.mobileLayout > .mobileStickerList.stickerList > .stickers {
-	flex-direction: row;
-	max-height: initial;
-	flex-grow: 1;
-	flex-shrink: 0;
-	display: flex;
-	width: 50vw;
-	overflow-x: auto;
-	overflow-y: hidden;
+.mobileLayout .textContainer {
+	position: absolute;
+	top: 39%;
+	opacity: 0.8;
 }
 
-.mobileLayout > .mobileStickerList.stickerList > .stickers .sticker,
-.mobileLayout > .mobileStickerList.stickerList > .stickers .stickerListSticker {
-	margin-right: 0.5em;
+.mobileLayout .coverText {
+	position: absolute;
+	top: 39%;
 }
