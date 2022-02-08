@@ -57,9 +57,10 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	} as React.CSSProperties
 
 	const pageTurnerClasses = cn(
-		'pageTurner pointer-events-auto',
+		'pageTurner',
 		isOdd ? 'right-0' : 'left-0',
-		'bottom-0 top-0 w-12 h-full absolute cursor-pointer',
+		'bottom-0 top-0 w-12 h-full absolute',
+		'cursor-pointer pointer-events-auto',
 		isOdd
 			? 'hover:bg-gradient-to-l from-black'
 			: 'hover:bg-gradient-to-r from-black',

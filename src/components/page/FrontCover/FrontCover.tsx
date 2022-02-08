@@ -17,12 +17,9 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 }) => {
 	const frontCoverClasses = cn(
 		'frontCover',
-		'border',
-		'border-black',
+		'border border-black',
 		'cursor-pointer',
-		{
-			isTurned: isTurned,
-		}
+		{ isTurned: isTurned }
 	)
 
 	const frontCoverStyle = {
@@ -42,16 +39,15 @@ export const FrontCover: React.FC<FrontCoverProps> = ({
 			<span
 				className={cn(
 					'textContainer',
-					'w-full h-10 lg:h-16 shadow-xl shadow-sky-200',
-					'flex items-center justify-center',
-					'bg-gradient-to-r from-slate-100 to-sky-700'
+					'w-full h-10 lg:h-16 flex items-center justify-center',
+					'bg-gradient-to-r from-slate-100 to-sky-700 shadow-xl shadow-sky-200'
 				)}
 			></span>
 			<span
 				className={cn(
 					'coverText',
-					'w-full h-10 lg:h-16 border-t border-b border-black',
-					'flex items-center justify-center',
+					'w-full h-10 lg:h-16 flex items-center justify-center',
+					'border-t border-b border-black',
 					'text-black px-2 text-center font-semibold',
 					textSizeClasses
 				)}
