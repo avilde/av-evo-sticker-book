@@ -84,9 +84,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div
 					className={cn(
 						'stickers',
-						className
-							? className
-							: 'flex flex-col overflow-y-auto overflow-x-hidden border'
+						'flex flex-col overflow-y-auto overflow-x-hidden border'
 					)}
 				>
 					{Object.keys(stickerCountMap).map((nr) => {

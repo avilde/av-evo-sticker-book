@@ -18,8 +18,12 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 		const { pages, applySticker, currentPage, setCurrentPage } =
 			stickerBookState
 
+		const margins = 'm-2 md:m-3 xl:m-8'
+
 		return (
-			<div className={cn('stickerBook', 'select-none', className)}>
+			<div
+				className={cn('stickerBook', 'select-none', className, margins)}
+			>
 				<div className="pageContainer">
 					<FrontCover
 						zIndex={pages.length + 1}

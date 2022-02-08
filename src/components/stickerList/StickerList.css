@@ -1,10 +1,13 @@
 .stickerList {
 	width: 13vw;
-	max-height: 100vh;
+	height: var(--page-height);
+	margin: 3em 0;
 }
 
 .stickerList > .stickers {
-	max-height: 70vh;
+	max-height: calc(#{var(--page-height)} - 4rem);
+	will-change: scroll-position;
+	transform: translate3d(0, 0, 0);
 }
 
 .stickerList > .stickers > .sticker {
