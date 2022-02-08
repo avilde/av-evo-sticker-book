@@ -2,8 +2,23 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import './index.css'
+import { DesktopLayout } from './layout/DesktopLayout'
+import { MobileLayout } from './layout/MobileLayout'
+import { StickerBookState } from './state/StickerBookState'
+import { generatePages } from './utils/randomDataUtils'
+import { createRandomWithSeed } from './utils/randomWithSeed'
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+let random, state, component
+if (isMobile) {
+	component = <MobileLayout />
+} else {
+	random = createRandomWithSeed(123)
+	state = new StickerBookState(generatePages(random), random)
+	component = <DesktopLayout stickerBookState={state} />
+}
 
 ReactDOM.render(
-	<React.StrictMode></React.StrictMode>,
+	<React.StrictMode>{component}</React.StrictMode>,
 	document.getElementById('root')
 )
