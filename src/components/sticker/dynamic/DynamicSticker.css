@@ -5,13 +5,13 @@
 }
 
 .dynamicSticker > .side {
-	position: absolute;
 	width: inherit;
 	height: inherit;
 }
 
 .dynamicSticker > .side.front {
-	background-size: calc(1704px * 0.5) calc(1912px * 0.45);
+	border: 1px solid red;
+	background-size: 350% 600%;
 	background-origin: border-box;
 	background-repeat: no-repeat;
 }

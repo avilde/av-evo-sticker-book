@@ -30,7 +30,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			<div
 				className={cn(
 					'stickerList',
-					'relative flex flex-col justify-center align-center ml-4',
+					'relative flex flex-col justify-center align-center mx-3',
 					className
 				)}
 			>
@@ -84,7 +84,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div
 					className={cn(
 						'stickers',
-						'flex flex-col overflow-y-auto overflow-x-hidden border'
+						'flex flex-col overflow-y-auto overflow-x-hidden border px-3 py-1'
 					)}
 				>
 					{Object.keys(stickerCountMap).map((nr) => {

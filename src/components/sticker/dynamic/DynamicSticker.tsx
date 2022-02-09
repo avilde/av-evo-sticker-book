@@ -10,8 +10,11 @@ export interface DynamicStickerComponentProps extends DynamicSticker {
 	style?: React.CSSProperties
 }
 
+const POSITION_X_RATIO = 1.4
+const POSITION_Y_RATIO = 1.2
+
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
-	({ pageType, gameType, top, left, className, nr, style }) => {
+	({ pageType, gameType, top, left, className, style }) => {
 		const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
@@ -29,10 +32,13 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 		)
 
 		const backgroundImage = imagePathMapping[`${gameType}${pageType}`]
+		const backgroundPosition = `${left * POSITION_X_RATIO}% ${
+			top * POSITION_Y_RATIO
+		}%`
 
 		const stickerFrontStyle = {
 			backgroundImage: `url(${backgroundImage})`,
-			backgroundPosition: `${left * 1.6}% ${top * 1.3}%`,
+			backgroundPosition: backgroundPosition,
 		} as React.CSSProperties
 
 		return (
