@@ -25,4 +25,6 @@
 }
 
 .stickerList > .stickers > .sticker.disabled > .stickerListSticker {
+	opacity: 0.5;
+	filter: grayscale(1);
 }

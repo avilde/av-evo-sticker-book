@@ -15,8 +15,13 @@ export interface StickerBookProps {
 
 export const StickerBook: React.FC<StickerBookProps> = observer(
 	({ stickerBookState, className }) => {
-		const { pages, applySticker, currentPage, setCurrentPage } =
-			stickerBookState
+		const {
+			pages,
+			setDragTarget,
+			currentPage,
+			setCurrentPage,
+			selectedStickerNr,
+		} = stickerBookState
 
 		const margins = 'm-2 md:m-3 xl:m-8'
 
@@ -44,7 +49,8 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
 								stickers={page.stickers}
-								applySticker={applySticker}
+								selectedStickerNr={selectedStickerNr}
+								setDragTarget={setDragTarget}
 							/>
 						)
 					})}

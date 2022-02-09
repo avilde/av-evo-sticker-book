@@ -21,7 +21,8 @@ export const PageStory: Story<PageStoryProps> = ({ pageType, gameType }) => {
 		stickers: [],
 		gameType,
 		pageType,
-		applySticker: noop,
+		setDragTarget: noop,
+		selectedStickerNr: -1,
 	}
 
 	return (

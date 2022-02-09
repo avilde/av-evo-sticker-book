@@ -2,7 +2,7 @@ import cn from 'classnames'
 import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
 import { gameThemeMapping } from '../../../consts'
-import { Page } from '../../../state/types'
+import { Page, SetDragTarget } from '../../../state/types'
 import { PageStickerComponent } from '../../sticker/page/PageSticker'
 
 import './Page.css'
@@ -12,7 +12,8 @@ export interface PageComponentProps extends Page {
 	currentPage: number
 	setCurrentPage: (index: number) => void
 	zIndex: number
-	applySticker: (pageIndex: number, nr: number) => void
+	selectedStickerNr: number
+	setDragTarget: SetDragTarget
 }
 
 export const PageComponent: React.FC<PageComponentProps> = ({
@@ -23,7 +24,8 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	currentPage,
 	setCurrentPage,
 	stickers,
-	applySticker,
+	selectedStickerNr,
+	setDragTarget,
 }) => {
 	const theme = gameThemeMapping[gameType]
 	const isOdd = index % 2 === 0
@@ -82,11 +84,8 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 						{...sticker}
 						className="sticker"
 						isVisible={isPreviewEnabled}
-						applySticker={applySticker.bind(
-							this,
-							index - 1,
-							sticker.nr
-						)}
+						selectedStickerNr={selectedStickerNr}
+						setDragTarget={setDragTarget}
 					/>
 				))}
 			</div>

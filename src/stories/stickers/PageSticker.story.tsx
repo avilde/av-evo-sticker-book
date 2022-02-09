@@ -13,7 +13,8 @@ export const PageStickerStory: Story<PageStickerStoryProps> = (props) => (
 			{...props}
 			top={20}
 			left={15}
-			applySticker={noop}
+			selectedStickerNr={-1}
+			setDragTarget={noop}
 			isVisible={true}
 		/>
 	</div>

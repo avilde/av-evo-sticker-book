@@ -17,14 +17,17 @@ export const StickerList: React.FC<StickerListProps> = observer(
 	({ stickerBookState, className }) => {
 		const {
 			stickerCountMap,
-			findSticker,
+			availableStickers,
 			getNewStickerPack,
 			stickerPacksAcquired,
 			stickerPacksOpened,
-			setCurrentSticker,
+			setSelectedStickerNr,
 			stickerPacks,
 			setCurrentStickerPack,
+			applySticker,
 		} = stickerBookState
+
+		// TODO: find out my sticker list re-renders on drag sticker
 
 		return (
 			<div
@@ -87,14 +90,13 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						'flex flex-col overflow-y-auto overflow-x-hidden border px-3 py-1'
 					)}
 				>
-					{Object.keys(stickerCountMap).map((nr) => {
-						const sticker = findSticker(+nr)
-						const count = stickerCountMap[+nr]
+					{availableStickers.map((sticker) => {
+						const count = stickerCountMap[sticker.nr]
 						const theme = gameThemeMapping[sticker.gameType]
 
 						return (
 							<div
-								key={nr}
+								key={`${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}`}
 								className={cn(
 									'sticker',
 									className,
@@ -104,7 +106,11 @@ export const StickerList: React.FC<StickerListProps> = observer(
 										: 'cursor-pointer',
 									{ disabled: count === 0 }
 								)}
-								onClick={() => setCurrentSticker(sticker)}
+								draggable
+								onDragStart={() =>
+									setSelectedStickerNr(sticker.nr)
+								}
+								onDragEnd={() => applySticker()}
 							>
 								{sticker.type === StickerType.Logo ? (
 									<LogoStickerComponent
@@ -120,6 +126,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 
 								{count > 0 ? (
 									<div
+										key={`${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}-${count}`}
 										className={cn(
 											'stickerCount',
 											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4 w-4 h-4',
@@ -132,6 +139,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 								) : null}
 
 								<div
+									key={`${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}`}
 									className={cn(
 										'stickerNumber',
 										'absolute left-2 top-2 w-6 h-6 lg:w-8 lg:h-8',
@@ -145,7 +153,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 										theme.borderColor
 									)}
 								>
-									{nr}
+									{sticker.nr}
 								</div>
 							</div>
 						)

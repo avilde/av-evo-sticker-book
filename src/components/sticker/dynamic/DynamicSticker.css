@@ -10,7 +10,6 @@
 }
 
 .dynamicSticker > .side.front {
-	border: 1px solid red;
 	background-size: 350% 600%;
 	background-origin: border-box;
 	background-repeat: no-repeat;
