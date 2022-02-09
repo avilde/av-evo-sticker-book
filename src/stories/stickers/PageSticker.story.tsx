@@ -8,7 +8,7 @@ import { PageSticker } from '../../state/types'
 interface PageStickerStoryProps extends PageSticker {}
 
 export const PageStickerStory: Story<PageStickerStoryProps> = (props) => (
-	<div className="relative bg-slate-400 w-96 h-80">
+	<div className="relative bg-slate-400 w-96 h-80 flex justify-center items-center">
 		<PageStickerComponent
 			{...props}
 			top={20}

@@ -12,7 +12,6 @@ export const LogoStickerStory: Story<LogoStickerStoryProps> = (props) => (
 )
 LogoStickerStory.args = {
 	gameType: GameType.Megaball,
-	nr: 1,
 }
 LogoStickerStory.argTypes = {
 	gameType: {
