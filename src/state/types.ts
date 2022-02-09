@@ -11,21 +11,19 @@ export interface PageSticker {
 
 export interface DynamicSticker extends PageSticker {
 	type: StickerType.Dynamic
-	isTurned?: boolean
 	pageType: PageType
 }
 
 export interface LogoSticker extends PageSticker {
 	type: StickerType.Logo
-	isTurned?: boolean
 }
 
 export type Sticker = DynamicSticker | LogoSticker
 export type Stickers = (DynamicSticker | LogoSticker)[]
 
 export interface StickerPack {
-	isUsed: boolean
 	isTurned: boolean
+	isUsed: boolean
 	stickers: Stickers
 }
 

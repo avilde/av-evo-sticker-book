@@ -37,7 +37,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div
 					className={cn(
 						'stickerPackButton',
-						'relative flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center mb-2',
+						'relative flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center shrink-0 mb-2',
 						'bg-contain bg-no-repeat select-none',
 						stickerPacksAcquired === 0
 							? 'pointer-events-none grayscale opacity-50'
