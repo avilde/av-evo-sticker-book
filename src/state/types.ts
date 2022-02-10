@@ -40,7 +40,7 @@ export interface GameTheme {
 	borderColor: string
 	textColor: string
 	textDecorationColor: string
-	logoFrameColor: string
+	backgroundColor: string
 }
 
 export type SetDragTarget = (nr: number, isOnTarget: boolean) => void

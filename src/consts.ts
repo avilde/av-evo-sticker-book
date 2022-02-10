@@ -31,33 +31,41 @@ export enum StickerType {
 
 export const gameThemeMapping: Record<string, GameTheme> = {
 	[GameType.DreamCatcher]: {
-		borderColor: 'border-rose-300',
+		borderColor: 'border-rose-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-rose-500',
-		logoFrameColor: 'bg-rose-500',
+		backgroundColor: 'bg-rose-700',
 	},
 	[GameType.Megaball]: {
-		borderColor: 'border-teal-300',
+		borderColor: 'border-teal-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-teal-500',
-		logoFrameColor: 'bg-teal-500',
+		backgroundColor: 'bg-teal-700',
 	},
 	[GameType.Craps]: {
-		borderColor: 'border-teal-400',
+		borderColor: 'border-emerald-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-teal-400',
-		logoFrameColor: 'bg-teal-400',
+		textDecorationColor: 'decoration-emerald-400',
+		backgroundColor: 'bg-emerald-700',
 	},
 	[GameType.Roulette]: {
-		borderColor: 'border-red-500',
+		borderColor: 'border-red-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-red-500',
-		logoFrameColor: 'bg-red-500',
+		backgroundColor: 'bg-red-700',
 	},
 	[GameType.Gonzo]: {
-		borderColor: 'border-amber-400',
+		borderColor: 'border-orange-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-amber-400',
-		logoFrameColor: 'bg-amber-400',
+		textDecorationColor: 'decoration-orange-400',
+		backgroundColor: 'bg-orange-700',
 	},
+}
+
+export const gameNames: Record<GameType, string> = {
+	[GameType.Craps]: 'Craps',
+	[GameType.DreamCatcher]: 'Dream Catcher',
+	[GameType.Gonzo]: 'Gonzo',
+	[GameType.Megaball]: 'Mega Ball',
+	[GameType.Roulette]: 'Roulette',
 }

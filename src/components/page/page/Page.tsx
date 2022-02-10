@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
-import { gameThemeMapping } from '../../../consts'
+import { gameNames, gameThemeMapping } from '../../../consts'
 import { Page, SetDragTarget } from '../../../state/types'
 import { PageStickerComponent } from '../../sticker/page/PageSticker'
 
@@ -105,13 +105,27 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 					'pageNumber',
 					'absolute bottom-0 w-4 h-4 md:w-8 md:h-8 mb-2',
 					'select-none pointer-events-none',
-					`text-white text-xs sm:text-sm lg:text-lg text-bold underline`,
+					`text-white text-xs sm:text-sm lg:text-lg text-bold underline text-shadow`,
 					theme.textDecorationColor,
 					isOdd ? 'right-0 ml-2 text-left' : 'left-0 mr-2 text-right'
 				)}
 			>
 				{index}
 			</div>
+
+			{!isOdd ? (
+				<div
+					className={cn(
+						'gameName',
+						'absolute top-0 left-0 w-30 h-6 md:w-40 flex justify-center items-center',
+						'select-none pointer-events-none',
+						`text-white text-xs sm:text-sm text-semibold uppercase`,
+						theme.backgroundColor
+					)}
+				>
+					{gameNames[gameType]}
+				</div>
+			) : null}
 		</div>
 	)
 }
