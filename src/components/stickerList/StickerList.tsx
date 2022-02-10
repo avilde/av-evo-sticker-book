@@ -7,6 +7,7 @@ import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
 import stickerPackMiniPath from '../../assets/stickerPackMini.png'
 
 import './StickerList.css'
+import React from 'react'
 
 interface StickerListProps {
 	stickerBookState: StickerBookState
@@ -26,7 +27,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			applySticker,
 		} = stickerBookState
 
-		// TODO: find out my sticker list re-renders on drag sticker
+		const [showCount, setShowCount] = React.useState(true)
 
 		return (
 			<div
@@ -92,10 +93,11 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					{stickers.map((sticker) => {
 						const count = sticker.count
 						const theme = gameThemeMapping[sticker.gameType]
+						const key = `${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}`
 
 						return (
 							<div
-								key={`${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}`}
+								key={`${key}-sticker`}
 								className={cn(
 									'sticker',
 									className,
@@ -106,10 +108,14 @@ export const StickerList: React.FC<StickerListProps> = observer(
 									{ disabled: count === 0 }
 								)}
 								draggable
-								onDragStart={() =>
+								onDragStart={() => {
+									setShowCount(false)
 									setSelectedStickerNr(sticker.nr)
-								}
-								onDragEnd={() => applySticker()}
+								}}
+								onDragEnd={() => {
+									applySticker()
+									setShowCount(true)
+								}}
 							>
 								{sticker.type === StickerType.Logo ? (
 									<LogoStickerComponent
@@ -123,9 +129,9 @@ export const StickerList: React.FC<StickerListProps> = observer(
 									/>
 								)}
 
-								{count > 0 ? (
+								{showCount && count > 0 ? (
 									<div
-										key={`${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}-${count}`}
+										key={`${key}-count`}
 										className={cn(
 											'stickerCount',
 											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4 w-4 h-4',
@@ -138,7 +144,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 								) : null}
 
 								<div
-									key={`${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}`}
+									key={`${key}-nr`}
 									className={cn(
 										'stickerNumber',
 										'absolute left-2 top-2 w-6 h-6 lg:w-8 lg:h-8',

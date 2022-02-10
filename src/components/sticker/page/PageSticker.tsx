@@ -30,10 +30,10 @@ export const PageStickerComponent: React.FC<PageStickerProps> = ({
 		isUsed ? 'shadow-sm shadow-black' : null,
 		!isUsed && isVisible ? 'pointer-events-auto' : null,
 		borderSizes,
-		isLogo
-			? selectedStickerNr === nr
-				? 'border-sky-500'
-				: 'logoBorder'
+		selectedStickerNr === nr && !isUsed
+			? 'border-green-300'
+			: isLogo
+			? 'logoBorder'
 			: 'border-white',
 		className
 	)
