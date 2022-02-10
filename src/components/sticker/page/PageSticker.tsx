@@ -57,7 +57,7 @@ export const PageStickerComponent: React.FC<PageStickerProps> = ({
 		'stickerNumber',
 		'absolute w-20 h-8 flex items-center justify-center',
 		'font-extrabold font-mono text-center text-white',
-		'bg-gray-300 rounded-md',
+		'bg-gray-300 rounded-md pointer-events-none',
 		'sm:text-xs md:text-baseline lg:text-lg xl:text-2xl'
 	)
 

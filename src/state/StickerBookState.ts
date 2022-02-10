@@ -19,7 +19,7 @@ export class StickerBookState {
 	constructor(
 		public pages: Pages,
 		public stickers: Stickers,
-		private random: RandomWithSeed
+		public random: RandomWithSeed
 	) {
 		makeAutoObservable(
 			this,

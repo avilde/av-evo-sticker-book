@@ -33,7 +33,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			<div
 				className={cn(
 					'stickerList',
-					'relative flex flex-col justify-center align-center mx-3',
+					'relative flex flex-col justify-center align-center mx-3 mt-3',
 					className
 				)}
 			>
@@ -41,10 +41,10 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					className={cn(
 						'stickerPackButton',
 						'relative flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center shrink-0 mb-2',
-						'bg-contain bg-no-repeat select-none',
+						'bg-no-repeat select-none',
 						stickerPacksAcquired === 0
 							? 'pointer-events-none grayscale opacity-50'
-							: 'cursor-pointer hover:scale-110'
+							: 'cursor-pointer hover:scale-105 hover:shadow-md hover:shadow-gray-300'
 					)}
 					style={{
 						backgroundImage: `url(${stickerPackMiniPath})`,
@@ -69,17 +69,17 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div className="flex flex-col justify-center items-center mb-3">
 					<button
 						className={cn(
-							'py-2 px-2 lg:px-4',
-							'bg-blue-500 shadow-lg shadow-blue-100 rounded-lg',
-							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg select-none',
+							'p-1 lg:py-2 lg:px-4',
+							'bg-blue-500 shadow-lg shadow-blue-100 rounded-lg select-none',
+							'text-white text-[12px] sm:text-sm md:text-baseline',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
 						onClick={() => getNewStickerPack()}
 					>
-						Get more sticker packs
+						Get more stickers
 					</button>
 
-					<div className="text-sm select-none">
+					<div className="text-[10px] select-none">
 						Sticker packs opened: {stickerPacksOpened}
 					</div>
 				</div>

@@ -28,3 +28,7 @@
 	opacity: 0.5;
 	filter: grayscale(1);
 }
+
+.stickerList .stickerPackButton {
+	background-size: 100% 100%;
+}

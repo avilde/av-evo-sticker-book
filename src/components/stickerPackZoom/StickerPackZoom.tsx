@@ -20,6 +20,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 			decreaseStickerPacksAcquired,
 			increaseStickerPacksOpened,
 			updateStickerCount,
+			random,
 		} = stickerBookState
 		const [isOpenDisabled, setIsOpenDisabled] = React.useState(false)
 		const [timeoutMap] = React.useState<TimeoutMap>(new TimeoutMap())
@@ -75,7 +76,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 
 		const closeButtonClassNames = cn(
 			'closeButton',
-			'absolute -top-2 -right-2 lg:-top-10 lg:-right-10',
+			'absolute -top-2 -right-2 lg:-top-4 lg:-right-4',
 			'w-6 h-6 lg:w-10 lg:h-10 flex justify-center items-center',
 			'rounded-full bg-white shadow-black shadow-md rotate-45',
 			'text-center font-semibold text-lg md:text-4xl pb-1 md:pb-2',
@@ -107,6 +108,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 						<StickerPackComponent
 							{...currentStickerPack}
 							updateStickerCount={updateStickerList}
+							random={random}
 						/>
 					</div>
 
@@ -121,7 +123,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 					</div>
 
 					<div
-						className="flex justify-center items-center absolute -bottom-20"
+						className="flex justify-center items-center absolute -bottom-14"
 						style={{
 							opacity: !currentStickerPack.isUsed ? 1 : 0,
 							transition: 'opacity 0.5s linear',
