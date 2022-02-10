@@ -16,8 +16,7 @@ interface StickerListProps {
 export const StickerList: React.FC<StickerListProps> = observer(
 	({ stickerBookState, className }) => {
 		const {
-			stickerCountMap,
-			availableStickers,
+			stickers,
 			getNewStickerPack,
 			stickerPacksAcquired,
 			stickerPacksOpened,
@@ -90,8 +89,8 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						'flex flex-col overflow-y-auto overflow-x-hidden border px-3 py-1'
 					)}
 				>
-					{availableStickers.map((sticker) => {
-						const count = stickerCountMap[sticker.nr]
+					{stickers.map((sticker) => {
+						const count = sticker.count
 						const theme = gameThemeMapping[sticker.gameType]
 
 						return (

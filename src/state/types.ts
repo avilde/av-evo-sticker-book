@@ -2,16 +2,17 @@ import { GameType, PageType, StickerType } from '../consts'
 
 export interface PageSticker {
 	gameType: GameType
+	pageType: PageType
 	nr: number
 	top: number
 	left: number
 	isUsed: boolean
+	count: number
 	isLogo?: boolean
 }
 
 export interface DynamicSticker extends PageSticker {
 	type: StickerType.Dynamic
-	pageType: PageType
 }
 
 export interface LogoSticker extends PageSticker {

@@ -14,7 +14,8 @@ if (isMobile) {
 	component = <MobileLayout />
 } else {
 	random = createRandomWithSeed(123)
-	state = new StickerBookState(generatePages(random), random)
+	const { pages, stickers } = generatePages(random)
+	state = new StickerBookState(pages, stickers, random)
 	component = <DesktopLayout stickerBookState={state} />
 }
 

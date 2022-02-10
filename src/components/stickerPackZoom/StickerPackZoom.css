@@ -19,12 +19,12 @@
 }
 
 .stickerPackZoom > .stickerPackContainer > .sticker {
-	width: 12vw;
-	height: 8vw;
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 }
 
 .stickerPackZoom > .stickerPackContainer > .sticker > .stickerPackZoomSticker {
 	position: static;
-	width: 12vw;
-	height: 8vw;
+	width: var(--sticker-width);
+	height: var(--sticker-height);
 }

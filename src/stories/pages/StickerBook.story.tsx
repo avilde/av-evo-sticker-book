@@ -12,7 +12,8 @@ export const StickerBookStory: Story<StickerBookStoryProps> = ({
 	randomSeed,
 }) => {
 	const random = createRandomWithSeed(randomSeed)
-	const state = new StickerBookState(generatePages(random), random)
+	const { pages, stickers } = generatePages(random)
+	const state = new StickerBookState(pages, stickers, random)
 
 	return (
 		<div>

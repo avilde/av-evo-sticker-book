@@ -4,9 +4,8 @@ import { TimeoutMap } from '../utils/TimeoutMap'
 import { Pages, SetDragTarget, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {
-	public stickerCountMap: Record<number, number> = {}
 	public selectedStickerNr = -1
-	public dragTarget: { pageIndex: number; nr: number } | null = null
+	public dragTargetNr: number | null = null
 
 	public currentPage = -1
 
@@ -17,12 +16,15 @@ export class StickerBookState {
 
 	public timeoutMap = new TimeoutMap()
 
-	constructor(public pages: Pages, private random: RandomWithSeed) {
+	constructor(
+		public pages: Pages,
+		public stickers: Stickers,
+		private random: RandomWithSeed
+	) {
 		makeAutoObservable(
 			this,
 			{
 				pages: observable.deep,
-				dragTarget: observable.ref,
 				setCurrentStickerPack: action.bound,
 				setCurrentPage: action.bound,
 				updateStickerCount: action.bound,
@@ -34,50 +36,39 @@ export class StickerBookState {
 		)
 
 		this.pages = pages
-
-		this.availableStickers.forEach((s) => {
-			this.stickerCountMap[s.nr] = 0
-		})
-	}
-
-	public get availableStickers(): Stickers {
-		return this.pages.flatMap((p) => p.stickers)
+		this.stickers = stickers
 	}
 
 	public findSticker(nr: number): Sticker {
-		return this.availableStickers.find((s) => s.nr === nr)!
+		return this.stickers.find((s) => s.nr === nr)!
 	}
 
 	public getStickers(): Stickers {
 		return Array.from({ length: 5 }).map((_) => {
-			return this.availableStickers[
-				Math.floor(this.random() * this.availableStickers.length)
+			return this.stickers[
+				Math.floor(this.random() * this.stickers.length)
 			]
 		})
 	}
 
 	public setDragTarget: SetDragTarget = (nr, isOnTarget) => {
-		const pageIndex = this.findPageIndexByStickerNr(nr)
-		console.log('setDragTarget', { nr, pageIndex, isOnTarget })
-		this.dragTarget =
-			isOnTarget || pageIndex === -1 ? { pageIndex, nr } : null
+		this.dragTargetNr = isOnTarget ? nr : null
 	}
 
 	public applySticker(): void {
-		console.log('applySticker', this.selectedStickerNr, this.dragTarget)
-		if (!this.dragTarget) return
+		if (!this.dragTargetNr) return
 
-		const { pageIndex, nr } = this.dragTarget
-		if (this.selectedStickerNr !== nr || this.stickerCountMap[nr] === 0) {
+		if (
+			!this.dragTargetNr ||
+			this.selectedStickerNr !== this.dragTargetNr ||
+			this.stickers[this.dragTargetNr - 1].isUsed
+		) {
 			return
 		}
 
-		const stickerIdx = this.pages[pageIndex].stickers.findIndex(
-			(s) => s.nr === nr
-		)
+		this.stickers[this.dragTargetNr - 1].isUsed = true
 
-		this.pages[pageIndex].stickers[stickerIdx].isUsed = true
-		this.decreaseStickerCount(nr)
+		this.decreaseStickerCount(this.dragTargetNr)
 		this.setSelectedStickerNr(-1)
 	}
 
@@ -132,15 +123,11 @@ export class StickerBookState {
 		this.stickerPacksOpened++
 	}
 
-	private findPageIndexByStickerNr(nr: number) {
-		return this.pages.findIndex((p) => p.stickers.find((s) => (s.nr = nr)))
-	}
-
 	private increaseStickerCount(nr: number) {
-		this.stickerCountMap[nr]++
+		this.stickers[nr - 1].count++
 	}
 
 	private decreaseStickerCount(nr: number) {
-		this.stickerCountMap[nr]--
+		this.stickers[nr - 1].count--
 	}
 }

@@ -12,7 +12,8 @@ export const DesktopLayoutStory: Story<DesktopLayoutStoryProps> = ({
 	randomSeed,
 }) => {
 	const random = createRandomWithSeed(randomSeed)
-	const state = new StickerBookState(generatePages(random), random)
+	const { pages, stickers } = generatePages(random)
+	const state = new StickerBookState(pages, stickers, random)
 
 	return <DesktopLayout stickerBookState={state} />
 }

@@ -17,6 +17,7 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 	({ stickerBookState, className }) => {
 		const {
 			pages,
+			stickers,
 			setDragTarget,
 			currentPage,
 			setCurrentPage,
@@ -48,7 +49,11 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 								zIndex={pages.length - idx}
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
-								stickers={page.stickers}
+								stickers={stickers.filter(
+									(s) =>
+										s.gameType === page.gameType &&
+										s.pageType === page.pageType
+								)}
 								selectedStickerNr={selectedStickerNr}
 								setDragTarget={setDragTarget}
 							/>

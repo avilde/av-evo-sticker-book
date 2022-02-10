@@ -12,7 +12,8 @@ export const StickerPackZoomStory: Story<StickerPackZoomStoryProps> = ({
 	randomSeed,
 }) => {
 	const random = createRandomWithSeed(randomSeed)
-	const state = new StickerBookState(generatePages(random), random)
+	const { pages, stickers } = generatePages(random)
+	const state = new StickerBookState(pages, stickers, random)
 
 	state.getNewStickerPack()
 	state.setCurrentStickerPack(state.stickerPacks[0])
