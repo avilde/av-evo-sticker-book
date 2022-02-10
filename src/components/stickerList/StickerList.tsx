@@ -87,7 +87,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div
 					className={cn(
 						'stickers',
-						'flex flex-col overflow-y-auto overflow-x-hidden border px-3 py-1'
+						'flex flex-col overflow-y-scroll overflow-x-hidden border px-3 py-1'
 					)}
 				>
 					{stickers.map((sticker) => {
