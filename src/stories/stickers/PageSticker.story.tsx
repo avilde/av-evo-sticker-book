@@ -1,9 +1,9 @@
 import { Story } from '@storybook/react'
-import { noop } from 'lodash-es'
 import { PageStickerComponent } from '../../components/sticker/page/PageSticker'
 
 import { GameType } from '../../consts'
 import { PageSticker } from '../../state/types'
+import { noop } from '../../utils/commonUtils'
 
 interface PageStickerStoryProps extends PageSticker {}
 

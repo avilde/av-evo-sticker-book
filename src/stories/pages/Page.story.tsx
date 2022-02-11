@@ -4,7 +4,7 @@ import {
 	PageComponentProps,
 } from '../../components/page/page/Page'
 import { GameType, PageType } from '../../consts'
-import { noop } from 'lodash-es'
+import { noop } from '../../utils/commonUtils'
 
 interface PageStoryProps {
 	pageType: PageType
