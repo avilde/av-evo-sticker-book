@@ -8,6 +8,7 @@ import stickerPackMiniPath from '../../assets/stickerPackMini.png'
 
 import './StickerList.css'
 import React from 'react'
+import { Seed } from './seed/Seed'
 
 interface StickerListProps {
 	stickerBookState: StickerBookState
@@ -25,6 +26,8 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			stickerPacks,
 			setCurrentStickerPack,
 			applySticker,
+			seed,
+			setNewSeed,
 		} = stickerBookState
 
 		const [showCount, setShowCount] = React.useState(true)
@@ -37,6 +40,8 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					className
 				)}
 			>
+				<Seed seed={String(seed)} setNewSeed={setNewSeed} />
+
 				<div
 					className={cn(
 						'stickerPackButton',
@@ -71,7 +76,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						className={cn(
 							'p-1 lg:py-2 lg:px-4',
 							'bg-blue-500 shadow-lg shadow-blue-100 rounded-lg select-none',
-							'text-white text-[12px] sm:text-sm md:text-baseline',
+							'text-white text-[12px] md:text-baseline',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
 						onClick={() => getNewStickerPack()}

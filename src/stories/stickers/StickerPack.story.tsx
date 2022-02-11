@@ -26,6 +26,7 @@ export const StickerPackStory: Story<StickerPackStoryProps> = ({
 				isTurned={isTurned}
 				isUsed={isUsed}
 				updateStickerCount={noop}
+				random={createRandomWithSeed(randomSeed)}
 			/>
 		</div>
 	)

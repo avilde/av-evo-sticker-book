@@ -1,5 +1,6 @@
 import { action, makeAutoObservable, observable } from 'mobx'
-import { RandomWithSeed } from '../utils/randomWithSeed'
+import { generatePages } from '../utils/randomDataUtils'
+import { createRandomWithSeed, RandomWithSeed } from '../utils/randomWithSeed'
 import { TimeoutMap } from '../utils/TimeoutMap'
 import { Pages, SetDragTarget, Sticker, StickerPack, Stickers } from './types'
 
@@ -16,11 +17,11 @@ export class StickerBookState {
 
 	public timeoutMap = new TimeoutMap()
 
-	constructor(
-		public pages: Pages,
-		public stickers: Stickers,
-		public random: RandomWithSeed
-	) {
+	public pages: Pages
+	public stickers: Stickers
+	public random: RandomWithSeed
+
+	constructor(public seed: number) {
 		makeAutoObservable(
 			this,
 			{
@@ -34,6 +35,18 @@ export class StickerBookState {
 			},
 			{ autoBind: true }
 		)
+
+		this.random = createRandomWithSeed(seed)
+		const { pages, stickers } = generatePages(this.random)
+
+		this.pages = pages
+		this.stickers = stickers
+	}
+
+	public setNewSeed(seed: number): void {
+		this.seed = seed
+		this.random = createRandomWithSeed(seed)
+		const { pages, stickers } = generatePages(this.random)
 
 		this.pages = pages
 		this.stickers = stickers

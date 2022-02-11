@@ -5,17 +5,15 @@ import './index.css'
 import { DesktopLayout } from './layout/DesktopLayout'
 import { MobileLayout } from './layout/MobileLayout'
 import { StickerBookState } from './state/StickerBookState'
-import { generatePages } from './utils/randomDataUtils'
-import { createRandomWithSeed } from './utils/randomWithSeed'
+
+const RANDOM_SEED = 123
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-let random, state, component
+let state, component
 if (isMobile) {
 	component = <MobileLayout />
 } else {
-	random = createRandomWithSeed(123)
-	const { pages, stickers } = generatePages(random)
-	state = new StickerBookState(pages, stickers, random)
+	state = new StickerBookState(RANDOM_SEED)
 	component = <DesktopLayout stickerBookState={state} />
 }
 

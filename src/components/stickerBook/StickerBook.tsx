@@ -24,7 +24,7 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 			selectedStickerNr,
 		} = stickerBookState
 
-		const margins = 'm-2 md:m-3 xl:m-8'
+		const margins = 'mt-16 mx-2 md:mx-3 xl:mx-8'
 
 		return (
 			<div

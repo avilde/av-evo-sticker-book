@@ -18,10 +18,11 @@ export enum GameType {
 	BlackJack = 'blackJack',
 	CashOrCrash = 'cashOrCrash',
 	CrazyTime = 'crazyTime',
-	Holdem = 'holdem',
+	TwoHandHoldem = 'twoHandHoldem',
 	LighteningDice = 'lighteningDice',
 	Monopoly = 'monopoly',
 	SicBo = 'sicBo',
+	GoldenBaccarat = 'GoldenBaccarat'
 */
 
 export enum StickerType {
@@ -65,7 +66,7 @@ export const gameThemeMapping: Record<string, GameTheme> = {
 export const gameNames: Record<GameType, string> = {
 	[GameType.Craps]: 'Craps',
 	[GameType.DreamCatcher]: 'Dream Catcher',
-	[GameType.Gonzo]: 'Gonzo',
+	[GameType.Gonzo]: "Gonzo's Treasure Hunt",
 	[GameType.Megaball]: 'Mega Ball',
 	[GameType.Roulette]: 'Roulette',
 }

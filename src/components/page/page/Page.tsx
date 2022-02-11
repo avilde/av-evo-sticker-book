@@ -71,6 +71,20 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 
 	return (
 		<div className={pageClasses} style={pageStyle}>
+			{!isOdd ? (
+				<div
+					className={cn(
+						'gameName',
+						'absolute top-0 left-0 px-4 h-6 flex justify-center items-center',
+						'select-none pointer-events-none',
+						`text-white text-[10px] md:text-sm text-semibold uppercase`,
+						theme.backgroundColor
+					)}
+				>
+					{gameNames[gameType]}
+				</div>
+			) : null}
+
 			<div
 				className={cn(
 					'stickerLayer',
@@ -112,20 +126,6 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 			>
 				{index}
 			</div>
-
-			{!isOdd ? (
-				<div
-					className={cn(
-						'gameName',
-						'absolute top-0 left-0 w-30 h-6 md:w-40 flex justify-center items-center',
-						'select-none pointer-events-none',
-						`text-white text-xs sm:text-sm text-semibold uppercase`,
-						theme.backgroundColor
-					)}
-				>
-					{gameNames[gameType]}
-				</div>
-			) : null}
 		</div>
 	)
 }
