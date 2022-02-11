@@ -1,12 +1,13 @@
 .stickerList {
 	width: auto;
-	height: var(--page-height);
+	height: 90vw;
 }
 
 .stickerList > .stickers {
-	max-height: calc(#{var(--page-height)} - 4rem);
-	scroll-snap-points-y: repeat(var(--sticker-height));
-	scroll-snap-type: y proximity;
+	max-height: 80vh;
+	scroll-snap-points-y: repeat(calc(var(--sticker-height) * 2));
+	scroll-snap-type: y mandatory;
+	scroll-margin: 0.5em;
 }
 
 .stickerList > .stickers > .sticker {

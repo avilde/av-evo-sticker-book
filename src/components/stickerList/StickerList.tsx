@@ -36,7 +36,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 			<div
 				className={cn(
 					'stickerList',
-					'relative flex flex-col justify-center align-center mx-3 mt-3',
+					'relative flex flex-col justify-start align-center mx-3 mt-3',
 					className
 				)}
 			>
