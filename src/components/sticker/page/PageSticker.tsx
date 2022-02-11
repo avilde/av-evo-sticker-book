@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import { logoPathMapping } from '../../../assets/images'
-import stickerPlaceholderPath from '../../../assets/stickerPlaceholder.png'
+import stickerPlaceholderPath from '../../../assets/stickerPlaceholder.webp'
 import { PageSticker, SetDragTarget } from '../../../state/types'
 
 import './PageSticker.css'

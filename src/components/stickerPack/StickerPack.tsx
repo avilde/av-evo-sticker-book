@@ -2,8 +2,8 @@ import cn from 'classnames'
 import React from 'react'
 import { Stickers } from '../../state/types'
 
-import frontSidePath from '../../assets/stickerPackFront.png'
-import backSidePath from '../../assets/stickerPackBack.png'
+import frontSidePath from '../../assets/stickerPackFront.webp'
+import backSidePath from '../../assets/stickerPackBack.webp'
 
 import './StickerPack.css'
 import { StickerType } from '../../consts'
