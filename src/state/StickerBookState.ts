@@ -45,6 +45,8 @@ export class StickerBookState {
 
 	public setNewSeed(seed: number): void {
 		this.seed = seed
+		this.stickerPacksAcquired = 0
+		this.stickerPacksOpened = 0
 		this.random = createRandomWithSeed(seed)
 		const { pages, stickers } = generatePages(this.random)
 

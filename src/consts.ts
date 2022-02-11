@@ -6,6 +6,7 @@ export enum PageType {
 }
 
 export enum GameType {
+	BlackJack = 'blackJack',
 	Craps = 'craps',
 	DreamCatcher = 'dreamCatcher',
 	Gonzo = 'gonzo',
@@ -30,18 +31,12 @@ export enum StickerType {
 	Logo = 'Logo',
 }
 
-export const gameThemeMapping: Record<string, GameTheme> = {
-	[GameType.DreamCatcher]: {
+export const gameThemeMapping: Record<GameType, GameTheme> = {
+	[GameType.BlackJack]: {
 		borderColor: 'border-rose-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-rose-500',
 		backgroundColor: 'bg-rose-700',
-	},
-	[GameType.Megaball]: {
-		borderColor: 'border-teal-700',
-		textColor: 'text-white',
-		textDecorationColor: 'decoration-teal-500',
-		backgroundColor: 'bg-teal-700',
 	},
 	[GameType.Craps]: {
 		borderColor: 'border-emerald-700',
@@ -49,11 +44,11 @@ export const gameThemeMapping: Record<string, GameTheme> = {
 		textDecorationColor: 'decoration-emerald-400',
 		backgroundColor: 'bg-emerald-700',
 	},
-	[GameType.Roulette]: {
-		borderColor: 'border-red-700',
+	[GameType.DreamCatcher]: {
+		borderColor: 'border-rose-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-red-500',
-		backgroundColor: 'bg-red-700',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
 	},
 	[GameType.Gonzo]: {
 		borderColor: 'border-orange-700',
@@ -61,9 +56,22 @@ export const gameThemeMapping: Record<string, GameTheme> = {
 		textDecorationColor: 'decoration-orange-400',
 		backgroundColor: 'bg-orange-700',
 	},
+	[GameType.Megaball]: {
+		borderColor: 'border-teal-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-teal-500',
+		backgroundColor: 'bg-teal-700',
+	},
+	[GameType.Roulette]: {
+		borderColor: 'border-red-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-red-500',
+		backgroundColor: 'bg-red-700',
+	},
 }
 
 export const gameNames: Record<GameType, string> = {
+	[GameType.BlackJack]: 'Black Jack',
 	[GameType.Craps]: 'Craps',
 	[GameType.DreamCatcher]: 'Dream Catcher',
 	[GameType.Gonzo]: "Gonzo's Treasure Hunt",

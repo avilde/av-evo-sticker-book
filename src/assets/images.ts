@@ -1,5 +1,7 @@
 import { GameType, PageType } from '../consts'
 
+import blackJackLeftPath from './backgrounds/blackJackLeft.webp'
+import blackJackRightPath from './backgrounds/blackJackRight.webp'
 import dreamCatcherLeftPath from './backgrounds/dreamCatcherLeft.webp'
 import dreamCatcherRightPath from './backgrounds/dreamCatcherRight.webp'
 import megaballLeftPath from './backgrounds/megaBallLeft.webp'
@@ -11,6 +13,7 @@ import gonzoRightPath from './backgrounds/gonzoRight.webp'
 import rouletteLeftPath from './backgrounds/rouletteLeft.webp'
 import rouletteRightPath from './backgrounds/rouletteRight.webp'
 
+import blackJackLogoPath from './logos/blackJackLogo.webp'
 import crapsLogoPath from './logos/crapsLogo.webp'
 import dreamCatcherLogoPath from './logos/dreamCatcherLogo.webp'
 import gonzoLogoPath from './logos/gonzoLogo.webp'
@@ -21,6 +24,8 @@ import { PartialRecord } from '../types'
 
 export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
 	{
+		[`${GameType.BlackJack}${PageType.Left}`]: blackJackLeftPath,
+		[`${GameType.BlackJack}${PageType.Right}`]: blackJackRightPath,
 		[`${GameType.DreamCatcher}${PageType.Left}`]: dreamCatcherLeftPath,
 		[`${GameType.DreamCatcher}${PageType.Right}`]: dreamCatcherRightPath,
 		[`${GameType.Megaball}${PageType.Left}`]: megaballLeftPath,
@@ -34,6 +39,7 @@ export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
 	}
 
 export const logoPathMapping: PartialRecord<GameType, string> = {
+	[GameType.BlackJack]: blackJackLogoPath,
 	[GameType.Craps]: crapsLogoPath,
 	[GameType.DreamCatcher]: dreamCatcherLogoPath,
 	[GameType.Gonzo]: gonzoLogoPath,
