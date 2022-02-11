@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import backCoverPath from '../../../assets/backgrounds/backCover.png'
+import backCoverPath from '../../../assets/backgrounds/backCover.webp'
 
 import './BackCover.css'
 
@@ -12,9 +12,7 @@ export interface BackCoverProps {
 export const BackCover: React.FC<BackCoverProps> = ({ isTurned, onClick }) => {
 	const backCoverClasses = cn(
 		'backCover',
-		'border border-black',
-		'cursor-pointer',
-		'relative',
+		'relative border border-black cursor-pointer',
 		{ isTurned: isTurned }
 	)
 
@@ -33,17 +31,16 @@ export const BackCover: React.FC<BackCoverProps> = ({ isTurned, onClick }) => {
 			<span
 				className={cn(
 					'textContainer',
-					'w-full h-6 shadow-xl shadow-amber-200',
-					'absolute bottom-12',
-					'bg-gradient-to-r from-slate-100 to-amber-700'
+					'w-full h-6 absolute bottom-12',
+					'bg-gradient-to-r from-slate-100 to-amber-700 shadow-xl shadow-amber-200'
 				)}
 			></span>
 
 			<span
 				className={cn(
 					'coverText',
-					'w-full h-6 border-t border-b border-black',
-					'flex items-center justify-center',
+					'w-full h-6 flex items-center justify-center',
+					'border-t border-b border-black',
 					'text-black text-shadow px-2 text-center font-semibold',
 					textSizeClasses
 				)}

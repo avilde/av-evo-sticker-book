@@ -1,8 +1,8 @@
 import cn from 'classnames'
 import React from 'react'
 import { imagePathMapping } from '../../../assets/images'
-import { gameThemeMapping } from '../../../consts'
-import { Page } from '../../../state/types'
+import { gameNames, gameThemeMapping } from '../../../consts'
+import { Page, SetDragTarget } from '../../../state/types'
 import { PageStickerComponent } from '../../sticker/page/PageSticker'
 
 import './Page.css'
@@ -12,7 +12,8 @@ export interface PageComponentProps extends Page {
 	currentPage: number
 	setCurrentPage: (index: number) => void
 	zIndex: number
-	applySticker: (pageIndex: number, nr: number) => void
+	selectedStickerNr: number
+	setDragTarget: SetDragTarget
 }
 
 export const PageComponent: React.FC<PageComponentProps> = ({
@@ -23,7 +24,8 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	currentPage,
 	setCurrentPage,
 	stickers,
-	applySticker,
+	selectedStickerNr,
+	setDragTarget,
 }) => {
 	const theme = gameThemeMapping[gameType]
 	const isOdd = index % 2 === 0
@@ -57,9 +59,10 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 	} as React.CSSProperties
 
 	const pageTurnerClasses = cn(
-		'pageTurner pointer-events-auto',
+		'pageTurner',
 		isOdd ? 'right-0' : 'left-0',
-		'bottom-0 top-0 w-12 h-full absolute cursor-pointer',
+		'bottom-0 top-0 w-12 h-full absolute',
+		'cursor-pointer pointer-events-auto',
 		isOdd
 			? 'hover:bg-gradient-to-l from-black'
 			: 'hover:bg-gradient-to-r from-black',
@@ -68,6 +71,20 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 
 	return (
 		<div className={pageClasses} style={pageStyle}>
+			{!isOdd ? (
+				<div
+					className={cn(
+						'gameName',
+						'absolute top-0 left-0 px-4 h-6 flex justify-center items-center',
+						'select-none pointer-events-none',
+						`text-white text-[10px] md:text-sm text-semibold uppercase`,
+						theme.backgroundColor
+					)}
+				>
+					{gameNames[gameType]}
+				</div>
+			) : null}
+
 			<div
 				className={cn(
 					'stickerLayer',
@@ -81,11 +98,8 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 						{...sticker}
 						className="sticker"
 						isVisible={isPreviewEnabled}
-						applySticker={applySticker.bind(
-							this,
-							index - 1,
-							sticker.nr
-						)}
+						selectedStickerNr={selectedStickerNr}
+						setDragTarget={setDragTarget}
 					/>
 				))}
 			</div>
@@ -105,7 +119,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 					'pageNumber',
 					'absolute bottom-0 w-4 h-4 md:w-8 md:h-8 mb-2',
 					'select-none pointer-events-none',
-					`text-white text-xs sm:text-sm lg:text-lg text-bold underline`,
+					`text-white text-xs sm:text-sm lg:text-lg text-bold underline text-shadow`,
 					theme.textDecorationColor,
 					isOdd ? 'right-0 ml-2 text-left' : 'left-0 mr-2 text-right'
 				)}

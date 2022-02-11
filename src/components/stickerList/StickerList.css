@@ -1,15 +1,19 @@
 .stickerList {
-	width: 13vw;
-	max-height: 100vh;
+	width: auto;
+	height: var(--page-height);
 }
 
 .stickerList > .stickers {
-	max-height: 70vh;
+	max-height: calc(#{var(--page-height)} - 4rem);
+	scroll-snap-points-y: repeat(var(--sticker-height));
+	scroll-snap-type: y proximity;
 }
 
 .stickerList > .stickers > .sticker {
 	width: var(--sticker-width);
 	height: var(--sticker-height);
+	scroll-snap-align: start;
+	box-sizing: border-box;
 }
 
 .stickerList > .stickers > .sticker.disabled {
@@ -27,4 +31,8 @@
 .stickerList > .stickers > .sticker.disabled > .stickerListSticker {
 	opacity: 0.5;
 	filter: grayscale(1);
+}
+
+.stickerList .stickerPackButton {
+	background-size: 100% 100%;
 }

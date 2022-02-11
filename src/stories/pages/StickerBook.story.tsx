@@ -1,8 +1,6 @@
 import { Story } from '@storybook/react'
 import { StickerBook } from '../../components/stickerBook/StickerBook'
 import { StickerBookState } from '../../state/StickerBookState'
-import { generatePages } from '../../utils/randomDataUtils'
-import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
 interface StickerBookStoryProps {
 	randomSeed: number
@@ -11,8 +9,7 @@ interface StickerBookStoryProps {
 export const StickerBookStory: Story<StickerBookStoryProps> = ({
 	randomSeed,
 }) => {
-	const random = createRandomWithSeed(randomSeed)
-	const state = new StickerBookState(generatePages(random), random)
+	const state = new StickerBookState(randomSeed)
 
 	return (
 		<div>

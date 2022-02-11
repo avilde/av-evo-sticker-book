@@ -15,11 +15,21 @@ export interface StickerBookProps {
 
 export const StickerBook: React.FC<StickerBookProps> = observer(
 	({ stickerBookState, className }) => {
-		const { pages, applySticker, currentPage, setCurrentPage } =
-			stickerBookState
+		const {
+			pages,
+			stickers,
+			setDragTarget,
+			currentPage,
+			setCurrentPage,
+			selectedStickerNr,
+		} = stickerBookState
+
+		const margins = 'mt-16 mx-2 md:mx-3 xl:mx-8'
 
 		return (
-			<div className={cn('stickerBook select-none', className)}>
+			<div
+				className={cn('stickerBook', 'select-none', className, margins)}
+			>
 				<div className="pageContainer">
 					<FrontCover
 						zIndex={pages.length + 1}
@@ -39,8 +49,13 @@ export const StickerBook: React.FC<StickerBookProps> = observer(
 								zIndex={pages.length - idx}
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
-								stickers={page.stickers}
-								applySticker={applySticker}
+								stickers={stickers.filter(
+									(s) =>
+										s.gameType === page.gameType &&
+										s.pageType === page.pageType
+								)}
+								selectedStickerNr={selectedStickerNr}
+								setDragTarget={setDragTarget}
 							/>
 						)
 					})}

@@ -58,7 +58,7 @@ describe('randomDataUtils', () => {
 		it('should generate random pages', () => {
 			const random = createRandomWithSeed(123)
 
-			const pages = generatePages(random)
+			const { pages } = generatePages(random)
 
 			expect(pages[0].gameType).toBe(GameType.Megaball)
 			expect(pages[0].pageType).toBe(PageType.Left)

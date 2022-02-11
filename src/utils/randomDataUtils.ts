@@ -68,8 +68,12 @@ export function createAvailableAreas(): number[][] {
 	return JSON.parse(JSON.stringify(BASELINE_STICKER_POSITIONS))
 }
 
-export function generatePages(random: RandomWithSeed): Pages {
+export function generatePages(random: RandomWithSeed): {
+	pages: Pages
+	stickers: Stickers
+} {
 	const pages: Pages = []
+	const stickers: Stickers = []
 	let stickerNr = 1
 
 	getRandomGameTypes(random).forEach((gameType) => {
@@ -78,7 +82,6 @@ export function generatePages(random: RandomWithSeed): Pages {
 
 		PAGE_TYPES.forEach((pageType) => {
 			const availableAreas = createAvailableAreas()
-			const stickers: Stickers = []
 
 			if (pageType === randomSideForSticker && !isLogoAlreadyAdded) {
 				const [left, top] = getRandomStickerLocation(
@@ -88,11 +91,12 @@ export function generatePages(random: RandomWithSeed): Pages {
 				stickers.push({
 					type: StickerType.Logo,
 					gameType: gameType,
+					pageType: pageType,
 					isLogo: true,
 					isUsed: false,
-					isTurned: false,
 					top: top,
 					left: left,
+					count: 0,
 					nr: stickerNr++,
 				})
 				isLogoAlreadyAdded = true
@@ -108,9 +112,9 @@ export function generatePages(random: RandomWithSeed): Pages {
 					gameType: gameType,
 					pageType: pageType,
 					isUsed: false,
-					isTurned: false,
 					top: top,
 					left: left,
+					count: 0,
 					nr: stickerNr++,
 				})
 			})
@@ -125,15 +129,17 @@ export function generatePages(random: RandomWithSeed): Pages {
 		})
 	})
 
-	return pages
+	return {
+		pages,
+		stickers,
+	}
 }
 
 export function generateStickers(
 	random: RandomWithSeed,
 	count: number
 ): Stickers {
-	const pages = generatePages(random)
-	const stickers = pages.flatMap((p) => p.stickers)
+	const { stickers } = generatePages(random)
 
 	return Array.from({ length: count }).map((_) => {
 		return stickers[Math.floor(random() * stickers.length)]

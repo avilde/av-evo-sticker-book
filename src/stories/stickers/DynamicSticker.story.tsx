@@ -18,12 +18,10 @@ export const DynamicStickerStory: Story<DynamicStickerStoryProps> = (props) => (
 	</>
 )
 DynamicStickerStory.args = {
-	isTurned: false,
 	top: 0,
 	left: 0,
 	pageType: PageType.Left,
 	gameType: GameType.Megaball,
-	nr: 1,
 }
 DynamicStickerStory.argTypes = {
 	pageType: {

@@ -4,7 +4,7 @@ import {
 	PageComponentProps,
 } from '../../components/page/page/Page'
 import { GameType, PageType } from '../../consts'
-import { noop } from 'lodash-es'
+import { noop } from '../../utils/commonUtils'
 
 interface PageStoryProps {
 	pageType: PageType
@@ -21,7 +21,8 @@ export const PageStory: Story<PageStoryProps> = ({ pageType, gameType }) => {
 		stickers: [],
 		gameType,
 		pageType,
-		applySticker: noop,
+		setDragTarget: noop,
+		selectedStickerNr: -1,
 	}
 
 	return (

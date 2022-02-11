@@ -5,46 +5,9 @@
 }
 
 .logoSticker > .side {
-	transition: transform 0.8s ease;
-	backface-visibility: hidden;
-	perspective: 150rem;
-	transform-style: preserve-3d;
 	position: absolute;
 	width: inherit;
 	height: inherit;
-}
-
-.logoSticker > .side.back {
-	transform: rotateY(-180deg);
-	background-size: cover;
-}
-
-.logoSticker > .side.back::before {
-	content: '';
-	position: absolute;
-	top: -4px;
-	right: -4px;
-	border-width: 0 2em 2em 0;
-	border-style: solid;
-	border-color: rgba(240, 240, 240, 1) white;
-	background: white;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4), -1px 1px 1px rgba(0, 0, 0, 0.2);
-	display: block;
-	width: 0;
-}
-
-.logoSticker:hover .side.back::before {
-	animation: peel 0.5s ease-in-out both;
-}
-
-@keyframes peel {
-	from {
-		border-width: 0 2em 2em 0;
-	}
-
-	to {
-		border-width: 0em 16.69em 11em 0;
-	}
 }
 
 .logoSticker > .side.front {
@@ -57,12 +20,4 @@
 			rgb(162, 209, 255)
 		)
 		1;
-}
-
-.logoSticker > .side.front.isTurned {
-	transform: rotateY(180deg);
-}
-
-.logoSticker > .side.back.isTurned {
-	transform: rotateY(0deg);
 }

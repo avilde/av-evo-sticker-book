@@ -10,12 +10,15 @@ import { StickerType } from '../../consts'
 import { DynamicStickerComponent } from '../sticker/dynamic/DynamicSticker'
 import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
 import { TimeoutMap } from '../../utils/TimeoutMap'
+import { getRandomInBetween } from '../../utils/randomDataUtils'
+import { RandomWithSeed } from '../../utils/randomWithSeed'
 
 export interface StickerPackProps {
 	stickers: Stickers
 	isUsed: boolean
 	isTurned: boolean
 	updateStickerCount: () => void
+	random: RandomWithSeed
 	className?: string
 }
 
@@ -24,6 +27,7 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 	isUsed,
 	isTurned,
 	updateStickerCount,
+	random,
 	className,
 }) => {
 	const [startFlyAway, setStartFlyAway] = React.useState(false)
@@ -84,6 +88,7 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 			<div className={frontSideClassName} style={frontSideStyle}></div>
 			{isUsed &&
 				stickers.map((sticker, index) => {
+					const randomRotate = getRandomInBetween(random, -4, 4)
 					return (
 						<div
 							key={index}
@@ -102,7 +107,9 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 									{...sticker}
 									className="stickerPackSticker"
 									style={{
-										transform: `rotate(${index * 3}deg)`,
+										transform: `rotate(${
+											index * randomRotate
+										}deg)`,
 									}}
 								/>
 							) : (
@@ -110,7 +117,9 @@ export const StickerPackComponent: React.FC<StickerPackProps> = ({
 									{...sticker}
 									className="stickerPackSticker"
 									style={{
-										transform: `rotate(${index * -3}deg)`,
+										transform: `rotate(${
+											index * randomRotate
+										}deg)`,
 									}}
 								/>
 							)}

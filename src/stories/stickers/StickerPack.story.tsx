@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react'
-import noop from 'lodash-es/noop'
 import { StickerPackComponent } from '../../components/stickerPack/StickerPack'
+import { noop } from '../../utils/commonUtils'
 
 import { generateStickers } from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'
@@ -26,6 +26,7 @@ export const StickerPackStory: Story<StickerPackStoryProps> = ({
 				isTurned={isTurned}
 				isUsed={isUsed}
 				updateStickerCount={noop}
+				random={createRandomWithSeed(randomSeed)}
 			/>
 		</div>
 	)

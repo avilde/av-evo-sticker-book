@@ -1,8 +1,6 @@
 import { Story } from '@storybook/react'
 import { StickerPackZoom } from '../../components/stickerPackZoom/StickerPackZoom'
 import { StickerBookState } from '../../state/StickerBookState'
-import { generatePages } from '../../utils/randomDataUtils'
-import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
 interface StickerPackZoomStoryProps {
 	randomSeed: number
@@ -11,8 +9,7 @@ interface StickerPackZoomStoryProps {
 export const StickerPackZoomStory: Story<StickerPackZoomStoryProps> = ({
 	randomSeed,
 }) => {
-	const random = createRandomWithSeed(randomSeed)
-	const state = new StickerBookState(generatePages(random), random)
+	const state = new StickerBookState(randomSeed)
 
 	state.getNewStickerPack()
 	state.setCurrentStickerPack(state.stickerPacks[0])

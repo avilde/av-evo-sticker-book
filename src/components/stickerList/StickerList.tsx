@@ -7,6 +7,8 @@ import { LogoStickerComponent } from '../sticker/logo/LogoSticker'
 import stickerPackMiniPath from '../../assets/stickerPackMini.png'
 
 import './StickerList.css'
+import React from 'react'
+import { Seed } from './seed/Seed'
 
 interface StickerListProps {
 	stickerBookState: StickerBookState
@@ -16,32 +18,38 @@ interface StickerListProps {
 export const StickerList: React.FC<StickerListProps> = observer(
 	({ stickerBookState, className }) => {
 		const {
-			stickerCountMap,
-			findSticker,
+			stickers,
 			getNewStickerPack,
 			stickerPacksAcquired,
 			stickerPacksOpened,
-			setCurrentSticker,
+			setSelectedStickerNr,
 			stickerPacks,
 			setCurrentStickerPack,
+			applySticker,
+			seed,
+			setNewSeed,
 		} = stickerBookState
+
+		const [showCount, setShowCount] = React.useState(true)
 
 		return (
 			<div
 				className={cn(
 					'stickerList',
-					'flex flex-col justify-center align-center ml-4 relative',
+					'relative flex flex-col justify-center align-center mx-3 mt-3',
 					className
 				)}
 			>
+				<Seed seed={String(seed)} setNewSeed={setNewSeed} />
+
 				<div
 					className={cn(
 						'stickerPackButton',
-						'flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center mb-2 relative',
-						'bg-contain bg-no-repeat select-none',
+						'relative flex w-20 h-16 lg:w-32 lg:h-28 self-center items-center shrink-0 mb-2',
+						'bg-no-repeat select-none',
 						stickerPacksAcquired === 0
 							? 'pointer-events-none grayscale opacity-50'
-							: 'cursor-pointer hover:scale-110'
+							: 'cursor-pointer hover:scale-105 hover:shadow-md hover:shadow-gray-300'
 					)}
 					style={{
 						backgroundImage: `url(${stickerPackMiniPath})`,
@@ -53,11 +61,9 @@ export const StickerList: React.FC<StickerListProps> = observer(
 						<div
 							className={cn(
 								'stickerPacksAcquired',
-								'absolute bottom-4 right-2',
-								'w-4 h-4',
-								'text-[10px] select-none',
-								'bg-slate-800 shadow-sm shadow-black',
-								'text-white text-center font-semibold'
+								'absolute bottom-4 right-2 w-4 h-4',
+								'select-none bg-slate-800 shadow-sm shadow-black',
+								'text-[10px] text-white text-center font-semibold'
 							)}
 						>
 							x{stickerPacksAcquired}
@@ -65,20 +71,20 @@ export const StickerList: React.FC<StickerListProps> = observer(
 					) : null}
 				</div>
 
-				<div className="mb-3 flex flex-col justify-center items-center">
+				<div className="flex flex-col justify-center items-center mb-3">
 					<button
 						className={cn(
-							'bg-blue-500 shadow-lg shadow-blue-100',
-							'py-2 px-2 lg:px-4 rounded-lg',
-							'text-white text-[12px] sm:text-sm md:text-baseline lg:text-lg select-none',
+							'p-1 lg:py-2 lg:px-4',
+							'bg-blue-500 shadow-lg shadow-blue-100 rounded-lg select-none',
+							'text-white text-[12px] md:text-baseline',
 							'hover:shadow-blue-300 hover:scale-105'
 						)}
 						onClick={() => getNewStickerPack()}
 					>
-						Get more sticker packs
+						Get more stickers
 					</button>
 
-					<div className="text-sm select-none">
+					<div className="text-[10px] select-none">
 						Sticker packs opened: {stickerPacksOpened}
 					</div>
 				</div>
@@ -86,19 +92,17 @@ export const StickerList: React.FC<StickerListProps> = observer(
 				<div
 					className={cn(
 						'stickers',
-						className
-							? className
-							: 'flex flex-col border overflow-y-auto overflow-x-hidden'
+						'flex flex-col overflow-y-scroll overflow-x-hidden border px-3 py-1'
 					)}
 				>
-					{Object.keys(stickerCountMap).map((nr) => {
-						const sticker = findSticker(+nr)
-						const count = stickerCountMap[+nr]
+					{stickers.map((sticker) => {
+						const count = sticker.count
 						const theme = gameThemeMapping[sticker.gameType]
+						const key = `${sticker.nr}-${sticker.gameType}-${sticker.left}-${sticker.top}`
 
 						return (
 							<div
-								key={nr}
+								key={`${key}-sticker`}
 								className={cn(
 									'sticker',
 									className,
@@ -108,7 +112,15 @@ export const StickerList: React.FC<StickerListProps> = observer(
 										: 'cursor-pointer',
 									{ disabled: count === 0 }
 								)}
-								onClick={() => setCurrentSticker(sticker)}
+								draggable
+								onDragStart={() => {
+									setShowCount(false)
+									setSelectedStickerNr(sticker.nr)
+								}}
+								onDragEnd={() => {
+									applySticker()
+									setShowCount(true)
+								}}
 							>
 								{sticker.type === StickerType.Logo ? (
 									<LogoStickerComponent
@@ -122,15 +134,14 @@ export const StickerList: React.FC<StickerListProps> = observer(
 									/>
 								)}
 
-								{count > 0 ? (
+								{showCount && count > 0 ? (
 									<div
+										key={`${key}-count`}
 										className={cn(
 											'stickerCount',
-											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4',
-											'w-4 h-4',
-											'text-[10px] select-none',
+											'absolute bottom-2 right-2 lg:bottom-4 lg:right-4 w-4 h-4',
 											'bg-slate-800 shadow-sm shadow-black',
-											'text-white text-center font-semibold'
+											'text-[10px] select-none text-white text-center font-semibold'
 										)}
 									>
 										x{count}
@@ -138,13 +149,12 @@ export const StickerList: React.FC<StickerListProps> = observer(
 								) : null}
 
 								<div
+									key={`${key}-nr`}
 									className={cn(
 										'stickerNumber',
-										'absolute left-2 top-2',
-										'w-6 h-6 lg:w-8 lg:h-8',
+										'absolute left-2 top-2 w-6 h-6 lg:w-8 lg:h-8',
 										'text-sm md:text-baseline lg:text-lg xl:text-xl select-none',
-										'font-semibold font-mono',
-										'text-center text-shadow-md underline rounded-full border',
+										'text-center text-shadow-md underline rounded-full border font-semibold font-mono',
 										count === 0
 											? 'grayscale bg-gray-500'
 											: 'bg-black',
@@ -153,7 +163,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 										theme.borderColor
 									)}
 								>
-									{nr}
+									{sticker.nr}
 								</div>
 							</div>
 						)

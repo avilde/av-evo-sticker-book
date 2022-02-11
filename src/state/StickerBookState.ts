@@ -1,11 +1,12 @@
 import { action, makeAutoObservable, observable } from 'mobx'
-import { RandomWithSeed } from '../utils/randomWithSeed'
+import { generatePages } from '../utils/randomDataUtils'
+import { createRandomWithSeed, RandomWithSeed } from '../utils/randomWithSeed'
 import { TimeoutMap } from '../utils/TimeoutMap'
-import { Page, Pages, Sticker, StickerPack, Stickers } from './types'
+import { Pages, SetDragTarget, Sticker, StickerPack, Stickers } from './types'
 
 export class StickerBookState {
-	public stickerCountMap: Record<number, number> = {}
-	public currentSticker: Sticker | null = null
+	public selectedStickerNr = -1
+	public dragTargetNr: number | null = null
 
 	public currentPage = -1
 
@@ -16,67 +17,77 @@ export class StickerBookState {
 
 	public timeoutMap = new TimeoutMap()
 
-	constructor(public pages: Pages, private random: RandomWithSeed) {
+	public pages: Pages
+	public stickers: Stickers
+	public random: RandomWithSeed
+
+	constructor(public seed: number) {
 		makeAutoObservable(
 			this,
 			{
-				pages: observable.shallow,
-				setCurrentSticker: action.bound,
+				pages: observable.deep,
 				setCurrentStickerPack: action.bound,
 				setCurrentPage: action.bound,
 				updateStickerCount: action.bound,
+				setSelectedStickerNr: action.bound,
+				setDragTarget: action.bound,
+				applySticker: action.bound,
 			},
 			{ autoBind: true }
 		)
 
-		this.pages = pages
+		this.random = createRandomWithSeed(seed)
+		const { pages, stickers } = generatePages(this.random)
 
-		this.availableStickers.forEach((s) => {
-			this.stickerCountMap[s.nr] = 0
-		})
+		this.pages = pages
+		this.stickers = stickers
+	}
+
+	public setNewSeed(seed: number): void {
+		this.seed = seed
+		this.random = createRandomWithSeed(seed)
+		const { pages, stickers } = generatePages(this.random)
+
+		this.pages = pages
+		this.stickers = stickers
 	}
 
 	public findSticker(nr: number): Sticker {
-		return this.availableStickers.find((s) => s.nr === nr)!
+		return this.stickers.find((s) => s.nr === nr)!
 	}
 
 	public getStickers(): Stickers {
 		return Array.from({ length: 5 }).map((_) => {
-			return this.availableStickers[
-				Math.floor(this.random() * this.availableStickers.length)
+			return this.stickers[
+				Math.floor(this.random() * this.stickers.length)
 			]
 		})
 	}
 
-	public applySticker(pageIndex: number, nr: number): void {
-		if (this.stickerCountMap[nr] === 0) {
-			return
-		}
-
-		const page: Page = JSON.parse(JSON.stringify(this.pages[pageIndex]))
-
-		const stickerIdx = page.stickers.findIndex((s) => s.nr === nr)
-		const sticker = this.findSticker(nr)
-
-		page.stickers[stickerIdx] = {
-			...sticker,
-			isUsed: true,
-		}
-
-		this.pages[pageIndex] = page
-
-		this.decreaseStickerCount(nr)
+	public setDragTarget: SetDragTarget = (nr, isOnTarget) => {
+		this.dragTargetNr = isOnTarget ? nr : null
 	}
 
-	public setCurrentSticker(sticker: Sticker | null): void {
-		this.currentSticker = sticker
+	public applySticker(): void {
+		if (
+			this.selectedStickerNr === this.dragTargetNr &&
+			!this.stickers[this.dragTargetNr - 1].isUsed
+		) {
+			this.stickers[this.dragTargetNr - 1].isUsed = true
+			this.decreaseStickerCount(this.dragTargetNr)
+		}
+		this.setSelectedStickerNr(-1)
+	}
+
+	public setSelectedStickerNr(nr: number): void {
+		this.selectedStickerNr = nr
 	}
 
 	public setCurrentPage(pageNr: number): void {
 		this.currentPage = pageNr
 	}
 
-	public setCurrentStickerPack(stickerPack: StickerPack | null) {
+	public setCurrentStickerPack(stickerPack: StickerPack | null): void {
 		this.currentStickerPack = stickerPack
 	}
 
@@ -119,15 +130,11 @@ export class StickerBookState {
 		this.stickerPacksOpened++
 	}
 
-	private increaseStickerCount(nr: number): void {
-		this.stickerCountMap[nr]++
+	private increaseStickerCount(nr: number) {
+		this.stickers[nr - 1].count++
 	}
 
-	private decreaseStickerCount(nr: number): void {
-		this.stickerCountMap[nr]--
-	}
-
-	private get availableStickers(): Stickers {
-		return this.pages.flatMap((p) => p.stickers)
+	private decreaseStickerCount(nr: number) {
+		this.stickers[nr - 1].count--
 	}
 }

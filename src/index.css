@@ -6,22 +6,13 @@
 	.text-shadow {
 		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 	}
-	.text-shadow-md {
-		text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
-	}
-	.text-shadow-lg {
-		text-shadow: 15px 15px 30px rgba(0, 0, 0, 0.7);
-	}
-	.text-shadow-none {
-		text-shadow: none;
-	}
 }
 
 :root {
 	--page-width: 40vw;
 	--page-height: 45vw;
-	--sticker-width: 12vw;
-	--sticker-height: 8vw;
+	--sticker-width: calc(var(--page-width) / 3.5);
+	--sticker-height: calc(var(--page-height) / 6);
 }
 
 html,

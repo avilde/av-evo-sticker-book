@@ -2,7 +2,6 @@
 	width: calc(var(--page-width) * 2);
 	height: var(--page-height);
 	perspective: 250vw;
-	margin: 3em 0;
 }
 
 .pageContainer {
@@ -11,4 +10,5 @@
 	height: var(--page-height);
 	transform-style: preserve-3d;
 	backface-visibility: hidden;
+	transform: translate3d(0, 0, 0);
 }

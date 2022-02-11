@@ -5,30 +5,12 @@
 }
 
 .dynamicSticker > .side {
-	transition: transform 0.8s ease;
-	perspective: 150rem;
-	transform-style: preserve-3d;
-	backface-visibility: hidden;
-	position: absolute;
 	width: inherit;
 	height: inherit;
 }
 
-.dynamicSticker > .side.back {
-	background-size: cover;
-	transform: rotateY(-180deg);
-}
-
 .dynamicSticker > .side.front {
-	background-size: calc(1704px * 0.5) calc(1912px * 0.45);
+	background-size: 350% 600%;
 	background-origin: border-box;
 	background-repeat: no-repeat;
-}
-
-.dynamicSticker > .side.front.isTurned {
-	transform: rotateY(180deg);
-}
-
-.dynamicSticker > .side.back.isTurned {
-	transform: rotateY(0deg);
 }
