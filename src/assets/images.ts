@@ -4,10 +4,14 @@ import blackJackLeftPath from './backgrounds/blackJackLeft.webp'
 import blackJackRightPath from './backgrounds/blackJackRight.webp'
 import cashOrCrashLeftPath from './backgrounds/cashOrCrashLeft.webp'
 import cashOrCrashRightPath from './backgrounds/cashOrCrashRight.webp'
+import cashOrCrashLeftRenderPath from './backgrounds/cashOrCrashRenderLeft.webp'
+import cashOrCrashRightRenderPath from './backgrounds/cashOrCrashRenderRight.webp'
 import crapsLeftPath from './backgrounds/crapsLeft.webp'
 import crapsRightPath from './backgrounds/crapsRight.webp'
 import crazyTimeLeftPath from './backgrounds/crazyTimeLeft.webp'
 import crazyTimeRightPath from './backgrounds/crazyTimeRight.webp'
+import crazyTimeLeftRenderPath from './backgrounds/crazyTimeRenderLeft.webp'
+import crazyTimeRightRenderPath from './backgrounds/crazyTimeRenderRight.webp'
 import dreamCatcherLeftPath from './backgrounds/dreamCatcherLeft.webp'
 import dreamCatcherRightPath from './backgrounds/dreamCatcherRight.webp'
 import fanTanLeftPath from './backgrounds/fanTanLeft.webp'
@@ -31,8 +35,10 @@ import twoHandHoldemRightPath from './backgrounds/twoHandHoldemRight.webp'
 
 import blackJackLogoPath from './logos/blackJackLogo.webp'
 import cashOrCrashLogoPath from './logos/cashOrCrashLogo.webp'
+import cashOrCrashRenderLogoPath from './logos/cashOrCrashRenderLogo.webp'
 import crapsLogoPath from './logos/crapsLogo.webp'
 import crazyTimeLogoPath from './logos/crazyTimeLogo.webp'
+import crazyTimeRenderLogoPath from './logos/crazyTimeRenderLogo.webp'
 import dreamCatcherLogoPath from './logos/dreamCatcherLogo.webp'
 import fanTanLogoPath from './logos/fanTanLogo.webp'
 import goldenBaccaratLogoPath from './logos/goldenBaccaratLogo.webp'
@@ -52,10 +58,18 @@ export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
 		[`${GameType.BlackJack}${PageType.Right}`]: blackJackRightPath,
 		[`${GameType.CashOrCrash}${PageType.Left}`]: cashOrCrashLeftPath,
 		[`${GameType.CashOrCrash}${PageType.Right}`]: cashOrCrashRightPath,
+		[`${GameType.CashOrCrashRender}${PageType.Left}`]:
+			cashOrCrashLeftRenderPath,
+		[`${GameType.CashOrCrashRender}${PageType.Right}`]:
+			cashOrCrashRightRenderPath,
 		[`${GameType.Craps}${PageType.Left}`]: crapsLeftPath,
 		[`${GameType.Craps}${PageType.Right}`]: crapsRightPath,
 		[`${GameType.CrazyTime}${PageType.Left}`]: crazyTimeLeftPath,
 		[`${GameType.CrazyTime}${PageType.Right}`]: crazyTimeRightPath,
+		[`${GameType.CrazyTimeRender}${PageType.Left}`]:
+			crazyTimeLeftRenderPath,
+		[`${GameType.CrazyTimeRender}${PageType.Right}`]:
+			crazyTimeRightRenderPath,
 		[`${GameType.DreamCatcher}${PageType.Left}`]: dreamCatcherLeftPath,
 		[`${GameType.DreamCatcher}${PageType.Right}`]: dreamCatcherRightPath,
 		[`${GameType.FanTan}${PageType.Left}`]: fanTanLeftPath,
@@ -82,8 +96,10 @@ export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
 export const logoPathMapping: Record<GameType, string> = {
 	[GameType.BlackJack]: blackJackLogoPath,
 	[GameType.CashOrCrash]: cashOrCrashLogoPath,
+	[GameType.CashOrCrashRender]: cashOrCrashRenderLogoPath,
 	[GameType.Craps]: crapsLogoPath,
 	[GameType.CrazyTime]: crazyTimeLogoPath,
+	[GameType.CrazyTimeRender]: crazyTimeRenderLogoPath,
 	[GameType.DreamCatcher]: dreamCatcherLogoPath,
 	[GameType.Gonzo]: gonzoLogoPath,
 	[GameType.GoldenBaccarat]: goldenBaccaratLogoPath,

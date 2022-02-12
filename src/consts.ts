@@ -8,8 +8,10 @@ export enum PageType {
 export enum GameType {
 	BlackJack = 'blackJack',
 	CashOrCrash = 'cashOrCrash',
+	CashOrCrashRender = 'cashOrCrashRender',
 	Craps = 'craps',
 	CrazyTime = 'crazyTime',
+	CrazyTimeRender = 'crazyTimeRender',
 	DreamCatcher = 'dreamCatcher',
 	FanTan = 'fanTan',
 	GoldenBaccarat = 'goldenBaccarat',
@@ -45,6 +47,12 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		textDecorationColor: 'decoration-rose-500',
 		backgroundColor: 'bg-rose-700',
 	},
+	[GameType.CashOrCrashRender]: {
+		borderColor: 'border-rose-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
+	},
 	[GameType.Craps]: {
 		borderColor: 'border-emerald-700',
 		textColor: 'text-white',
@@ -52,6 +60,12 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-emerald-700',
 	},
 	[GameType.CrazyTime]: {
+		borderColor: 'border-rose-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
+	},
+	[GameType.CrazyTimeRender]: {
 		borderColor: 'border-rose-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-rose-500',
@@ -122,8 +136,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 export const gameNames: Record<GameType, string> = {
 	[GameType.BlackJack]: 'Black Jack',
 	[GameType.CashOrCrash]: 'Cash Or Crash',
+	[GameType.CashOrCrashRender]: 'Cash Or Crash: Unreal Render',
 	[GameType.Craps]: 'Craps',
 	[GameType.CrazyTime]: 'Crazy Time',
+	[GameType.CrazyTimeRender]: 'Crazy Time: Unreal Render',
 	[GameType.DreamCatcher]: 'Dream Catcher',
 	[GameType.FanTan]: 'Fan Tan',
 	[GameType.Gonzo]: "Gonzo's Treasure Hunt",
