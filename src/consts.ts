@@ -7,22 +7,23 @@ export enum PageType {
 
 export enum GameType {
 	BlackJack = 'blackJack',
+	CashOrCrash = 'cashOrCrash',
 	Craps = 'craps',
+	CrazyTime = 'crazyTime',
 	DreamCatcher = 'dreamCatcher',
+	FanTan = 'fanTan',
+	GoldenBaccarat = 'goldenBaccarat',
 	Gonzo = 'gonzo',
+	LightningDice = 'lighteningDice',
 	Megaball = 'megaBall',
+	Monopoly = 'monopoly',
 	Roulette = 'roulette',
+	TwoHandHoldem = 'twoHandHoldem',
+	SicBo = 'sicBo',
 }
 
 // TODO: find background image for games
 /* 
-	BlackJack = 'blackJack',
-	CashOrCrash = 'cashOrCrash',
-	CrazyTime = 'crazyTime',
-	TwoHandHoldem = 'twoHandHoldem',
-	LighteningDice = 'lighteningDice',
-	Monopoly = 'monopoly',
-	SicBo = 'sicBo',
 	GoldenBaccarat = 'GoldenBaccarat'
 */
 
@@ -38,13 +39,31 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		textDecorationColor: 'decoration-rose-500',
 		backgroundColor: 'bg-rose-700',
 	},
+	[GameType.CashOrCrash]: {
+		borderColor: 'border-rose-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
+	},
 	[GameType.Craps]: {
 		borderColor: 'border-emerald-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-emerald-400',
 		backgroundColor: 'bg-emerald-700',
 	},
+	[GameType.CrazyTime]: {
+		borderColor: 'border-rose-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
+	},
 	[GameType.DreamCatcher]: {
+		borderColor: 'border-rose-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
+	},
+	[GameType.FanTan]: {
 		borderColor: 'border-rose-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-rose-500',
@@ -56,7 +75,25 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		textDecorationColor: 'decoration-orange-400',
 		backgroundColor: 'bg-orange-700',
 	},
+	[GameType.GoldenBaccarat]: {
+		borderColor: 'border-orange-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-orange-400',
+		backgroundColor: 'bg-orange-700',
+	},
+	[GameType.LightningDice]: {
+		borderColor: 'border-orange-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-orange-400',
+		backgroundColor: 'bg-orange-700',
+	},
 	[GameType.Megaball]: {
+		borderColor: 'border-teal-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-teal-500',
+		backgroundColor: 'bg-teal-700',
+	},
+	[GameType.Monopoly]: {
 		borderColor: 'border-teal-700',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-teal-500',
@@ -68,13 +105,33 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		textDecorationColor: 'decoration-red-500',
 		backgroundColor: 'bg-red-700',
 	},
+	[GameType.SicBo]: {
+		borderColor: 'border-red-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-red-500',
+		backgroundColor: 'bg-red-700',
+	},
+	[GameType.TwoHandHoldem]: {
+		borderColor: 'border-red-700',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-red-500',
+		backgroundColor: 'bg-red-700',
+	},
 }
 
 export const gameNames: Record<GameType, string> = {
 	[GameType.BlackJack]: 'Black Jack',
+	[GameType.CashOrCrash]: 'Cash Or Crash',
 	[GameType.Craps]: 'Craps',
+	[GameType.CrazyTime]: 'Crazy Time',
 	[GameType.DreamCatcher]: 'Dream Catcher',
+	[GameType.FanTan]: 'Fan Tan',
 	[GameType.Gonzo]: "Gonzo's Treasure Hunt",
+	[GameType.GoldenBaccarat]: 'Golden Wealth Baccarat',
+	[GameType.LightningDice]: 'Lightening Dice',
 	[GameType.Megaball]: 'Mega Ball',
+	[GameType.Monopoly]: 'Monopoly',
 	[GameType.Roulette]: 'Roulette',
+	[GameType.SicBo]: 'Sic Bo',
+	[GameType.TwoHandHoldem]: '2 Hand Casino Holdem',
 }
