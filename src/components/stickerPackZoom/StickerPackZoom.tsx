@@ -85,16 +85,16 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 
 		const turnAroundClassNames = cn(
 			'flex',
-			'py-2 px-2 rounded-lg',
+			'p-1 sm:py-2 sm:px-2 rounded-lg',
 			'bg-blue-500 shadow-md',
-			'text-white text-[10px] sm:text-sm',
+			'text-white text-[8px] sm:text-sm',
 			'hover:shadow-blue-300 hover:scale-105'
 		)
 
 		const openStickerPackClassNames = cn(
 			'flex',
-			'ml-2 py-2 px-2 rounded-lg shadow-md',
-			'text-white text-[10px] sm:text-sm',
+			'ml-2 p-1 sm:py-2 sm:px-2 rounded-lg shadow-md',
+			'text-white text-[8px] sm:text-sm',
 			!isOpenStickerDisabled
 				? 'hover:shadow-blue-300 hover:scale-105 bg-blue-500'
 				: 'grayscale-0 bg-gray-200 text-black',
@@ -109,6 +109,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 							{...currentStickerPack}
 							updateStickerCount={updateStickerList}
 							random={random}
+							className="stickerPackZoomStickerPack"
 						/>
 					</div>
 
@@ -123,7 +124,7 @@ export const StickerPackZoom: React.FC<StickerPackZoomProps> = observer(
 					</div>
 
 					<div
-						className="flex justify-center items-center absolute -bottom-14"
+						className="flex justify-center items-center absolute -bottom-10 md:-bottom-14"
 						style={{
 							opacity: !currentStickerPack.isUsed ? 1 : 0,
 							transition: 'opacity 0.5s linear',

@@ -15,7 +15,7 @@
 	left: 50%;
 	transform: translateX(-50%);
 	width: 20vw;
-	height: 15vw;
+	height: 16vw;
 }
 
 .stickerPackZoom > .stickerPackContainer > .sticker {
@@ -29,4 +29,10 @@
 	height: var(--sticker-height);
 	top: initial;
 	left: initial;
+}
+
+.stickerPackZoom .stickerPackZoomStickerPack.stickerPack,
+.stickerPackZoom .stickerPackContainer > .stickerPack {
+	width: inherit;
+	height: inherit;
 }
