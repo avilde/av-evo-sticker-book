@@ -10,10 +10,12 @@ import {
 } from './randomDataUtils'
 import { createRandomWithSeed } from './randomWithSeed'
 
+const testSeed = 123
+
 describe('randomDataUtils', () => {
 	describe('getRandomGameTypes', () => {
 		it('should return randomized game types without duplicates', () => {
-			const random = createRandomWithSeed(123)
+			const random = createRandomWithSeed(testSeed)
 
 			const randomGameTypes = getRandomGameTypes(random)
 
@@ -31,7 +33,7 @@ describe('randomDataUtils', () => {
 
 	describe('getRandomPageType', () => {
 		it('should return the random pageType in same order', () => {
-			const random = createRandomWithSeed(123)
+			const random = createRandomWithSeed(testSeed)
 
 			expect(getRandomPageType(random)).toBe(PageType.Right)
 			expect(getRandomPageType(random)).toBe(PageType.Left)
@@ -44,7 +46,7 @@ describe('randomDataUtils', () => {
 
 	describe('getRandomInBetween', () => {
 		it('should return random number in between min and max', () => {
-			const random = createRandomWithSeed(123)
+			const random = createRandomWithSeed(testSeed)
 
 			expect(getRandomInBetween(random, 10, 80)).toBe(65)
 			expect(getRandomInBetween(random, 10, 80)).toBe(22)
@@ -56,7 +58,7 @@ describe('randomDataUtils', () => {
 
 	describe('generatePages', () => {
 		it('should generate random pages', () => {
-			const random = createRandomWithSeed(123)
+			const random = createRandomWithSeed(testSeed)
 
 			const { pages } = generatePages(random)
 
@@ -70,7 +72,7 @@ describe('randomDataUtils', () => {
 
 	describe('generateStickers', () => {
 		it('should return random stickers from list', () => {
-			const random = createRandomWithSeed(123)
+			const random = createRandomWithSeed(testSeed)
 
 			const stickers = generateStickers(random, 20)
 
@@ -92,7 +94,7 @@ describe('randomDataUtils', () => {
 	describe('getRandomStickerLocation', () => {
 		it('should get random sticker location from available areas', () => {
 			const areas = createAvailableAreas()
-			const random = createRandomWithSeed(123)
+			const random = createRandomWithSeed(testSeed)
 
 			expect(getRandomStickerLocation(areas, random)).toEqual([9, 78])
 			expect(getRandomStickerLocation(areas, random)).toEqual([58, 10])

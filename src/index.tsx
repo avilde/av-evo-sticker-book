@@ -6,7 +6,7 @@ import { DesktopLayout } from './layout/DesktopLayout'
 import { MobileLayout } from './layout/MobileLayout'
 import { StickerBookState } from './state/StickerBookState'
 
-const RANDOM_SEED = 123
+const RANDOM_SEED = 420
 
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
 let state, component

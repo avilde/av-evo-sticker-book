@@ -132,6 +132,14 @@ export class StickerBookState {
 		this.stickerPacksOpened++
 	}
 
+	public get stickersUsed(): number {
+		return this.stickers.map((s) => s.isUsed).length
+	}
+
+	public get stickersLeftOver(): number {
+		return this.stickers.reduce((sum: number, s) => sum + s.count, 0) || 0
+	}
+
 	private increaseStickerCount(nr: number) {
 		this.stickers[nr - 1].count++
 	}

@@ -2,6 +2,8 @@ import { GameType, PageType, StickerType } from '../consts'
 import { Page, Pages, Stickers } from '../state/types'
 import { RandomWithSeed } from './randomWithSeed'
 
+export const DEFAULT_RANDOM_SEED = 420
+
 // prettier-ignore
 const BASELINE_STICKER_POSITIONS = [
 	[15, 8],  [60, 8],

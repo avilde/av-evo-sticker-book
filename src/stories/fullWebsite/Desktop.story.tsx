@@ -1,6 +1,7 @@
 import { Story } from '@storybook/react'
 import { DesktopLayout } from '../../layout/DesktopLayout'
 import { StickerBookState } from '../../state/StickerBookState'
+import { DEFAULT_RANDOM_SEED } from '../../utils/randomDataUtils'
 
 interface DesktopLayoutStoryProps {
 	randomSeed: number
@@ -14,6 +15,6 @@ export const DesktopLayoutStory: Story<DesktopLayoutStoryProps> = ({
 	return <DesktopLayout stickerBookState={state} />
 }
 DesktopLayoutStory.args = {
-	randomSeed: 123,
+	randomSeed: DEFAULT_RANDOM_SEED,
 }
 DesktopLayoutStory.storyName = 'Desktop'

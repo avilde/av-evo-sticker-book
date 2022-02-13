@@ -1,6 +1,7 @@
 import { Story } from '@storybook/react'
 import { StickerPackZoom } from '../../components/stickerPackZoom/StickerPackZoom'
 import { StickerBookState } from '../../state/StickerBookState'
+import { DEFAULT_RANDOM_SEED } from '../../utils/randomDataUtils'
 
 interface StickerPackZoomStoryProps {
 	randomSeed: number
@@ -27,6 +28,6 @@ export const StickerPackZoomStory: Story<StickerPackZoomStoryProps> = ({
 	)
 }
 StickerPackZoomStory.args = {
-	randomSeed: 123,
+	randomSeed: DEFAULT_RANDOM_SEED,
 }
 StickerPackZoomStory.storyName = 'Sticker pack zoom'

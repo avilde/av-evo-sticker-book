@@ -52,24 +52,21 @@ import twoHandHoldemLogoPath from './logos/twoHandHoldemLogo.webp'
 
 import { PartialRecord } from '../types'
 
+// prettier-ignore
 export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
 	{
 		[`${GameType.BlackJack}${PageType.Left}`]: blackJackLeftPath,
 		[`${GameType.BlackJack}${PageType.Right}`]: blackJackRightPath,
 		[`${GameType.CashOrCrash}${PageType.Left}`]: cashOrCrashLeftPath,
 		[`${GameType.CashOrCrash}${PageType.Right}`]: cashOrCrashRightPath,
-		[`${GameType.CashOrCrashRender}${PageType.Left}`]:
-			cashOrCrashLeftRenderPath,
-		[`${GameType.CashOrCrashRender}${PageType.Right}`]:
-			cashOrCrashRightRenderPath,
+		[`${GameType.CashOrCrashRender}${PageType.Left}`]: cashOrCrashLeftRenderPath,
+		[`${GameType.CashOrCrashRender}${PageType.Right}`]: cashOrCrashRightRenderPath,
 		[`${GameType.Craps}${PageType.Left}`]: crapsLeftPath,
 		[`${GameType.Craps}${PageType.Right}`]: crapsRightPath,
 		[`${GameType.CrazyTime}${PageType.Left}`]: crazyTimeLeftPath,
 		[`${GameType.CrazyTime}${PageType.Right}`]: crazyTimeRightPath,
-		[`${GameType.CrazyTimeRender}${PageType.Left}`]:
-			crazyTimeLeftRenderPath,
-		[`${GameType.CrazyTimeRender}${PageType.Right}`]:
-			crazyTimeRightRenderPath,
+		[`${GameType.CrazyTimeRender}${PageType.Left}`]: crazyTimeLeftRenderPath,
+		[`${GameType.CrazyTimeRender}${PageType.Right}`]: crazyTimeRightRenderPath,
 		[`${GameType.DreamCatcher}${PageType.Left}`]: dreamCatcherLeftPath,
 		[`${GameType.DreamCatcher}${PageType.Right}`]: dreamCatcherRightPath,
 		[`${GameType.FanTan}${PageType.Left}`]: fanTanLeftPath,
@@ -77,8 +74,7 @@ export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
 		[`${GameType.Gonzo}${PageType.Left}`]: gonzoLeftPath,
 		[`${GameType.Gonzo}${PageType.Right}`]: gonzoRightPath,
 		[`${GameType.GoldenBaccarat}${PageType.Left}`]: goldenBaccaratLeftPath,
-		[`${GameType.GoldenBaccarat}${PageType.Right}`]:
-			goldenBaccaratRightPath,
+		[`${GameType.GoldenBaccarat}${PageType.Right}`]: goldenBaccaratRightPath,
 		[`${GameType.LightningDice}${PageType.Left}`]: lightningDiceLeftPath,
 		[`${GameType.LightningDice}${PageType.Right}`]: lightningDiceRightPath,
 		[`${GameType.Megaball}${PageType.Left}`]: megaballLeftPath,

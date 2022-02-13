@@ -2,7 +2,10 @@ import { Story } from '@storybook/react'
 import { StickerPackComponent } from '../../components/stickerPack/StickerPack'
 import { noop } from '../../utils/commonUtils'
 
-import { generateStickers } from '../../utils/randomDataUtils'
+import {
+	DEFAULT_RANDOM_SEED,
+	generateStickers,
+} from '../../utils/randomDataUtils'
 import { createRandomWithSeed } from '../../utils/randomWithSeed'
 
 interface StickerPackStoryProps {
@@ -34,6 +37,6 @@ export const StickerPackStory: Story<StickerPackStoryProps> = ({
 StickerPackStory.args = {
 	isUsed: false,
 	isTurned: false,
-	randomSeed: 123,
+	randomSeed: DEFAULT_RANDOM_SEED,
 }
 StickerPackStory.storyName = 'Sticker pack'
