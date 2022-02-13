@@ -31,22 +31,22 @@ export enum StickerType {
 
 export const gameThemeMapping: Record<GameType, GameTheme> = {
 	[GameType.BlackJack]: {
-		borderColor: 'border-rose-700',
+		borderColor: 'border-rose-900',
 		textColor: 'text-white',
 		textDecorationColor: 'decoration-rose-500',
-		backgroundColor: 'bg-rose-700',
+		backgroundColor: 'bg-rose-900',
 	},
 	[GameType.CashOrCrash]: {
-		borderColor: 'border-rose-700',
+		borderColor: 'border-amber-900',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
-		backgroundColor: 'bg-rose-700',
+		textDecorationColor: 'decoration-amber-500',
+		backgroundColor: 'bg-amber-900',
 	},
 	[GameType.CashOrCrashRender]: {
-		borderColor: 'border-rose-700',
+		borderColor: 'border-amber-900',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
-		backgroundColor: 'bg-rose-700',
+		textDecorationColor: 'decoration-amber-500',
+		backgroundColor: 'bg-amber-900',
 	},
 	[GameType.Craps]: {
 		borderColor: 'border-emerald-700',
@@ -61,10 +61,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-rose-700',
 	},
 	[GameType.CrazyTimeRender]: {
-		borderColor: 'border-rose-700',
+		borderColor: 'border-red-600',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
-		backgroundColor: 'bg-rose-700',
+		textDecorationColor: 'decoration-red-500',
+		backgroundColor: 'bg-red-600',
 	},
 	[GameType.DreamCatcher]: {
 		borderColor: 'border-rose-700',
