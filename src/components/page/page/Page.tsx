@@ -77,7 +77,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 						'gameName',
 						'absolute top-0 left-0 px-4 h-6 flex justify-center items-center',
 						'select-none pointer-events-none',
-						`text-white text-[10px] md:text-sm text-semibold uppercase`,
+						`text-white text-[8px] sm:text-[10px] md:text-sm text-semibold uppercase`,
 						theme.backgroundColor
 					)}
 				>
