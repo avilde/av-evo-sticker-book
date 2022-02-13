@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import { imagePathMapping } from '../../../assets/images'
+import { pagesImageMapping } from '../../../assets/images'
 import { gameNames, gameThemeMapping } from '../../../consts'
 import { Page, SetDragTarget } from '../../../state/types'
 import { PageStickerComponent } from '../../sticker/page/PageSticker'
@@ -51,7 +51,7 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 		}
 	)
 
-	const backgroundImage = imagePathMapping[`${gameType}${pageType}`]
+	const backgroundImage = pagesImageMapping[`${gameType}${pageType}`]
 
 	const pageStyle = {
 		backgroundImage: `url(${backgroundImage})`,

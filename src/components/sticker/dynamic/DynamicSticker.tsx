@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import { imagePathMapping } from '../../../assets/images'
+import { pagesImageMapping } from '../../../assets/images'
 
 import './DynamicSticker.css'
 import { DynamicSticker } from '../../../state/types'
@@ -31,7 +31,7 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 			borderSizes
 		)
 
-		const backgroundImage = imagePathMapping[`${gameType}${pageType}`]
+		const backgroundImage = pagesImageMapping[`${gameType}${pageType}`]
 		const backgroundPosition = `${left * POSITION_X_RATIO}% ${
 			top * POSITION_Y_RATIO
 		}%`

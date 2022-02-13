@@ -47,6 +47,10 @@ export class StickerBookState {
 		this.seed = seed
 		this.stickerPacksAcquired = 0
 		this.stickerPacksOpened = 0
+		this.currentStickerPack = null
+		this.currentPage = -1
+		this.selectedStickerNr = -1
+		this.timeoutMap.clearAllTimeouts()
 		this.random = createRandomWithSeed(seed)
 		const { pages, stickers } = generatePages(this.random)
 

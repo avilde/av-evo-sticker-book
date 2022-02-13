@@ -61,7 +61,7 @@ export const WinScreen: React.FC<WinScreenProps> = ({ stickerBookState }) => {
 						Sticker packs opened: {stickerPacksOpened}
 					</li>
 					<li className="item">
-						Sticker packs acquired: {stickerPacksAcquired}
+						Sticker packs left over: {stickerPacksAcquired}
 					</li>
 					<li className="item">Stickers used: {stickersUsed}</li>
 					<li className="item">

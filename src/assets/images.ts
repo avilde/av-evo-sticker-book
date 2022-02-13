@@ -53,7 +53,7 @@ import twoHandHoldemLogoPath from './logos/twoHandHoldemLogo.webp'
 import { PartialRecord } from '../types'
 
 // prettier-ignore
-export const imagePathMapping: PartialRecord<`${GameType}${PageType}`, string> =
+export const pagesImageMapping: PartialRecord<`${GameType}${PageType}`, string> =
 	{
 		[`${GameType.BlackJack}${PageType.Left}`]: blackJackLeftPath,
 		[`${GameType.BlackJack}${PageType.Right}`]: blackJackRightPath,

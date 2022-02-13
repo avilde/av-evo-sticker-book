@@ -24,11 +24,6 @@ export enum GameType {
 	SicBo = 'sicBo',
 }
 
-// TODO: find background image for games
-/* 
-	GoldenBaccarat = 'GoldenBaccarat'
-*/
-
 export enum StickerType {
 	Dynamic = 'Dynamic',
 	Logo = 'Logo',
