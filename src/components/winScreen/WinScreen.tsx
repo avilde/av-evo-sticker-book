@@ -26,7 +26,7 @@ export const WinScreen: React.FC<WinScreenProps> = ({ stickerBookState }) => {
 	)
 
 	const newStickerBookClassNames = cn(
-		'newStickerBook absolute bottom-24 left-[40%]',
+		'newStickerBook absolute bottom-16 left-[50%] translate-x-[-50%]',
 		'ml-2 p-1 sm:py-2 sm:px-2 rounded-lg shadow-md',
 		'text-white text-[8px] sm:text-sm',
 		'hover:shadow-blue-300 hover:scale-105 bg-blue-500'
@@ -34,7 +34,7 @@ export const WinScreen: React.FC<WinScreenProps> = ({ stickerBookState }) => {
 
 	const listClassNames = cn(
 		'list-disc',
-		'absolute top-[30%] left-[35%] flex-col justify-start items-center w-62',
+		'absolute top-[30%] left-[50%] translate-x-[-50%] flex-col justify-start items-center w-62',
 		'text-xl'
 	)
 
@@ -45,7 +45,7 @@ export const WinScreen: React.FC<WinScreenProps> = ({ stickerBookState }) => {
 	return (
 		<div className={winScreenClassNames}>
 			<div className="dialog absolute flex-col justify-center items-center bg-white">
-				<h1 className="text-center text-bold text-4xl m-2 mb-6">
+				<h1 className="text-center text-extrabold text-4xl m-2 mb-6 underline decoration-sky-600">
 					Congratulations!
 				</h1>
 
@@ -76,7 +76,7 @@ export const WinScreen: React.FC<WinScreenProps> = ({ stickerBookState }) => {
 					New sticker book
 				</button>
 
-				<div className="absolute bottom-10 left-[37%]">
+				<div className="absolute bottom-6 left-[50%] translate-x-[-50%] text-sm">
 					Random seed: {seed}
 				</div>
 			</div>

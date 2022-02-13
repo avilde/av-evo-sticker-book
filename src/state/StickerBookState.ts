@@ -140,6 +140,10 @@ export class StickerBookState {
 		return this.stickers.reduce((sum: number, s) => sum + s.count, 0) || 0
 	}
 
+	public get allStickerApplied(): boolean {
+		return this.stickers.every((s) => s.isUsed)
+	}
+
 	private increaseStickerCount(nr: number) {
 		this.stickers[nr - 1].count++
 	}
