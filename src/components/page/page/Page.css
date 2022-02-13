@@ -8,6 +8,7 @@
 	backface-visibility: hidden;
 	background-size: 100% 100%;
 	box-sizing: border-box;
+	will-change: transform;
 }
 
 .page.isOdd {
