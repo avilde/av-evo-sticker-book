@@ -67,10 +67,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-red-600',
 	},
 	[GameType.DreamCatcher]: {
-		borderColor: 'border-rose-700',
+		borderColor: 'border-purple-800',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
-		backgroundColor: 'bg-rose-700',
+		textDecorationColor: 'decoration-purple-500',
+		backgroundColor: 'bg-purple-800',
 	},
 	[GameType.FanTan]: {
 		borderColor: 'border-rose-700',
@@ -103,10 +103,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-teal-700',
 	},
 	[GameType.Monopoly]: {
-		borderColor: 'border-teal-700',
+		borderColor: 'border-amber-600',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-teal-500',
-		backgroundColor: 'bg-teal-700',
+		textDecorationColor: 'decoration-amber-500',
+		backgroundColor: 'bg-amber-600',
 	},
 	[GameType.Roulette]: {
 		borderColor: 'border-red-700',
