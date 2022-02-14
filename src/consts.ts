@@ -20,8 +20,8 @@ export enum GameType {
 	Megaball = 'megaBall',
 	Monopoly = 'monopoly',
 	Roulette = 'roulette',
-	TwoHandHoldem = 'twoHandHoldem',
 	SicBo = 'sicBo',
+	TwoHandHoldem = 'twoHandHoldem',
 }
 
 export enum StickerType {
@@ -33,7 +33,7 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 	[GameType.BlackJack]: {
 		borderColor: 'border-rose-900',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
+		textDecorationColor: 'decoration-rose-300',
 		backgroundColor: 'bg-rose-900',
 	},
 	[GameType.CashOrCrash]: {
@@ -55,10 +55,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-emerald-700',
 	},
 	[GameType.CrazyTime]: {
-		borderColor: 'border-rose-700',
+		borderColor: 'border-red-600',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
-		backgroundColor: 'bg-rose-700',
+		textDecorationColor: 'decoration-red-500',
+		backgroundColor: 'bg-red-600',
 	},
 	[GameType.CrazyTimeRender]: {
 		borderColor: 'border-red-600',
@@ -67,16 +67,22 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-red-600',
 	},
 	[GameType.DreamCatcher]: {
-		borderColor: 'border-purple-800',
+		borderColor: 'border-violet-800',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-purple-500',
-		backgroundColor: 'bg-purple-800',
+		textDecorationColor: 'decoration-violet-300',
+		backgroundColor: 'bg-violet-800',
 	},
 	[GameType.FanTan]: {
 		borderColor: 'border-rose-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-500',
+		textDecorationColor: 'decoration-rose-400',
 		backgroundColor: 'bg-rose-700',
+	},
+	[GameType.GoldenBaccarat]: {
+		borderColor: 'border-amber-600',
+		textColor: 'text-white',
+		textDecorationColor: 'decoration-amber-500',
+		backgroundColor: 'bg-amber-600',
 	},
 	[GameType.Gonzo]: {
 		borderColor: 'border-orange-700',
@@ -84,23 +90,17 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		textDecorationColor: 'decoration-orange-400',
 		backgroundColor: 'bg-orange-700',
 	},
-	[GameType.GoldenBaccarat]: {
-		borderColor: 'border-orange-700',
-		textColor: 'text-white',
-		textDecorationColor: 'decoration-orange-400',
-		backgroundColor: 'bg-orange-700',
-	},
 	[GameType.LightningDice]: {
-		borderColor: 'border-orange-700',
-		textColor: 'text-white',
+		borderColor: 'border-orange-300',
+		textColor: 'text-black',
 		textDecorationColor: 'decoration-orange-400',
-		backgroundColor: 'bg-orange-700',
+		backgroundColor: 'bg-orange-300',
 	},
 	[GameType.Megaball]: {
-		borderColor: 'border-teal-700',
+		borderColor: 'border-cyan-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-teal-500',
-		backgroundColor: 'bg-teal-700',
+		textDecorationColor: 'decoration-cyan-500',
+		backgroundColor: 'bg-cyan-700',
 	},
 	[GameType.Monopoly]: {
 		borderColor: 'border-amber-600',
@@ -109,10 +109,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-amber-600',
 	},
 	[GameType.Roulette]: {
-		borderColor: 'border-red-700',
+		borderColor: 'border-rose-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-red-500',
-		backgroundColor: 'bg-red-700',
+		textDecorationColor: 'decoration-rose-500',
+		backgroundColor: 'bg-rose-700',
 	},
 	[GameType.SicBo]: {
 		borderColor: 'border-red-700',
@@ -121,10 +121,10 @@ export const gameThemeMapping: Record<GameType, GameTheme> = {
 		backgroundColor: 'bg-red-700',
 	},
 	[GameType.TwoHandHoldem]: {
-		borderColor: 'border-red-700',
+		borderColor: 'border-neutral-700',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-red-500',
-		backgroundColor: 'bg-red-700',
+		textDecorationColor: 'decoration-neutral-500',
+		backgroundColor: 'bg-neutral-700',
 	},
 }
 
@@ -137,8 +137,8 @@ export const gameNames: Record<GameType, string> = {
 	[GameType.CrazyTimeRender]: 'Crazy Time: Unreal Render',
 	[GameType.DreamCatcher]: 'Dream Catcher',
 	[GameType.FanTan]: 'Fan Tan',
-	[GameType.Gonzo]: "Gonzo's Treasure Hunt",
 	[GameType.GoldenBaccarat]: 'Golden Wealth Baccarat',
+	[GameType.Gonzo]: "Gonzo's Treasure Hunt",
 	[GameType.LightningDice]: 'Lightening Dice',
 	[GameType.Megaball]: 'Mega Ball',
 	[GameType.Monopoly]: 'Monopoly',

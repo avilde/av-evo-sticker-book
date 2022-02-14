@@ -39,7 +39,7 @@ export const PageStory: Story<PageStoryProps> = ({ pageType, gameType }) => {
 }
 PageStory.args = {
 	pageType: PageType.Left,
-	gameType: GameType.Megaball,
+	gameType: GameType.BlackJack,
 }
 PageStory.argTypes = {
 	pageType: {
