@@ -62,10 +62,10 @@ describe('randomDataUtils', () => {
 
 			const { pages } = generatePages(random)
 
-			expect(pages[0].gameType).toBe(GameType.Megaball)
+			expect(pages[0].gameType).toBe(GameType.Monopoly)
 			expect(pages[0].pageType).toBe(PageType.Left)
 
-			expect(pages[1].gameType).toBe(GameType.Megaball)
+			expect(pages[1].gameType).toBe(GameType.Monopoly)
 			expect(pages[1].pageType).toBe(PageType.Right)
 		})
 	})
@@ -78,8 +78,10 @@ describe('randomDataUtils', () => {
 
 			expect(stickers).toHaveLength(20)
 
-			expect(stickers[0].gameType).toBe(GameType.Megaball)
-			expect(stickers[stickers.length - 1].gameType).toBe(GameType.Craps)
+			expect(stickers[0].gameType).toBe(GameType.DreamCatcher)
+			expect(stickers[stickers.length - 1].gameType).toBe(
+				GameType.BlackJack
+			)
 		})
 	})
 

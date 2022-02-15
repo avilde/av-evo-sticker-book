@@ -77,7 +77,8 @@ export class StickerBookState {
 	public applySticker(): void {
 		if (
 			this.selectedStickerNr === this.dragTargetNr &&
-			!this.stickers[this.dragTargetNr - 1].isUsed
+			!this.stickers[this.dragTargetNr - 1].isUsed &&
+			this.stickers[this.dragTargetNr - 1].count !== 0
 		) {
 			this.stickers[this.dragTargetNr - 1].isUsed = true
 			this.decreaseStickerCount(this.dragTargetNr)
@@ -137,7 +138,7 @@ export class StickerBookState {
 	}
 
 	public get stickersUsed(): number {
-		return this.stickers.map((s) => s.isUsed).length
+		return this.stickers.filter((s) => s.isUsed).length
 	}
 
 	public get stickersLeftOver(): number {
