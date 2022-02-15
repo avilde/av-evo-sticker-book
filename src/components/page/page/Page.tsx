@@ -118,9 +118,9 @@ export const PageComponent: React.FC<PageComponentProps> = ({
 			<div
 				className={cn(
 					'pageNumber',
-					'absolute bottom-0 w-4 h-4 md:w-8 md:h-8 mb-2',
+					'absolute bottom-0 w-4 h-4 lg:w-8 lg:h-8 mb-2',
 					'select-none pointer-events-none',
-					`text-white text-xs sm:text-sm lg:text-lg text-bold underline text-shadow`,
+					`text-white text-xs sm:text-sm lg:text-lg text-bold underline lg:text-shadow`,
 					theme.textDecorationColor,
 					isOdd ? 'right-0 ml-2 text-left' : 'left-0 mr-2 text-right'
 				)}

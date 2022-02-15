@@ -31,10 +31,10 @@ export enum StickerType {
 
 export const gameThemeMapping: Record<GameType, GameTheme> = {
 	[GameType.BlackJack]: {
-		borderColor: 'border-rose-900',
+		borderColor: 'border-emerald-800',
 		textColor: 'text-white',
-		textDecorationColor: 'decoration-rose-300',
-		backgroundColor: 'bg-rose-900',
+		textDecorationColor: 'decoration-emerald-300',
+		backgroundColor: 'bg-emerald-800',
 	},
 	[GameType.CashOrCrash]: {
 		borderColor: 'border-amber-900',
