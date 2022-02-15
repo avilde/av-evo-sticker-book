@@ -11,7 +11,6 @@ const BASELINE_STICKER_POSITIONS = [
 	[15, 55], [60, 55],
 	[15, 78], [60, 78],
 ]
-const HORIZONTAL_DEVIATION = [-9, 9]
 const VERTICAL_DEVIATION = [-3, 3]
 const PAGE_TYPES = [PageType.Left, PageType.Right]
 
@@ -47,11 +46,12 @@ export function getRandomStickerLocation(
 ): number[] {
 	const randomIndex = Math.floor(random() * availableAreas.length)
 	const randomArea = availableAreas.splice(randomIndex, 1)[0]
+	const isFirstColumn = randomIndex % 2 === 0
 
 	const randomHorizontalAdjustment = getRandomInBetween(
 		random,
-		HORIZONTAL_DEVIATION[0],
-		HORIZONTAL_DEVIATION[1]
+		isFirstColumn ? -9 : -7,
+		isFirstColumn ? 7 : 9
 	)
 
 	const randomVerticalAdjustment = getRandomInBetween(
