@@ -10,58 +10,56 @@ export interface FrontCoverProps {
 	onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
-export const FrontCover: React.FC<FrontCoverProps> = ({
-	isTurned,
-	zIndex,
-	onClick,
-}) => {
-	const frontCoverClasses = cn(
-		'frontCover',
-		'border border-black',
-		'cursor-pointer',
-		{ isTurned: isTurned }
-	)
+export const FrontCover: React.FC<FrontCoverProps> = React.memo(
+	({ isTurned, zIndex, onClick }) => {
+		const frontCoverClasses = cn(
+			'frontCover',
+			'border border-black',
+			'cursor-pointer',
+			{ isTurned: isTurned }
+		)
 
-	const frontCoverStyle = {
-		backgroundImage: `url(${frontCoverPath})`,
-		zIndex: zIndex,
-	} as React.CSSProperties
+		const frontCoverStyle = {
+			backgroundImage: `url(${frontCoverPath})`,
+			zIndex: zIndex,
+		} as React.CSSProperties
 
-	const textSizeClasses =
-		'text-sm md:text-lg lg:text-2xl xl:text-4xl 2xl:text-4xl'
+		const textSizeClasses =
+			'text-sm md:text-lg lg:text-2xl xl:text-4xl 2xl:text-4xl'
 
-	return (
-		<div
-			className={frontCoverClasses}
-			style={frontCoverStyle}
-			onClick={onClick}
-		>
-			<span
-				className={cn(
-					'textContainer',
-					'w-full h-10 lg:h-16 flex items-center justify-center',
-					'bg-gradient-to-r from-slate-100 to-sky-700 shadow-xl shadow-sky-200'
-				)}
-			></span>
-			<span
-				className={cn(
-					'coverText',
-					'w-full h-10 lg:h-16 flex items-center justify-center',
-					'border-t border-b border-black',
-					'text-black px-2 text-center font-semibold',
-					textSizeClasses
-				)}
+		return (
+			<div
+				className={frontCoverClasses}
+				style={frontCoverStyle}
+				onClick={onClick}
 			>
-				Evolution sticker book
 				<span
 					className={cn(
-						'font-bold text-slate-200 pl-5',
+						'textContainer',
+						'w-full h-10 lg:h-16 flex items-center justify-center',
+						'bg-gradient-to-r from-slate-100 to-sky-700 shadow-xl shadow-sky-200'
+					)}
+				></span>
+				<span
+					className={cn(
+						'coverText',
+						'w-full h-10 lg:h-16 flex items-center justify-center',
+						'border-t border-b border-black',
+						'text-black px-2 text-center font-semibold',
 						textSizeClasses
 					)}
 				>
-					2022
+					Evolution sticker book
+					<span
+						className={cn(
+							'font-bold text-slate-200 pl-5',
+							textSizeClasses
+						)}
+					>
+						2022
+					</span>
 				</span>
-			</span>
-		</div>
-	)
-}
+			</div>
+		)
+	}
+)

@@ -10,33 +10,30 @@ export interface LogoStickerComponentProps extends LogoSticker {
 	style?: React.CSSProperties
 }
 
-export const LogoStickerComponent: React.FC<LogoStickerComponentProps> = ({
-	gameType,
-	top,
-	left,
-	nr,
-	className,
-	style,
-}) => {
-	const stickerClasses = cn('logoSticker', className)
+export const LogoStickerComponent: React.FC<LogoStickerComponentProps> =
+	React.memo(({ gameType, top, left, nr, className, style }) => {
+		const stickerClasses = cn('logoSticker', className)
 
-	const stickerStyle = {
-		top: `${top}%`,
-		left: `${left}%`,
-		...style,
-	} as React.CSSProperties
+		const stickerStyle = {
+			top: `${top}%`,
+			left: `${left}%`,
+			...style,
+		} as React.CSSProperties
 
-	const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
+		const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 
-	const frontSideClassName = cn('front', 'side', borderSizes, 'shadow-xl')
+		const frontSideClassName = cn('front', 'side', borderSizes, 'shadow-xl')
 
-	const frontSideStyle = {
-		backgroundImage: `url(${logoPathMapping[gameType]})`,
-	} as React.CSSProperties
+		const frontSideStyle = {
+			backgroundImage: `url(${logoPathMapping[gameType]})`,
+		} as React.CSSProperties
 
-	return (
-		<div className={stickerClasses} style={stickerStyle}>
-			<div className={frontSideClassName} style={frontSideStyle}></div>
-		</div>
-	)
-}
+		return (
+			<div className={stickerClasses} style={stickerStyle}>
+				<div
+					className={frontSideClassName}
+					style={frontSideStyle}
+				></div>
+			</div>
+		)
+	})

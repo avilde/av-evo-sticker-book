@@ -16,117 +16,125 @@ export interface PageComponentProps extends Page {
 	setDragTarget: SetDragTarget
 }
 
-export const PageComponent: React.FC<PageComponentProps> = ({
-	gameType,
-	pageType,
-	index,
-	zIndex,
-	currentPage,
-	setCurrentPage,
-	stickers,
-	selectedStickerNr,
-	setDragTarget,
-}) => {
-	const theme = gameThemeMapping[gameType]
-	const isOdd = index % 2 === 0
+export const PageComponent: React.FC<PageComponentProps> = React.memo(
+	({
+		gameType,
+		pageType,
+		index,
+		zIndex,
+		currentPage,
+		setCurrentPage,
+		stickers,
+		selectedStickerNr,
+		setDragTarget,
+	}) => {
+		const theme = gameThemeMapping[gameType]
+		const isOdd = index % 2 === 0
 
-	const [showPreview, setShowPreview] = React.useState<boolean>(false)
+		const [showPreview, setShowPreview] = React.useState<boolean>(false)
 
-	const isPreviewEnabled =
-		(isOdd && currentPage === index - 1) ||
-		(!isOdd && currentPage === index)
-	const isTurned = currentPage >= index
+		const isPreviewEnabled =
+			(isOdd && currentPage === index - 1) ||
+			(!isOdd && currentPage === index)
+		const isTurned = currentPage >= index
 
-	const pageClasses = cn(
-		'page',
-		'pointer-events-none',
-		'border-y',
-		theme.borderColor,
-		isOdd ? 'border-r' : 'border-l',
-		{
-			isTurned: isTurned,
-			isOdd: isOdd,
-			isEven: !isOdd,
-			isPreviewEnabled: showPreview,
-		}
-	)
+		const pageClasses = cn(
+			'page',
+			'pointer-events-none',
+			'border-y',
+			theme.borderColor,
+			isOdd ? 'border-r' : 'border-l',
+			{
+				isTurned: isTurned,
+				isOdd: isOdd,
+				isEven: !isOdd,
+				isPreviewEnabled: showPreview,
+			}
+		)
 
-	const backgroundImage = pagesImageMapping[`${gameType}${pageType}`]
+		const backgroundImage = pagesImageMapping[`${gameType}${pageType}`]
 
-	const pageStyle = {
-		backgroundImage: `url(${backgroundImage})`,
-		zIndex: isOdd ? zIndex : null,
-	} as React.CSSProperties
+		const pageStyle = {
+			backgroundImage: `url(${backgroundImage})`,
+			zIndex: isOdd ? zIndex : null,
+		} as React.CSSProperties
 
-	const pageTurnerClasses = cn(
-		'pageTurner',
-		isOdd ? 'right-0' : 'left-0',
-		'bottom-0 top-0 w-12 h-full absolute',
-		'cursor-pointer pointer-events-auto',
-		isOdd
-			? 'hover:bg-gradient-to-l from-black'
-			: 'hover:bg-gradient-to-r from-black',
-		{ isTurned: isTurned }
-	)
+		const pageTurnerClasses = cn(
+			'pageTurner',
+			isOdd ? 'right-0' : 'left-0',
+			'bottom-0 top-0 w-12 h-full absolute',
+			'cursor-pointer pointer-events-auto',
+			isOdd
+				? 'hover:bg-gradient-to-l from-black'
+				: 'hover:bg-gradient-to-r from-black',
+			{ isTurned: isTurned }
+		)
 
-	return (
-		<div className={pageClasses} style={pageStyle}>
-			{!isOdd ? (
+		return (
+			<div className={pageClasses} style={pageStyle}>
+				{!isOdd ? (
+					<div
+						className={cn(
+							'gameName',
+							'absolute top-0 left-0 px-4 h-6 flex justify-center items-center',
+							'select-none pointer-events-none',
+							`text-[8px] sm:text-[10px] md:text-sm text-semibold uppercase`,
+							theme.textColor,
+							theme.backgroundColor
+						)}
+					>
+						{gameNames[gameType]}
+					</div>
+				) : null}
+
 				<div
 					className={cn(
-						'gameName',
-						'absolute top-0 left-0 px-4 h-6 flex justify-center items-center',
+						'stickerLayer',
 						'select-none pointer-events-none',
-						`text-[8px] sm:text-[10px] md:text-sm text-semibold uppercase`,
-						theme.textColor,
-						theme.backgroundColor
+						{ isOdd: isOdd, isEven: !isOdd }
 					)}
 				>
-					{gameNames[gameType]}
+					{stickers?.map((sticker, stickerIndex) => (
+						<PageStickerComponent
+							key={stickerIndex}
+							{...sticker}
+							className="sticker"
+							isVisible={isPreviewEnabled}
+							selectedStickerNr={selectedStickerNr}
+							setDragTarget={setDragTarget}
+						/>
+					))}
 				</div>
-			) : null}
 
-			<div
-				className={cn(
-					'stickerLayer',
-					'select-none pointer-events-none',
-					{ isOdd: isOdd, isEven: !isOdd }
-				)}
-			>
-				{stickers?.map((sticker, stickerIndex) => (
-					<PageStickerComponent
-						key={stickerIndex}
-						{...sticker}
-						className="sticker"
-						isVisible={isPreviewEnabled}
-						selectedStickerNr={selectedStickerNr}
-						setDragTarget={setDragTarget}
-					/>
-				))}
+				<div
+					className={pageTurnerClasses}
+					onClick={() => {
+						setCurrentPage(isOdd ? index + 1 : index - 2)
+						setShowPreview(false)
+					}}
+					onMouseEnter={() =>
+						isPreviewEnabled && setShowPreview(true)
+					}
+					onMouseLeave={() =>
+						isPreviewEnabled && setShowPreview(false)
+					}
+				></div>
+
+				<div
+					className={cn(
+						'pageNumber',
+						'absolute bottom-0 w-4 h-4 lg:w-8 lg:h-8 mb-2',
+						'select-none pointer-events-none',
+						`text-white text-xs sm:text-sm lg:text-lg text-bold underline lg:text-shadow`,
+						theme.textDecorationColor,
+						isOdd
+							? 'right-0 ml-2 text-left'
+							: 'left-0 mr-2 text-right'
+					)}
+				>
+					{index}
+				</div>
 			</div>
-
-			<div
-				className={pageTurnerClasses}
-				onClick={() => {
-					setCurrentPage(isOdd ? index + 1 : index - 2)
-					setShowPreview(false)
-				}}
-				onMouseEnter={() => isPreviewEnabled && setShowPreview(true)}
-				onMouseLeave={() => isPreviewEnabled && setShowPreview(false)}
-			></div>
-
-			<div
-				className={cn(
-					'pageNumber',
-					'absolute bottom-0 w-4 h-4 lg:w-8 lg:h-8 mb-2',
-					'select-none pointer-events-none',
-					`text-white text-xs sm:text-sm lg:text-lg text-bold underline lg:text-shadow`,
-					theme.textDecorationColor,
-					isOdd ? 'right-0 ml-2 text-left' : 'left-0 mr-2 text-right'
-				)}
-			>
-				{index}
-			</div>
-		</div>
-	)
-}
+		)
+	}
+)

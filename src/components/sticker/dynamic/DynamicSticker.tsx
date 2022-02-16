@@ -14,7 +14,7 @@ const POSITION_X_RATIO = 1.4
 const POSITION_Y_RATIO = 1.2
 
 export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
-	({ pageType, gameType, top, left, className, style }) => {
+	React.memo(({ pageType, gameType, top, left, className, style }) => {
 		const borderSizes = 'border md:border-2 lg:border-4 xl:border-4'
 		const stickerClasses = cn('dynamicSticker', className)
 
@@ -49,4 +49,4 @@ export const DynamicStickerComponent: React.FC<DynamicStickerComponentProps> =
 				></div>
 			</div>
 		)
-	}
+	})

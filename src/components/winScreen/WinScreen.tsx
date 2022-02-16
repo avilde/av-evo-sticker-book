@@ -26,7 +26,7 @@ export const WinScreen: React.FC<WinScreenProps> = ({ stickerBookState }) => {
 	)
 
 	const newStickerBookClassNames = cn(
-		'newStickerBook absolute bottom-16 left-[50%] translate-x-[-50%]',
+		'newStickerBook absolute bottom-12 left-[50%] translate-x-[-50%]',
 		'ml-2 p-1 sm:py-2 sm:px-2 rounded-lg shadow-md',
 		'text-white text-[8px] sm:text-sm',
 		'hover:shadow-blue-300 hover:scale-105 bg-blue-500'
