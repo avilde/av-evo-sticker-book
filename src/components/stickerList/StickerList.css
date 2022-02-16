@@ -4,7 +4,7 @@
 }
 
 .stickerList > .stickers {
-	max-height: 80vh;
+	max-height: calc(90vh - 1.5rem - 5rem - 3rem);
 	scroll-snap-points-y: repeat(calc(var(--sticker-height) * 2));
 	scroll-snap-type: y mandatory;
 	scroll-margin: 0.5em;

@@ -1,3 +1,19 @@
+# [AV] Evolution Sticker Book Project
+
+## Preview
+
+TODO: add GIFs
+
+[Demo - App](https://av-evo-sticker-book-app.netlify.app/)
+
+[Demo - Storybook](https://av-evo-sticker-book-storybook.netlify.app/)
+
+## Deployment
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/240d3c89-aa14-4e52-9c8e-33664d7245de/deploy-status)](https://app.netlify.com/sites/av-evo-sticker-book-storybook/deploys)
+
+Netlify is used to host & automatically deploy the website from Github.
+
 ## Setup
 
 If you have already installed NodeJS (LTS version) and you should have package manager npm already installed. Optionally if you want to try yarn you can install it globally.
@@ -55,3 +71,11 @@ Storybook documentation recommends serving static files via Storybook to ensure 
 Open `./storybook/main.js` file and add property `staticDirs`. For example, `staticDirs: ["../src/assets"]`.
 
 [[about static assets](https://storybook.js.org/docs/react/configure/images-and-assets#serving-static-files-via-storybook)]
+
+## Decisions
+
+TODO: describe decisions made in project
+
+## Development
+
+TODO: added info how to start local development

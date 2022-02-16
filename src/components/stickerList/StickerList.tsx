@@ -154,7 +154,7 @@ export const StickerList: React.FC<StickerListProps> = observer(
 										'stickerNumber',
 										'absolute left-2 top-2 w-6 h-6 lg:w-8 lg:h-8  select-none',
 										'flex justify-center items-center',
-										'text-center text-shadow-md underline rounded-full border font-semibold font-mono',
+										'text-center text-white text-shadow-md underline rounded-full border font-semibold font-mono',
 										count === 0
 											? 'grayscale bg-gray-500'
 											: 'bg-black',
@@ -162,7 +162,6 @@ export const StickerList: React.FC<StickerListProps> = observer(
 											? 'text-[10px] md:text-sm'
 											: 'text-sm lg:text-lg xl:text-xl',
 										theme.textDecorationColor,
-										theme.textColor,
 										theme.borderColor
 									)}
 								>
