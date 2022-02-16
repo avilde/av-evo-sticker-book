@@ -2,7 +2,9 @@
 
 ## Preview
 
-TODO: add GIFs
+![drag-and-drop](docs/drag-n-drop.gif)
+
+![sticker-book](docs/sticker-book.gif)
 
 [Demo - App](https://av-evo-sticker-book-app.netlify.app/)
 
@@ -55,7 +57,9 @@ import '../index.css'
 Open `tailwind.config.js` file and update content property to (otherwise Tailwind won't include the class names you use in your components):
 
 ```json
-content: ["./src/**/*.{ts,tsx}"],
+{
+	"content": ["./src/**/*.{ts,tsx}"]
+}
 ```
 
 For Storybook, we need to include the TailwindCSS directives in `.storybook/preview.js` which will apply the CSS to all stories in Storybook:
@@ -74,8 +78,34 @@ Open `./storybook/main.js` file and add property `staticDirs`. For example, `sta
 
 ## Decisions
 
-TODO: describe decisions made in project
+-   I chose Create React App template as it has all the features I needed for this project and it saved me a ton of time
+-   For CSS I used regular CSS files with regular class names instead of PostCSS files due to TailwindCSS integration and not to complicate the project
+-   For CSS classes I went with the order `dimensions`, `position`, `text`, `colors`
+-   For state management I used `MobX` for various reasons e.g. readability, ease of use
+-   For pictures I used `.webp` format because it is well supported now on modern browsers and the file size is acceptable compared to `.png` files
 
 ## Development
 
-TODO: added info how to start local development
+-   To start storybook development use:
+
+```sh
+yarn storybook
+```
+
+-   To start app development use command:
+
+```sh
+yarn start
+```
+
+-   To run tests:
+
+```sh
+yarn test
+```
+
+## Got Questions?
+
+E-mail: vilde.andris@gmail.com
+
+LinkedIn: https://www.linkedin.com/in/andris-vilde/
